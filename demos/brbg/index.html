@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blessed Rich Black Girls Inc.</title>
+  <meta name="description" content="A soft, classy nonprofit demo site for Blessed Rich Black Girls Inc.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #111;
+      --soft-ink: #3f3d3a;
+      --muted: #756f68;
+      --line: rgba(17, 17, 17, .12);
+      --paper: #fbfaf7;
+      --milk: #fff;
+      --mist: #f3f0eb;
+      --shadow: 0 28px 90px rgba(18, 15, 12, .12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        linear-gradient(90deg, rgba(17,17,17,.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(17,17,17,.03) 1px, transparent 1px),
+        var(--paper);
+      background-size: 44px 44px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .top-note {
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+      background: #111;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(251, 250, 247, .86);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #111;
+      border-radius: 999px;
+      background: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    .brand strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      letter-spacing: -.02em;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a,
+    .button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0 16px;
+      color: var(--soft-ink);
+      font-size: .78rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .button.dark,
+    .nav-links .dark {
+      border-color: #111;
+      background: #111;
+      color: #fff;
+    }
+
+    .button.light {
+      border-color: var(--line);
+      background: #fff;
+      color: #111;
+    }
+
+    .hero {
+      min-height: calc(100vh - 114px);
+      display: grid;
+      align-items: end;
+      padding: 70px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .72fr);
+      gap: 48px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(4.4rem, 12vw, 10.8rem);
+      line-height: .82;
+    }
+
+    h2 {
+      max-width: 740px;
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      line-height: .88;
+    }
+
+    h3 {
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      line-height: .96;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 26px;
+    }
+
+    .hero-copy p {
+      max-width: 650px;
+      color: var(--soft-ink);
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .portrait-card {
+      min-height: 620px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(255,255,255,.95), transparent 12rem),
+        linear-gradient(145deg, #111 0%, #24211f 42%, #f4f0eb 42%, #fff 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-card::before {
+      content: "BRBG";
+      position: absolute;
+      right: -8px;
+      top: 18px;
+      color: rgba(255,255,255,.86);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 10vw, 9rem);
+      letter-spacing: -.08em;
+      writing-mode: vertical-rl;
+    }
+
+    .portrait-card::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 74px;
+      width: min(64%, 310px);
+      aspect-ratio: 1;
+      transform: translateX(-50%);
+      border: 1px solid rgba(17,17,17,.16);
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg, transparent 48%, rgba(17,17,17,.08) 48% 52%, transparent 52%),
+        radial-gradient(circle at 50% 28%, #111 0 18%, transparent 18.5%),
+        radial-gradient(ellipse at 50% 74%, #111 0 44%, transparent 44.5%),
+        #f6f2ed;
+    }
+
+    .portrait-label {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid rgba(17,17,17,.14);
+      padding-top: 18px;
+      color: #111;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 84px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .72fr) minmax(320px, .55fr);
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .value {
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      background: rgba(255,255,255,.82);
+      padding: 18px;
+    }
+
+    .value span,
+    .program small,
+    .stat small {
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .value strong {
+      max-width: 170px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .program {
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.72);
+      padding: 22px;
+    }
+
+    .program ul {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.48;
+    }
+
+    .program li {
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .program li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .65em;
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: #111;
+    }
+
+    .impact {
+      display: grid;
+      grid-template-columns: .78fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .letter {
+      display: grid;
+      align-content: space-between;
+      gap: 34px;
+      border-radius: 8px;
+      background: #111;
+      color: #fff;
+      padding: clamp(28px, 6vw, 60px);
+      box-shadow: var(--shadow);
+    }
+
+    .letter p {
+      color: rgba(255,255,255,.72);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      line-height: 1.55;
+    }
+
+    .letter .script {
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: .9;
+      letter-spacing: -.055em;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      min-height: 210px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.76);
+      padding: 24px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 500;
+      letter-spacing: -.05em;
+      line-height: .88;
+    }
+
+    .founder {
+      display: grid;
+      grid-template-columns: minmax(280px, .55fr) minmax(0, 1fr);
+      gap: 38px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.76);
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    .founder-mark {
+      min-height: 440px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 28% 18%, rgba(255,255,255,.92), transparent 8rem),
+        linear-gradient(145deg, #111, #2b2824);
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(5rem, 12vw, 10rem);
+      letter-spacing: -.08em;
+    }
+
+    .founder-copy {
+      display: grid;
+      gap: 20px;
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(300px, .45fr);
+      gap: 28px;
+      align-items: end;
+      border-radius: 8px;
+      background: #fff;
+      padding: clamp(28px, 6vw, 58px);
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      max-width: 760px;
+    }
+
+    footer {
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .section-head,
+      .impact,
+      .founder,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .program-grid,
+      .values {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .portrait-card {
+        min-height: 500px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-inner,
+      .nav-links {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-inner {
+        padding: 14px 0;
+      }
+
+      .hero {
+        min-height: 0;
+        padding: 48px 0 28px;
+      }
+
+      .program-grid,
+      .values,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-note">Empowered. Educated. Elevated.</div>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Blessed Rich Black Girls Inc. home">
+        <span class="brand-mark">BR</span>
+        <span>
+          <strong>Blessed Rich Black Girls Inc.</strong>
+          <small>Philadelphia nonprofit</small>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#programs">Programs</a>
+        <a href="#impact">Impact</a>
+        <a class="dark" href="#join">Join</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Faith, finance, sisterhood</p>
+          <h1>Blessed Rich Black Girls.</h1>
+          <p>A soft place to grow into leadership, financial confidence, spiritual strength, and the version of womanhood you were always meant to carry.</p>
+          <div class="actions">
+            <a class="button dark" href="#join">Apply For Mentorship</a>
+            <a class="button light" href="#programs">Explore Programs</a>
+          </div>
+        </div>
+        <div class="portrait-card" aria-label="Editorial black and white BRBG brand visual">
+          <div class="portrait-label">
+            <span>Queen Hart</span>
+            <span>Founder</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Core identity">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Built for young women becoming whole.</h2>
+          <p>Blessed Rich Black Girls Inc. empowers young adult Black women with mentorship, financial and educational tools, and a supportive community for confident, professional, spiritual, and personal growth.</p>
+        </div>
+        <div class="values">
+          <div class="value"><span>01</span><strong>Faith & Spiritual Growth</strong></div>
+          <div class="value"><span>02</span><strong>Financial Literacy</strong></div>
+          <div class="value"><span>03</span><strong>Community & Sisterhood</strong></div>
+          <div class="value"><span>04</span><strong>Leadership Development</strong></div>
+          <div class="value"><span>05</span><strong>Integrity & Accountability</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" aria-label="Programs">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Programs with grace and structure.</h2>
+          <p>Each program gives members clear support: a big-sister circle, practical money tools, faith-aligned development, and space to build real confidence.</p>
+        </div>
+        <div class="program-grid">
+          <article class="program">
+            <div>
+              <small>Monthly</small>
+              <h3>BRBG Mentorship Circle</h3>
+              <ul>
+                <li>Big sister guidance</li>
+                <li>Confidence building</li>
+                <li>Career and life navigation</li>
+                <li>Goal setting and network growth</li>
+              </ul>
+            </div>
+            <a class="button light" href="#join">Join Circle</a>
+          </article>
+          <article class="program">
+            <div>
+              <small>Weekly</small>
+              <h3>Financial Empowerment</h3>
+              <ul>
+                <li>Financial literacy workshops</li>
+                <li>Credit building tips</li>
+                <li>Savings challenges</li>
+                <li>Micro-grants for startups</li>
+              </ul>
+            </div>
+            <a class="button light" href="#join">Get Tools</a>
+          </article>
+          <article class="program">
+            <div>
+              <small>Retreat</small>
+              <h3>Womanhood & Spiritual Development</h3>
+              <ul>
+                <li>Bible study and business audits</li>
+                <li>Mental capacity check-ins</li>
+                <li>Healing conversations</li>
+                <li>Faith and business alignment</li>
+              </ul>
+            </div>
+            <a class="button light" href="#join">Find Support</a>
+          </article>
+          <article class="program">
+            <div>
+              <small>Monthly</small>
+              <h3>Personal Growth Sessions</h3>
+              <ul>
+                <li>Goal-setting workshops</li>
+                <li>Wellness sessions</li>
+                <li>Emotional resilience</li>
+                <li>Service and leadership projects</li>
+              </ul>
+            </div>
+            <a class="button light" href="#join">Start Growing</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" aria-label="Impact plan">
+      <div class="wrap impact">
+        <div class="letter">
+          <div class="script">Dear BRBG,</div>
+          <p>You don't have to struggle alone. You don't have to build alone. You don't have to grow alone. Welcome and suit up; we're elevating.</p>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <small>3 year goal</small>
+            <strong>500+</strong>
+            <p>Participants reached through mentorship, workshops, retreats, and community programming.</p>
+          </div>
+          <div class="stat">
+            <small>Service area</small>
+            <strong>PHL</strong>
+            <p>Philadelphia-based support with virtual program accessibility nationwide.</p>
+          </div>
+          <div class="stat">
+            <small>Revenue</small>
+            <strong>4</strong>
+            <p>Grants, donations, corporate sponsorships, and merchandise sales.</p>
+          </div>
+          <div class="stat">
+            <small>Community</small>
+            <strong>21-30</strong>
+            <p>Built for young Black women graduating, growing careers, and beginning businesses.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Founder">
+      <div class="wrap founder">
+        <div class="founder-mark" aria-hidden="true">QH</div>
+        <div class="founder-copy">
+          <p class="eyebrow">Founder & Executive Director</p>
+          <h2>Queen Hart</h2>
+          <p>BRBG is designed as a refined home for mentorship, faith, funding assistance, and leadership development. The organization partners with schools, churches, community centers, and businesses to resource young women with care and accountability.</p>
+          <div class="actions">
+            <a class="button dark" href="#join">Partner With BRBG</a>
+            <a class="button light" href="#programs">View Programs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join" aria-label="Join and donate">
+      <div class="wrap cta">
+        <div>
+          <p class="eyebrow">Community, support, faith, financial help</p>
+          <h2>For the woman who is ready to be resourced.</h2>
+        </div>
+        <div class="actions">
+          <a class="button dark" href="mailto:hello@blessedrichblackgirls.org">Email BRBG</a>
+          <a class="button light" href="tel:+12155550130">Call The Team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Blessed Rich Black Girls Inc. demo site by OwnYourWeb.</div>
+  </footer>
+</body>
+</html>
