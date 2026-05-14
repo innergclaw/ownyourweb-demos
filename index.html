@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OwnYourWeb Demos</title>
   <meta name="description" content="A growing collection of OwnYourWeb demo sites.">
+  <script>
+    if (location.hostname === "vaughnhustle.com" || location.hostname === "www.vaughnhustle.com") {
+      location.replace("/demos/boxer/" + location.search + location.hash);
+    }
+  </script>
   <style>
     :root {
       color-scheme: dark;
