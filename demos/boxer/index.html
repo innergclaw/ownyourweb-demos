@@ -291,6 +291,91 @@
       box-shadow: 7px 7px 0 rgba(239,120,0,.25);
     }
 
+    .signup-popup {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(5,4,3,.72);
+      backdrop-filter: blur(10px);
+    }
+
+    .signup-popup.open {
+      display: flex;
+    }
+
+    .signup-panel {
+      width: min(520px, 100%);
+      border: 2px solid var(--orange);
+      background:
+        linear-gradient(135deg, rgba(239,120,0,.22), transparent 42%),
+        #0b0806;
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .signup-panel h2 {
+      margin: 12px 0 8px;
+      font-size: clamp(2.7rem, 9vw, 5rem);
+    }
+
+    .signup-panel p {
+      margin: 0 0 18px;
+      color: rgba(255,245,223,.78);
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .signup-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .signup-form input {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.08);
+      color: var(--cream);
+      padding: 0 14px;
+      font: inherit;
+      font-weight: 800;
+    }
+
+    .signup-form input::placeholder {
+      color: rgba(255,245,223,.48);
+    }
+
+    .signup-actions {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .signup-close {
+      min-height: 52px;
+      border: 0;
+      background: transparent;
+      color: rgba(255,245,223,.74);
+      font: inherit;
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .signup-status {
+      min-height: 20px;
+      color: var(--orange-2);
+      font-size: .82rem;
+      font-weight: 900;
+    }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -384,6 +469,66 @@
       color: rgba(255,245,223,.72);
       line-height: 1.45;
       font-weight: 700;
+    }
+
+    .events {
+      background:
+        linear-gradient(135deg, rgba(239,120,0,.2), transparent 48%),
+        rgba(255,255,255,.035);
+    }
+
+    .event-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      border: 1px solid var(--line);
+      background:
+        repeating-linear-gradient(135deg, rgba(239,120,0,.12) 0 12px, transparent 12px 28px),
+        rgba(5,4,3,.62);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .event-date {
+      display: grid;
+      place-items: center;
+      min-width: 132px;
+      min-height: 132px;
+      border: 2px solid var(--orange);
+      color: var(--orange-2);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .event-date strong {
+      display: block;
+      font-family: Anton, Impact, sans-serif;
+      font-size: 3.8rem;
+      line-height: .86;
+    }
+
+    .event-date span {
+      display: block;
+      margin-top: 8px;
+      color: var(--cream);
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .12em;
+    }
+
+    .event-card h3 {
+      margin: 12px 0 10px;
+      font-size: clamp(2.4rem, 5.6vw, 5rem);
+      line-height: .9;
+    }
+
+    .event-card p {
+      max-width: 700px;
+      margin: 0;
+      color: rgba(255,245,223,.76);
+      line-height: 1.55;
+      font-weight: 750;
     }
 
     .media-wall {
@@ -616,6 +761,7 @@
 
       .hero-grid,
       .section-head,
+      .event-card,
       .media-wall,
       .sponsor-grid,
       .cta-box {
@@ -645,6 +791,10 @@
         grid-template-columns: 1fr;
       }
 
+      .event-date {
+        width: max-content;
+      }
+
       .price {
         width: max-content;
       }
@@ -663,7 +813,12 @@
         width: 100%;
       }
 
+      .signup-actions {
+        grid-template-columns: 1fr;
+      }
+
       .feature,
+      .event-card,
       .media-card,
       .package,
       .cta-box {
@@ -681,6 +836,24 @@
   </style>
 </head>
 <body>
+  <div class="signup-popup" id="signupPopup" aria-hidden="true">
+    <div class="signup-panel" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+      <span class="eyebrow">VHUSTLE Updates</span>
+      <h2 id="signupTitle">Stay Locked In.</h2>
+      <p>Get fight updates, sponsor drops, and exclusive announcements first.</p>
+      <form class="signup-form" id="signupForm">
+        <input type="text" name="name" autocomplete="name" placeholder="Name">
+        <input type="email" name="email" autocomplete="email" placeholder="Email address" required>
+        <input type="text" name="_gotcha" autocomplete="off" tabindex="-1" aria-hidden="true" hidden>
+        <div class="signup-actions">
+          <button class="btn primary" type="submit">Get Updates</button>
+          <button class="signup-close" type="button" data-signup-close>Not Now</button>
+        </div>
+        <div class="signup-status" id="signupStatus" role="status"></div>
+      </form>
+    </div>
+  </div>
+
   <section class="video-gate" aria-label="V Hustle intro video">
     <div class="video-panel">
       <video src="assets/vhustle/intro.mp4" controls autoplay muted playsinline preload="metadata"></video>
@@ -704,6 +877,7 @@
         </span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
+        <a href="https://www.eventbrite.com/e/fathers-day-brawl-tickets-1985403306736?aff=Adams&fbclid=PAVERFWAR4IMBleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafo6tIoW3XKpKUWR02jqO5x1MnlqZIeCMWJkDBNoPVa5qVGBDhb7tHnvBrHYA_aem_HmrUpH8l-ck8WL_ZvpNFHQ" target="_blank" rel="noopener">Events</a>
         <a href="#media">Media</a>
         <a href="#sponsor">Sponsor</a>
         <a class="solid" href="#sponsor">Book / Sponsor</a>
@@ -727,6 +901,34 @@
             <div class="stat"><strong>LIVE</strong><span>Sponsor slots</span></div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="events" id="events">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Upcoming Events</span>
+            <h2>Father's Day Brawl.</h2>
+          </div>
+          <p>Lock in tickets and pull up for the next fight-night moment. V Hustle is stepping into the spotlight for Father's Day Brawl.</p>
+        </div>
+        <article class="event-card">
+          <div>
+            <span class="eyebrow">Tickets Available</span>
+            <h3>Father's Day Brawl</h3>
+            <p>Tap in through Eventbrite for ticket details, updates, and event access.</p>
+            <div class="cta-row">
+              <a class="btn primary" href="https://www.eventbrite.com/e/fathers-day-brawl-tickets-1985403306736?aff=Adams&fbclid=PAVERFWAR4IMBleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafo6tIoW3XKpKUWR02jqO5x1MnlqZIeCMWJkDBNoPVa5qVGBDhb7tHnvBrHYA_aem_HmrUpH8l-ck8WL_ZvpNFHQ" target="_blank" rel="noopener">Get Tickets</a>
+            </div>
+          </div>
+          <div class="event-date" aria-label="Father's Day event">
+            <div>
+              <strong>FD</strong>
+              <span>Brawl</span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -808,5 +1010,70 @@
   <footer>
     V Hustle / The Messiah / Philadelphia
   </footer>
+  <script>
+    window.BOXER_SIGNUP_ENDPOINT = window.BOXER_SIGNUP_ENDPOINT || "https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/boxer-email-signup";
+
+    const signupPopup = document.getElementById("signupPopup");
+    const signupForm = document.getElementById("signupForm");
+    const signupStatus = document.getElementById("signupStatus");
+    const popupStorageKey = "vhustle_signup_popup_dismissed";
+
+    function openSignupPopup() {
+      if (!signupPopup || localStorage.getItem(popupStorageKey)) return;
+      signupPopup.classList.add("open");
+      signupPopup.setAttribute("aria-hidden", "false");
+    }
+
+    function closeSignupPopup() {
+      if (!signupPopup) return;
+      signupPopup.classList.remove("open");
+      signupPopup.setAttribute("aria-hidden", "true");
+      localStorage.setItem(popupStorageKey, "true");
+    }
+
+    window.addEventListener("load", () => {
+      window.setTimeout(openSignupPopup, 1800);
+    });
+
+    document.querySelectorAll("[data-signup-close]").forEach((button) => {
+      button.addEventListener("click", closeSignupPopup);
+    });
+
+    signupPopup?.addEventListener("click", (event) => {
+      if (event.target === signupPopup) closeSignupPopup();
+    });
+
+    signupForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const formData = new FormData(signupForm);
+      const payload = {
+        name: String(formData.get("name") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        _gotcha: String(formData.get("_gotcha") || ""),
+        source_page: "10for10boxing.com boxer demo",
+        signup_context: "updates_and_exclusive_announcements",
+        referrer: document.referrer,
+      };
+
+      signupStatus.textContent = "Saving...";
+
+      try {
+        const response = await fetch(window.BOXER_SIGNUP_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error || "Signup failed");
+        }
+        signupStatus.textContent = "You're locked in.";
+        localStorage.setItem(popupStorageKey, "true");
+        window.setTimeout(closeSignupPopup, 900);
+      } catch (_error) {
+        signupStatus.textContent = "Could not save yet. Try again soon.";
+      }
+    });
+  </script>
 </body>
 </html>
