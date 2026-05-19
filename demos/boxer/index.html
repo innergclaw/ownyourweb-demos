@@ -556,7 +556,8 @@
       min-height: 596px;
     }
 
-    .media-card img {
+    .media-card img,
+    .media-card video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -565,7 +566,8 @@
       transition: transform .35s ease, filter .35s ease;
     }
 
-    .media-card:hover img {
+    .media-card:hover img,
+    .media-card:hover video {
       transform: scale(1.055);
       filter: saturate(1.12) contrast(1.1);
     }
@@ -578,6 +580,21 @@
         linear-gradient(180deg, transparent 48%, rgba(5,4,3,.82)),
         linear-gradient(135deg, rgba(239,120,0,.18), transparent 42%);
       pointer-events: none;
+    }
+
+    .media-card.video-card video {
+      background: #070504;
+      object-fit: contain;
+      transform: none;
+    }
+
+    .media-card.video-card:hover video {
+      transform: none;
+    }
+
+    .media-card.video-card .media-label {
+      top: 18px;
+      bottom: auto;
     }
 
     .media-label {
@@ -941,14 +958,21 @@
           </div>
         </div>
         <div class="media-wall" aria-label="VHUSTLE media wall">
-          <article class="media-card featured">
-            <img src="assets/vhustle/VHUSSLE.jpg" alt="VHUSTLE training in the boxing ring">
+          <article class="media-card featured video-card">
+            <video src="assets/vhustle/bta-behind-the-scenes.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE behind the scenes video"></video>
             <div class="media-label">
-              <strong>VHUSTLE</strong>
-              <span>01</span>
+              <strong>Behind The Scenes</strong>
+              <span>Video</span>
             </div>
           </article>
           <div class="media-stack">
+            <article class="media-card">
+              <img src="assets/vhustle/VHUSSLE.jpg" alt="VHUSTLE training in the boxing ring">
+              <div class="media-label">
+                <strong>VHUSTLE</strong>
+                <span>01</span>
+              </div>
+            </article>
             <article class="media-card">
               <img src="assets/vhustle/VHUSSLE2.jpg" alt="VHUSTLE resistance training photo">
               <div class="media-label">
