@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiny Stars Learning Academy | Early Learning & Childcare</title>
+  <meta name="description" content="Tiny Stars Learning Academy is a warm, trusted early-learning home for children to grow, explore, and shine.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ffd95c'/%3E%3Cpath d='M32 9l6.4 13 14.4 2.1-10.4 10.1 2.5 14.3L32 41.8l-12.9 6.7 2.5-14.3-10.4-10.1L25.6 22 32 9z' fill='%23ff8fa3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;800;900&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #172033;
+      --plum: #4c2c72;
+      --sky: #98d9ff;
+      --sun: #ffd95c;
+      --rose: #ff8fa3;
+      --mint: #9ee6bf;
+      --cream: #fff8ea;
+      --white: #ffffff;
+      --muted: #657186;
+      --line: #172033;
+      --shadow: 10px 10px 0 rgba(23, 32, 51, .14);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--cream);
+    }
+
+    body {
+      margin: 0;
+      font-family: Nunito, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255, 217, 92, .55), transparent 19rem),
+        radial-gradient(circle at 88% 10%, rgba(152, 217, 255, .65), transparent 18rem),
+        radial-gradient(circle at 82% 82%, rgba(255, 143, 163, .38), transparent 20rem),
+        linear-gradient(180deg, #fffdf7, var(--cream));
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 3px solid var(--line);
+      background: rgba(255, 248, 234, .92);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 900;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--line);
+      border-radius: 16px;
+      background: var(--sun);
+      box-shadow: 5px 5px 0 var(--rose);
+      font-size: 1.55rem;
+    }
+
+    .brand-text {
+      display: grid;
+      line-height: 1;
+    }
+
+    .brand-text strong {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.08rem;
+    }
+
+    .brand-text small {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      padding: 0 12px;
+      color: var(--ink);
+      font-size: .85rem;
+      font-weight: 900;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      border-color: var(--line);
+      background: var(--white);
+      outline: none;
+    }
+
+    .nav .cta {
+      border-color: var(--line);
+      background: var(--mint);
+      box-shadow: 4px 4px 0 rgba(23, 32, 51, .16);
+    }
+
+    .hero {
+      min-height: calc(100vh - 78px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .78fr);
+      align-items: center;
+      gap: 52px;
+      padding: 70px 0;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      border: 3px solid var(--line);
+      border-radius: 999px;
+      background: var(--sky);
+      box-shadow: 5px 5px 0 rgba(23, 32, 51, .14);
+      padding: 9px 13px;
+      font-size: .78rem;
+      font-weight: 1000;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      font-family: Fraunces, Georgia, serif;
+      letter-spacing: 0;
+      line-height: .95;
+    }
+
+    h1 {
+      margin-top: 24px;
+      max-width: 720px;
+      font-size: clamp(4rem, 9vw, 7.4rem);
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid var(--line);
+      border-radius: 16px;
+      padding: 0 18px;
+      background: var(--plum);
+      box-shadow: var(--shadow);
+      color: var(--white);
+      font-size: .9rem;
+      font-weight: 1000;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .btn.secondary {
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 520px;
+      border: 4px solid var(--line);
+      border-radius: 34px;
+      background: var(--white);
+      box-shadow: 16px 16px 0 rgba(23, 32, 51, .16);
+      overflow: hidden;
+    }
+
+    .rainbow {
+      height: 26px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 4px solid var(--line);
+    }
+
+    .rainbow span:nth-child(1) { background: var(--rose); }
+    .rainbow span:nth-child(2) { background: var(--sun); }
+    .rainbow span:nth-child(3) { background: var(--mint); }
+    .rainbow span:nth-child(4) { background: var(--sky); }
+
+    .classroom-art {
+      position: absolute;
+      inset: 26px 0 0;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(90deg, rgba(23, 32, 51, .07) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(23, 32, 51, .07) 1px, transparent 1px),
+        linear-gradient(180deg, #fff, #fff6df);
+      background-size: 36px 36px;
+    }
+
+    .sun {
+      position: absolute;
+      top: 36px;
+      right: 44px;
+      width: 94px;
+      height: 94px;
+      border: 4px solid var(--line);
+      border-radius: 50%;
+      background: var(--sun);
+      box-shadow: 8px 8px 0 rgba(23, 32, 51, .13);
+    }
+
+    .teacher {
+      position: absolute;
+      left: 58px;
+      bottom: 78px;
+      width: 138px;
+      height: 220px;
+    }
+
+    .teacher::before {
+      content: "";
+      position: absolute;
+      left: 44px;
+      top: 0;
+      width: 58px;
+      height: 58px;
+      border: 4px solid var(--line);
+      border-radius: 50%;
+      background: #c8865d;
+    }
+
+    .teacher::after {
+      content: "";
+      position: absolute;
+      left: 26px;
+      top: 62px;
+      width: 94px;
+      height: 108px;
+      border: 4px solid var(--line);
+      border-radius: 22px;
+      background: var(--rose);
+      box-shadow: 7px 7px 0 rgba(23, 32, 51, .16);
+    }
+
+    .board {
+      position: absolute;
+      right: 56px;
+      top: 134px;
+      width: 232px;
+      min-height: 144px;
+      border: 4px solid var(--line);
+      border-radius: 20px;
+      background: var(--plum);
+      box-shadow: 8px 8px 0 rgba(23, 32, 51, .18);
+      color: var(--white);
+      padding: 24px;
+      font-weight: 1000;
+      line-height: 1.1;
+    }
+
+    .board span {
+      color: var(--sun);
+      display: block;
+      margin-top: 8px;
+    }
+
+    .kid {
+      position: absolute;
+      width: 80px;
+      height: 86px;
+      border: 4px solid var(--line);
+      border-radius: 22px 22px 14px 14px;
+      background: var(--sky);
+      box-shadow: 6px 6px 0 rgba(23, 32, 51, .15);
+    }
+
+    .kid::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: -34px;
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--line);
+      border-radius: 50%;
+      background: #d59a65;
+    }
+
+    .kid.one { left: 218px; bottom: 94px; background: var(--mint); }
+    .kid.two { right: 112px; bottom: 82px; background: var(--sun); }
+    .kid.three { right: 196px; bottom: 202px; background: var(--sky); transform: scale(.78); }
+
+    .star {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      background: var(--sun);
+      clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 56%, 79% 92%, 50% 70%, 21% 92%, 32% 56%, 2% 35%, 39% 35%);
+      filter: drop-shadow(5px 6px 0 rgba(23, 32, 51, .18));
+    }
+
+    .star.a { left: 70px; top: 78px; }
+    .star.b { right: 50px; bottom: 70px; transform: scale(.72) rotate(14deg); background: var(--mint); }
+
+    section.band {
+      border-top: 4px solid var(--line);
+      padding: 76px 0;
+      background: rgba(255, 255, 255, .48);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    h2 {
+      max-width: 720px;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+    }
+
+    .section-head p {
+      max-width: 390px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 232px;
+      border: 3px solid var(--line);
+      border-radius: 24px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 12px;
+      background: var(--accent, var(--sky));
+      border-bottom: 3px solid var(--line);
+    }
+
+    .card small {
+      display: block;
+      margin-top: 14px;
+      color: var(--plum);
+      font-size: .75rem;
+      font-weight: 1000;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 12px 0 0;
+      font-size: 1.5rem;
+      line-height: 1.05;
+    }
+
+    .card p {
+      margin: 13px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-weight: 750;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .notice {
+      border: 4px solid var(--line);
+      border-radius: 28px;
+      background: var(--plum);
+      box-shadow: 14px 14px 0 rgba(23, 32, 51, .16);
+      padding: 34px;
+      color: var(--white);
+    }
+
+    .notice h2 {
+      color: var(--white);
+    }
+
+    .notice p {
+      max-width: 520px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      font-weight: 800;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 12px;
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      border: 3px solid var(--line);
+      border-radius: 18px;
+      background: var(--white);
+      padding: 16px;
+      font-weight: 900;
+      box-shadow: 6px 6px 0 rgba(23, 32, 51, .12);
+    }
+
+    .check b {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--line);
+      border-radius: 50%;
+      background: var(--mint);
+    }
+
+    .contact-panel {
+      margin-top: 28px;
+      border: 4px solid var(--line);
+      border-radius: 30px;
+      background: var(--white);
+      box-shadow: 14px 14px 0 rgba(23, 32, 51, .15);
+      padding: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .contact-item {
+      border: 3px solid var(--line);
+      border-radius: 20px;
+      background: var(--cream);
+      padding: 18px;
+    }
+
+    .contact-item small {
+      color: var(--muted);
+      font-weight: 1000;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.08rem;
+    }
+
+    footer {
+      border-top: 4px solid var(--line);
+      padding: 30px 0;
+      color: var(--muted);
+      font-weight: 900;
+      text-align: center;
+      background: rgba(255, 255, 255, .6);
+    }
+
+    @media (max-width: 900px) {
+      .topbar-inner,
+      .hero,
+      .section-head,
+      .split,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner,
+      .section-head {
+        align-items: start;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 48px 0;
+      }
+
+      .hero-card {
+        min-height: 430px;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand-text strong {
+        font-size: .95rem;
+      }
+
+      h1 {
+        font-size: 3.6rem;
+      }
+
+      .hero-card {
+        min-height: 380px;
+      }
+
+      .teacher {
+        transform: scale(.78);
+        transform-origin: left bottom;
+      }
+
+      .board {
+        right: 24px;
+        width: 190px;
+      }
+
+      .kid.one { left: 170px; }
+      .kid.two { right: 42px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Tiny Stars Learning Academy">
+        <span class="brand-mark" aria-hidden="true">★</span>
+        <span class="brand-text">
+          <strong>Tiny Stars Learning Academy</strong>
+          <small>tinystarslearn.com</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#programs">Programs</a>
+        <a href="#families">Families</a>
+        <a href="#enroll">Enroll</a>
+        <a class="cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow">A bright start for little learners</div>
+        <h1>Where Tiny Stars Learn, Grow & Shine.</h1>
+        <p class="lead">A warm early-learning home built for curious children, confident families, and joyful daily routines.</p>
+        <div class="actions">
+          <a class="btn" href="#enroll">Start Enrollment</a>
+          <a class="btn secondary" href="#programs">View Programs</a>
+        </div>
+      </div>
+
+      <div class="hero-card" aria-label="Classroom illustration">
+        <div class="rainbow" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="classroom-art">
+          <div class="sun" aria-hidden="true"></div>
+          <div class="star a" aria-hidden="true"></div>
+          <div class="star b" aria-hidden="true"></div>
+          <div class="teacher" aria-hidden="true"></div>
+          <div class="board">Today we shine<span>letters • numbers • play</span></div>
+          <div class="kid one" aria-hidden="true"></div>
+          <div class="kid two" aria-hidden="true"></div>
+          <div class="kid three" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="programs">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Learning with structure, care, and imagination.</h2>
+          <p>Clear program cards make it easy for families to understand what Tiny Stars offers before they call or visit.</p>
+        </div>
+        <div class="grid">
+          <article class="card" style="--accent: var(--rose)">
+            <small>Program 01</small>
+            <h3>Early Learners</h3>
+            <p>Play-based routines, social skills, early language, creative expression, and confidence-building classroom moments.</p>
+          </article>
+          <article class="card" style="--accent: var(--sun)">
+            <small>Program 02</small>
+            <h3>Preschool Readiness</h3>
+            <p>Letters, numbers, listening skills, group learning, early problem solving, and kindergarten-ready habits.</p>
+          </article>
+          <article class="card" style="--accent: var(--mint)">
+            <small>Program 03</small>
+            <h3>After-Care Support</h3>
+            <p>A calm, supervised space for homework routines, creative play, reading practice, and family-friendly scheduling.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="families">
+      <div class="wrap split">
+        <div class="notice">
+          <h2>Built for parent peace of mind.</h2>
+          <p>Families should know what happens next without digging. This site gives Tiny Stars a clean digital home for trust, enrollment, updates, and parent communication.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><b>✓</b><span>Warm homepage that explains the center fast</span></div>
+          <div class="check"><b>✓</b><span>Program information for quick parent decisions</span></div>
+          <div class="check"><b>✓</b><span>Enrollment call-to-action and contact-ready layout</span></div>
+          <div class="check"><b>✓</b><span>Mobile-first experience for busy families</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="enroll">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Ready to welcome the next Tiny Star.</h2>
+          <p>This section can connect to enrollment forms, parent intake, tour requests, or a simple contact workflow.</p>
+        </div>
+        <div class="grid">
+          <article class="card" style="--accent: var(--sky)">
+            <small>Step 01</small>
+            <h3>Tell us about your child</h3>
+            <p>Family details, child age, schedule needs, program interest, and best way to follow up.</p>
+          </article>
+          <article class="card" style="--accent: var(--mint)">
+            <small>Step 02</small>
+            <h3>Schedule a tour</h3>
+            <p>Invite families to visit, ask questions, understand routines, and meet the Tiny Stars team.</p>
+          </article>
+          <article class="card" style="--accent: var(--sun)">
+            <small>Step 03</small>
+            <h3>Start with confidence</h3>
+            <p>Give parents clear next steps, required documents, classroom expectations, and first-day guidance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Contact details ready for final setup.</h2>
+          <p>Replace placeholders with verified phone, address, hours, and intake links before launch.</p>
+        </div>
+        <div class="contact-panel">
+          <div class="contact-item">
+            <small>Domain</small>
+            <strong>tinystarslearn.com</strong>
+          </div>
+          <div class="contact-item">
+            <small>Status</small>
+            <strong>Client build started</strong>
+          </div>
+          <div class="contact-item">
+            <small>Powered by</small>
+            <strong>OWNYOURWEB</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Tiny Stars Learning Academy demo build by OWNYOURWEB.
+  </footer>
+</body>
+</html>
