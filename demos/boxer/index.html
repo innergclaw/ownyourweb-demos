@@ -597,6 +597,26 @@
       bottom: auto;
     }
 
+    .clip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .media-card.clip-card {
+      min-height: 430px;
+    }
+
+    .media-card.clip-card video {
+      object-fit: cover;
+    }
+
+    .media-card.clip-card .media-label {
+      top: auto;
+      bottom: 18px;
+    }
+
     .media-label {
       position: absolute;
       left: 18px;
@@ -780,6 +800,7 @@
       .section-head,
       .event-card,
       .media-wall,
+      .clip-grid,
       .sponsor-grid,
       .cta-box {
         grid-template-columns: 1fr;
@@ -844,6 +865,10 @@
 
       .media-stack {
         grid-template-columns: 1fr;
+      }
+
+      .media-card.clip-card {
+        min-height: 390px;
       }
 
       .video-gate {
@@ -988,6 +1013,71 @@
               </div>
             </article>
           </div>
+        </div>
+        <div class="clip-grid" aria-label="VHUSTLE video clips">
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4684.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4684"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4684</span>
+            </div>
+          </article>
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4819.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4819"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4819</span>
+            </div>
+          </article>
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4820.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4820"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4820</span>
+            </div>
+          </article>
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4821.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4821"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4821</span>
+            </div>
+          </article>
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4826.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4826"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4826</span>
+            </div>
+          </article>
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4836.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4836"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4836</span>
+            </div>
+          </article>
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4839.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4839"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4839</span>
+            </div>
+          </article>
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4844.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4844"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4844</span>
+            </div>
+          </article>
+          <article class="media-card video-card clip-card">
+            <video src="assets/vhustle/mvi_4845.mp4" controls playsinline preload="metadata" aria-label="VHUSTLE video clip 4845"></video>
+            <div class="media-label">
+              <strong>Training Clip</strong>
+              <span>4845</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
