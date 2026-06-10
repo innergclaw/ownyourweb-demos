@@ -287,14 +287,16 @@
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.2);
-      background: #171717;
+      background:
+        radial-gradient(circle at center, rgba(201,255,53,.12), transparent 36%),
+        linear-gradient(135deg, #191919, #070707);
       box-shadow: 0 30px 100px rgba(0,0,0,.5);
     }
 
     .video-shell video {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
+      height: min(76vh, 820px);
+      object-fit: contain;
       background: #111;
     }
 
@@ -553,12 +555,12 @@
             <div class="kicker">Before you scroll</div>
             <h2>See what the tribe feels like.</h2>
           </div>
-          <p>Press play, catch the energy, then sign up below. This demo reel is ready to be replaced with the official Philly Run Tribe video.</p>
+          <p>Press play, catch the energy, then sign up below. See the Philly Run Tribe community in motion before joining the next run.</p>
         </div>
         <div class="video-shell">
           <span class="video-label">Meet the tribe · Video</span>
-          <video controls playsinline preload="metadata" poster="assets/philly-night-run.png">
-            <source src="assets/philly-run-tribe-placeholder.mp4" type="video/mp4">
+          <video controls playsinline preload="metadata" poster="assets/philly-run-tribe-video-poster.jpg">
+            <source src="assets/philly-run-tribe-video.mp4" type="video/mp4">
             Your browser does not support HTML video.
           </video>
         </div>
