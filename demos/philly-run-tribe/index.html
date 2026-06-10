@@ -69,9 +69,34 @@
       text-transform: uppercase;
     }
 
+    .sale-bar {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 9px 20px;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,.18);
+      background: #111;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .sale-bar strong { color: var(--lime); }
+
+    .sale-bar a {
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--lime);
+      color: var(--lime);
+    }
+
     .nav {
       position: absolute;
-      inset: 34px 0 auto;
+      inset: 82px 0 auto;
       z-index: 10;
       border-bottom: 1px solid var(--line);
     }
@@ -487,7 +512,8 @@
 
     @media (max-width: 820px) {
       .wrap, .hero-content { width: min(100% - 28px, var(--max)); }
-      .nav { inset: 34px 0 auto; }
+      .sale-bar { min-height: 58px; gap: 8px; flex-direction: column; }
+      .nav { inset: 92px 0 auto; }
       .nav-inner { min-height: 74px; }
       .brand img { width: 48px; height: 48px; }
       .brand span { display: none; }
@@ -517,6 +543,10 @@
 </head>
 <body>
   <div class="announcement">Tuesday nights · 7 PM · All paces welcome</div>
+  <div class="sale-bar">
+    <span><strong>OwnYourWeb Demo · For Sale</strong> · Already built and ready for your organization’s information</span>
+    <a href="https://ownyourweb.xyz/#start">Start transfer ↗</a>
+  </div>
 
   <header class="nav">
     <div class="wrap nav-inner">
@@ -640,7 +670,7 @@
         </div>
         <footer>
           <span>Philly Run Tribe · Philadelphia, PA</span>
-          <span>Demo site by OwnYourWeb</span>
+          <span><a href="https://ownyourweb.xyz/#start">For-sale demo by OwnYourWeb · Claim this site ↗</a></span>
         </footer>
       </div>
     </section>
