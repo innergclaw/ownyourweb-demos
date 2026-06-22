@@ -59,6 +59,23 @@
       mask-image: linear-gradient(180deg, rgba(0, 0, 0, .9), transparent 80%);
     }
 
+    body::after {
+      content: "";
+      position: fixed;
+      right: clamp(14px, 4vw, 34px);
+      top: 22%;
+      width: 170px;
+      height: 360px;
+      pointer-events: none;
+      opacity: .2;
+      background:
+        radial-gradient(circle at 50% 6%, rgba(243, 213, 138, .72) 0 3px, transparent 4px),
+        radial-gradient(circle at 74% 24%, rgba(242, 51, 157, .72) 0 4px, transparent 5px),
+        radial-gradient(circle at 33% 42%, rgba(243, 213, 138, .56) 0 3px, transparent 4px),
+        radial-gradient(circle at 64% 68%, rgba(242, 51, 157, .5) 0 5px, transparent 6px);
+      animation: floatGarnish 8s ease-in-out infinite alternate;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -182,6 +199,18 @@
       width: min(850px, 100%);
       display: grid;
       justify-items: center;
+      animation: heroFloat .8s ease both;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .72s ease, transform .72s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .eyebrow {
@@ -324,6 +353,20 @@
         linear-gradient(180deg, rgba(255, 255, 255, .035), transparent),
         rgba(17, 16, 20, .78);
       box-shadow: 0 24px 70px rgba(0, 0, 0, .24);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .64s ease, transform .64s ease, border-color .24s ease, box-shadow .24s ease;
+    }
+
+    .card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card.is-visible:hover {
+      transform: translateY(-4px);
+      border-color: rgba(242, 51, 157, .45);
+      box-shadow: 0 28px 80px rgba(242, 51, 157, .12);
     }
 
     .card b {
@@ -533,6 +576,41 @@
       cursor: pointer;
     }
 
+    .to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(243, 213, 138, .6);
+      border-radius: 50%;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--gold), #fff0b8);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, .38), 0 0 28px rgba(242, 51, 157, .2);
+      font-size: 1.35rem;
+      font-weight: 1000;
+      line-height: 1;
+      opacity: 0;
+      transform: translateY(14px) scale(.92);
+      pointer-events: none;
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .to-top.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .to-top:hover,
+    .to-top:focus-visible {
+      outline: none;
+      transform: translateY(-3px) scale(1.02);
+    }
+
     .demo-banner {
       margin-top: 18px;
       border: 1px dashed rgba(243, 213, 138, .38);
@@ -553,16 +631,39 @@
       font-weight: 800;
     }
 
+    @keyframes heroFloat {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatGarnish {
+      from {
+        transform: translate3d(0, 0, 0) rotate(-2deg);
+      }
+
+      to {
+        transform: translate3d(-10px, 24px, 0) rotate(3deg);
+      }
+    }
+
     @media (max-width: 940px) {
       .topbar-inner {
         min-height: auto;
-        align-items: stretch;
+        align-items: center;
         flex-direction: column;
         padding: 16px 0;
       }
 
       nav {
-        justify-content: flex-start;
+        width: 100%;
+        justify-content: center;
       }
 
       .form-card {
@@ -570,7 +671,9 @@
       }
 
       .hero {
-        padding-top: 48px;
+        min-height: auto;
+        padding-top: 42px;
+        padding-bottom: 56px;
       }
 
       .cards {
@@ -585,20 +688,85 @@
 
     @media (max-width: 620px) {
       .wrap {
-        width: min(100% - 24px, 1120px);
+        width: min(100% - 28px, 1120px);
       }
 
-      nav a {
-        flex: 1 1 calc(50% - 8px);
+      body::after {
+        width: 90px;
+        height: 230px;
+        opacity: .16;
+        right: -18px;
+        top: 18%;
+      }
+
+      .topbar {
+        position: relative;
+      }
+
+      .topbar-inner {
+        gap: 14px;
+      }
+
+      .brand {
+        width: 100%;
         justify-content: center;
       }
 
+      nav {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      nav a {
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 8px;
+        font-size: .68rem;
+        letter-spacing: .05em;
+        text-align: center;
+      }
+
+      .hero-logo {
+        width: min(430px, 96vw);
+        margin-bottom: 8px;
+      }
+
+      .eyebrow {
+        max-width: 100%;
+        justify-content: center;
+        padding: 8px 11px;
+        font-size: .66rem;
+        letter-spacing: .1em;
+        text-align: center;
+      }
+
       h1 {
-        font-size: clamp(3.45rem, 17vw, 5rem);
+        margin-top: 16px;
+        font-size: clamp(3rem, 15vw, 4.2rem);
       }
 
       .script {
-        font-size: clamp(4.1rem, 18vw, 5.4rem);
+        margin-top: -2px;
+        font-size: clamp(3.85rem, 17vw, 5rem);
+      }
+
+      .lead {
+        margin-top: 18px;
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+
+      .actions {
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 50px;
+        padding: 0 14px;
+        font-size: .78rem;
       }
 
       .cards,
@@ -608,7 +776,82 @@
       }
 
       section {
-        padding: 54px 0;
+        padding: 46px 0;
+      }
+
+      .section-head {
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .section-head h2,
+      .details h2,
+      .form-intro h2 {
+        font-size: clamp(2.45rem, 14vw, 3.85rem);
+      }
+
+      .card {
+        min-height: auto;
+        padding: 18px;
+      }
+
+      .card h3 {
+        margin-top: 22px;
+      }
+
+      .details {
+        border-radius: 22px;
+        padding: 20px;
+      }
+
+      .note {
+        padding-left: 14px;
+      }
+
+      .form-card {
+        border-radius: 24px;
+        padding: 10px;
+      }
+
+      .form-intro {
+        border-radius: 18px;
+        padding: 22px;
+      }
+
+      form {
+        padding: 14px 4px 4px;
+      }
+
+      .submit-row {
+        align-items: stretch;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .to-top {
+        right: 14px;
+        bottom: 14px;
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal,
+      .card {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
@@ -645,7 +888,7 @@
       </div>
     </section>
 
-    <section id="training">
+    <section id="training" class="reveal">
       <div class="wrap">
         <div class="section-head">
           <h2>What students get.</h2>
@@ -684,7 +927,7 @@
       </div>
     </section>
 
-    <section id="class">
+    <section id="class" class="reveal">
       <div class="wrap">
         <div class="details">
           <div class="eyebrow">Enrollment Open</div>
@@ -716,7 +959,7 @@
       </div>
     </section>
 
-    <section id="interest" class="form-section">
+    <section id="interest" class="form-section reveal">
       <div class="wrap">
         <div class="form-card">
           <div class="form-intro">
@@ -783,5 +1026,32 @@
   <footer>
     <div class="wrap">Bartender By Design LLC demo built by OwnYourWeb for class enrollment and lead collection.</div>
   </footer>
+  <a class="to-top" href="#home" aria-label="Back to top">↑</a>
+  <script>
+    const revealTargets = document.querySelectorAll(".reveal, .card");
+    const topButton = document.querySelector(".to-top");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14 });
+
+      revealTargets.forEach((target) => observer.observe(target));
+    } else {
+      revealTargets.forEach((target) => target.classList.add("is-visible"));
+    }
+
+    const syncTopButton = () => {
+      topButton.classList.toggle("is-visible", window.scrollY > 420);
+    };
+
+    window.addEventListener("scroll", syncTopButton, { passive: true });
+    syncTopButton();
+  </script>
 </body>
 </html>
