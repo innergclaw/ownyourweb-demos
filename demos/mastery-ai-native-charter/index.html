@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Becoming AI Native | Mastery Charter Lenfest Campus</title>
+  <meta name="description" content="Interactive leadership session flow for Becoming AI Native at Mastery Charter Lenfest Campus by Nasirr Mayo / InnerG Intel.">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d0d0d;
+      --paper: #fbfaf5;
+      --white: #ffffff;
+      --graphite: #232323;
+      --muted: #686761;
+      --line: #191919;
+      --lime: #c8ff2e;
+      --amber: #ffb000;
+      --coral: #ff4f32;
+      --cyan: #31d8ff;
+      --soft-coral: #ffe4d9;
+      --shadow: 8px 8px 0 var(--line);
+      --soft: 0 20px 70px rgba(13, 13, 13, .16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(13, 13, 13, .07) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(13, 13, 13, .07) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px;
+      overflow-x: hidden;
+      padding-bottom: 82px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 3px solid var(--line);
+      background: rgba(251, 250, 245, .94);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      width: min(1220px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      max-width: min(680px, 58vw);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border: 3px solid var(--line);
+      background: var(--ink);
+      box-shadow: 5px 5px 0 var(--lime);
+      flex: 0 0 auto;
+    }
+
+    .brand-mark span:nth-child(1) { background: var(--lime); }
+    .brand-mark span:nth-child(2) { background: var(--amber); }
+    .brand-mark span:nth-child(3) { background: var(--coral); }
+    .brand-mark span:nth-child(4) { background: var(--cyan); }
+
+    .brand-text {
+      display: grid;
+      line-height: 1;
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      font-weight: 1000;
+      letter-spacing: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .brand-text small {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .timer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 3px solid var(--line);
+      background: var(--white);
+      padding: 8px 10px;
+      box-shadow: 4px 4px 0 rgba(13, 13, 13, .18);
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .timer span {
+      min-width: 58px;
+      display: inline-flex;
+      justify-content: center;
+      border: 2px solid var(--line);
+      background: var(--lime);
+      padding: 5px 8px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .shell {
+      width: min(1220px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 22px;
+      padding: 24px 0 56px;
+    }
+
+    .rail {
+      position: sticky;
+      top: 96px;
+      height: calc(100vh - 120px);
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .rail-card {
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+
+    .rail-card h2 {
+      margin: 0 0 10px;
+      font-family: Anton, Impact, sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 0;
+      line-height: .95;
+    }
+
+    .rail-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav a {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      align-items: center;
+      min-height: 46px;
+      border: 3px solid var(--line);
+      background: var(--paper);
+      box-shadow: 4px 4px 0 rgba(13, 13, 13, .18);
+      overflow: hidden;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.active {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--line);
+      background: var(--white);
+      outline: none;
+    }
+
+    .nav-time {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--cyan);
+      font-size: .68rem;
+      font-weight: 1000;
+      border-right: 3px solid var(--line);
+    }
+
+    .nav-label {
+      padding: 8px 10px;
+      font-size: .77rem;
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .progress-wrap {
+      border: 3px solid var(--line);
+      background: var(--white);
+      height: 18px;
+      box-shadow: 4px 4px 0 rgba(13, 13, 13, .18);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--lime), var(--cyan), var(--amber), var(--coral));
+      transition: width .2s ease;
+    }
+
+    main {
+      display: grid;
+      gap: 28px;
+    }
+
+    .slide {
+      min-height: calc(100vh - 118px);
+      border: 4px solid var(--line);
+      background: rgba(251, 250, 245, .88);
+      box-shadow: 12px 12px 0 var(--line);
+      padding: clamp(24px, 4vw, 54px);
+      display: grid;
+      align-content: center;
+      position: relative;
+      overflow: hidden;
+      scroll-margin-top: 96px;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(13, 13, 13, .14);
+      pointer-events: none;
+    }
+
+    .slide > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .kicker {
+      display: inline-flex;
+      width: fit-content;
+      border: 3px solid var(--line);
+      background: var(--lime);
+      box-shadow: 4px 4px 0 var(--line);
+      padding: 8px 10px;
+      color: var(--ink);
+      font-size: .76rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    h1,
+    .big-title {
+      margin: 22px 0 0;
+      max-width: 960px;
+      font-family: Anton, Impact, sans-serif;
+      font-size: clamp(4rem, 8vw, 7.7rem);
+      line-height: .88;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      margin: 22px 0 0;
+      max-width: 960px;
+      font-family: Anton, Impact, sans-serif;
+      font-size: clamp(2.8rem, 5.7vw, 6rem);
+      line-height: .92;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin: 22px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.7vw, 1.32rem);
+      line-height: 1.42;
+      font-weight: 700;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .ai-card {
+      min-height: 320px;
+      border: 4px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .ai-screen {
+      width: 210px;
+      height: 180px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--white);
+      box-shadow: 12px 12px 0 var(--lime);
+      border: 3px solid var(--line);
+    }
+
+    .ai-screen strong {
+      font-family: Anton, Impact, sans-serif;
+      font-size: 5rem;
+      line-height: .85;
+    }
+
+    .ai-screen span {
+      display: block;
+      color: var(--cyan);
+      font-size: .78rem;
+      font-weight: 1000;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .quote {
+      margin-top: 32px;
+      max-width: 930px;
+      border: 4px solid var(--line);
+      background: var(--ink);
+      box-shadow: var(--shadow);
+      color: var(--white);
+      padding: 26px 30px;
+      font-family: Anton, Impact, sans-serif;
+      font-size: clamp(1.45rem, 2.5vw, 2.45rem);
+      line-height: 1;
+    }
+
+    .quote span { color: var(--lime); }
+
+    .card-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info-card {
+      min-height: 138px;
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 6px 6px 0 rgba(13, 13, 13, .22);
+      padding: 18px;
+      position: relative;
+    }
+
+    .info-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 8px;
+      background: var(--accent, var(--lime));
+      border-right: 3px solid var(--line);
+    }
+
+    .info-card h3,
+    .info-card p {
+      padding-left: 12px;
+    }
+
+    .info-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .info-card button {
+      margin: 16px 0 0 12px;
+      border: 3px solid var(--line);
+      background: var(--lime);
+      box-shadow: 4px 4px 0 var(--line);
+      padding: 8px 10px;
+      font-size: .75rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .info-card button:hover { transform: translate(-1px, -1px); }
+
+    .revealed {
+      display: none;
+      margin-top: 12px;
+      border-top: 2px solid var(--line);
+      padding: 12px 0 0 12px;
+      color: var(--ink);
+      font-size: .86rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .info-card.open .revealed { display: block; }
+
+    .timeline {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(8, minmax(82px, 1fr));
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .time-block {
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 5px 5px 0 rgba(13, 13, 13, .22);
+      min-height: 112px;
+      display: grid;
+      align-content: center;
+      text-align: center;
+      padding: 10px 8px;
+    }
+
+    .time-block:nth-child(odd) {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .time-block strong {
+      color: var(--cyan);
+      font-size: 1rem;
+      font-weight: 1000;
+    }
+
+    .time-block span {
+      margin-top: 8px;
+      font-size: .68rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .workflow {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .step {
+      position: relative;
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 6px 6px 0 rgba(13, 13, 13, .22);
+      padding: 18px;
+      min-height: 160px;
+    }
+
+    .step b {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 3px solid var(--line);
+      background: var(--accent, var(--lime));
+      box-shadow: 3px 3px 0 var(--line);
+      font-weight: 1000;
+    }
+
+    .step h3 {
+      margin-top: 16px;
+    }
+
+    .step p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: .9rem;
+      font-weight: 650;
+    }
+
+    .matrix {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .signal {
+      min-height: 118px;
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 5px 5px 0 rgba(13, 13, 13, .2);
+      padding: 18px;
+      cursor: pointer;
+    }
+
+    .signal.active {
+      background: var(--lime);
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--line);
+    }
+
+    .signal small {
+      display: block;
+      color: var(--coral);
+      font-weight: 1000;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .signal-result {
+      margin-top: 18px;
+      border: 4px solid var(--line);
+      background: var(--ink);
+      color: var(--white);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .stack-preview {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .stack-tabs {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .stack-tab {
+      min-height: 74px;
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 5px 5px 0 rgba(13, 13, 13, .2);
+      padding: 14px;
+      cursor: pointer;
+      text-align: left;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .stack-tab span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .72rem;
+      line-height: 1.25;
+      font-weight: 800;
+      text-transform: none;
+    }
+
+    .stack-tab.active {
+      background: var(--lime);
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--line);
+    }
+
+    .dashboard {
+      border: 4px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .dashboard-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 4px solid var(--line);
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 16px;
+    }
+
+    .dashboard-title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .dashboard-title strong {
+      font-family: Anton, Impact, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.35rem);
+      line-height: .92;
+      text-transform: uppercase;
+    }
+
+    .dashboard-title small {
+      color: var(--cyan);
+      font-size: .72rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .dashboard-status {
+      border: 3px solid var(--line);
+      background: var(--lime);
+      color: var(--ink);
+      box-shadow: 4px 4px 0 rgba(255, 255, 255, .25);
+      padding: 8px 10px;
+      font-size: .72rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .dashboard-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 14px;
+      padding: 16px;
+      background:
+        linear-gradient(90deg, rgba(13, 13, 13, .045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(13, 13, 13, .045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 24px 24px;
+    }
+
+    .dashboard-main,
+    .dashboard-side {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .demo-panel {
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 5px 5px 0 rgba(13, 13, 13, .2);
+      padding: 16px;
+      min-height: 114px;
+      position: relative;
+    }
+
+    .demo-panel.accent::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 8px;
+      background: var(--accent, var(--cyan));
+      border-right: 3px solid var(--line);
+    }
+
+    .demo-panel.accent > * {
+      padding-left: 14px;
+    }
+
+    .demo-panel h3 {
+      font-size: .92rem;
+    }
+
+    .demo-panel p,
+    .demo-panel li {
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.38;
+      font-weight: 750;
+    }
+
+    .demo-panel p {
+      margin: 10px 0 0;
+    }
+
+    .demo-panel ul {
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .demo-panel li {
+      border: 2px solid var(--line);
+      background: var(--paper);
+      padding: 8px 10px;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .action-chip {
+      border: 2px solid var(--line);
+      background: var(--cyan);
+      box-shadow: 3px 3px 0 var(--line);
+      padding: 7px 9px;
+      font-size: .7rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .action-chip:nth-child(2) { background: var(--amber); }
+    .action-chip:nth-child(3) { background: var(--lime); }
+
+    .demo-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .demo-flow span {
+      border: 2px solid var(--line);
+      background: var(--white);
+      padding: 8px;
+      text-align: center;
+      font-size: .68rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .source-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .source-chip {
+      border: 2px solid var(--line);
+      background: var(--white);
+      box-shadow: 3px 3px 0 rgba(13, 13, 13, .22);
+      padding: 8px 10px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .contact-row {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      border: 3px solid var(--line);
+      background: var(--cyan);
+      box-shadow: 5px 5px 0 var(--line);
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+
+    .contact-link:nth-child(2) { background: var(--lime); }
+
+    .contact-link:hover,
+    .contact-link:focus-visible {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--line);
+      outline: none;
+    }
+
+    .two-col {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .list-card {
+      border: 4px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .list-card h3 {
+      font-family: Anton, Impact, sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .list-card ul {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .list-card li {
+      border: 2px solid var(--line);
+      background: var(--paper);
+      padding: 10px 12px;
+      font-weight: 800;
+    }
+
+    .controls {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display: flex;
+      gap: 10px;
+    }
+
+    .control-btn {
+      min-width: 52px;
+      height: 46px;
+      border: 3px solid var(--line);
+      background: var(--lime);
+      box-shadow: 5px 5px 0 var(--line);
+      font-weight: 1000;
+      cursor: pointer;
+    }
+
+    .control-btn:nth-child(2) { background: var(--cyan); }
+
+    @media (max-width: 980px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .rail {
+        position: static;
+        height: auto;
+      }
+
+      .nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-grid,
+      .two-col,
+      .workflow,
+      .card-grid,
+      .matrix,
+      .stack-preview,
+      .dashboard-body,
+      .demo-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ai-card { min-height: 260px; }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      .brand-text small {
+        white-space: normal;
+      }
+
+      .brand {
+        max-width: 100%;
+      }
+
+      .timer {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .slide {
+        min-height: auto;
+        padding: 24px;
+      }
+
+      .controls {
+        display: none;
+      }
+
+      .big-title {
+        font-size: 4.1rem;
+      }
+
+      .headline {
+        font-size: 3rem;
+      }
+
+      .nav {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#intro" aria-label="InnerG Intel">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-text">
+          <strong>INNERG INTEL x MASTERY CHARTER NETWORK</strong>
+          <small>Mastery Charter Lenfest Campus AI-native flow</small>
+        </span>
+      </a>
+      <div class="timer" aria-live="polite">Session Progress <span id="progressText">0%</span></div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="rail" aria-label="Session navigation">
+      <div class="rail-card">
+        <h2>LENFEST AI FLOW</h2>
+        <p>Use this like an interactive presentation. Click sections, reveal examples, and connect AI-native routines to Mastery’s real school model.</p>
+      </div>
+      <div class="progress-wrap" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+      <nav class="nav" id="sessionNav">
+        <a href="#intro"><span class="nav-time">00</span><span class="nav-label">Opening</span></a>
+        <a href="#lenfest"><span class="nav-time">Ctx</span><span class="nav-label">Lenfest Context</span></a>
+        <a href="#shift"><span class="nav-time">0-5</span><span class="nav-label">The Shift</span></a>
+        <a href="#native"><span class="nav-time">5-10</span><span class="nav-label">AI Native</span></a>
+        <a href="#observations"><span class="nav-time">10-17</span><span class="nav-label">Observations</span></a>
+        <a href="#data"><span class="nav-time">17-24</span><span class="nav-label">Data Review</span></a>
+        <a href="#mtss"><span class="nav-time">SY27</span><span class="nav-label">MTSS Tracker</span></a>
+        <a href="#assessments"><span class="nav-time">24-32</span><span class="nav-label">Interventions</span></a>
+        <a href="#routines"><span class="nav-time">32-38</span><span class="nav-label">Routines</span></a>
+        <a href="#stack"><span class="nav-time">Demo</span><span class="nav-label">AI Native Roles</span></a>
+        <a href="#vision"><span class="nav-time">38-45</span><span class="nav-label">Vision + Q&A</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="slide" id="intro" data-section>
+        <div class="hero-grid">
+          <div>
+            <span class="kicker">45-minute leadership session</span>
+            <h1 class="big-title">BECOMING<br>AI NATIVE</h1>
+            <p class="lead">Preparing Mastery Charter Lenfest Campus educators and students for the intelligence era through responsible collaboration with AI systems.</p>
+            <div class="quote">AI natives won’t simply consume technology. <span>They will direct it.</span></div>
+          </div>
+          <div class="ai-card" aria-label="AI Native visual">
+            <div class="ai-screen">
+              <div>
+                <strong>AI</strong>
+                <span>Native</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="lenfest" data-section>
+        <span class="kicker">Research frame | Mastery Charter Lenfest Campus</span>
+        <h2 class="headline">Lenfest already has the right foundation for an AI-native pilot.</h2>
+        <p class="lead">The campus serves grades 7-12 in Center City and is positioned around academic success, postsecondary pathways, holistic student development, and career-connected learning.</p>
+        <div class="card-grid">
+          <article class="info-card" style="--accent: var(--lime)"><h3>Campus Snapshot</h3><p>Center City campus, grades 7-12, listed at 35 S 4th St, with 648 students on the official Lenfest page.</p></article>
+          <article class="info-card" style="--accent: var(--cyan)"><h3>Academic Fit</h3><p>AP/Honors, rigorous coursework, digital learning platforms, daily exit tickets, data days, and formative assessment cycles.</p></article>
+          <article class="info-card" style="--accent: var(--coral)"><h3>Pathway Fit</h3><p>Internships, medical assistant certification partnership, Future Educators Academy, municipal employment pathway, and dual enrollment support.</p></article>
+          <article class="info-card" style="--accent: var(--amber)"><h3>Support Fit</h3><p>Specialized services, wellness and social work supports, IEP support contacts, attendance support, and family communication pathways.</p></article>
+          <article class="info-card" style="--accent: var(--cyan)"><h3>Leadership Fit</h3><p>Mastery’s academic model emphasizes teacher development, coaching cycles, feedback, planning meetings, and actionable data.</p></article>
+          <article class="info-card" style="--accent: var(--lime)"><h3>SY27 High School Focus</h3><p>High schools embody the MTSS priority by improving proficiency and growth in Math and Reading, even when the network priority is more directly tied to grade 3.</p></article>
+        </div>
+        <div class="source-row" aria-label="Research sources">
+          <a class="source-chip" href="https://masterycharter.org/secondary-schools/lenfest-campus/" target="_blank" rel="noreferrer">Source: Mastery official Lenfest Campus page</a>
+          <a class="source-chip" href="https://masterycharter.org/approach/academic-program/" target="_blank" rel="noreferrer">Source: Mastery Academic Program page</a>
+          <a class="source-chip" href="https://masterycharter.org/" target="_blank" rel="noreferrer">Source: Mastery Schools homepage</a>
+        </div>
+      </section>
+
+      <section class="slide" id="shift" data-section>
+        <span class="kicker">0:00 - 5:00 | Opening</span>
+        <h2 class="headline">The shift is already here.</h2>
+        <p class="lead">Students already interact with AI-shaped systems daily. The question is whether schools will proactively shape how that interaction happens.</p>
+        <div class="card-grid">
+          <article class="info-card" style="--accent: var(--cyan)"><h3>TikTok Algorithms</h3><p>Personalized content trains attention, preference, and expectation.</p></article>
+          <article class="info-card" style="--accent: var(--coral)"><h3>YouTube Recs</h3><p>Automated suggestions shape what students discover and believe.</p></article>
+          <article class="info-card" style="--accent: var(--lime)"><h3>ChatGPT</h3><p>Students already test AI for answers, drafting, and ideas.</p></article>
+          <article class="info-card" style="--accent: var(--amber)"><h3>Generated Content</h3><p>Images, audio, and text can now be produced instantly.</p></article>
+          <article class="info-card" style="--accent: var(--cyan)"><h3>Smart Assistants</h3><p>AI is embedded into phones, search, apps, and productivity tools.</p></article>
+          <article class="info-card" style="--accent: var(--coral)"><h3>Automated Search</h3><p>Research is becoming conversational, summarized, and algorithmic.</p></article>
+        </div>
+      </section>
+
+      <section class="slide" id="native" data-section>
+        <span class="kicker">5:00 - 10:00 | What AI Native Means</span>
+        <h2 class="headline">AI literacy is the next literacy layer.</h2>
+        <p class="lead">Computer literacy helped people operate machines. Internet literacy helped people navigate information. AI literacy helps people direct intelligent systems.</p>
+        <div class="timeline">
+          <div class="time-block"><strong>01</strong><span>Computer Literacy</span></div>
+          <div class="time-block"><strong>02</strong><span>Internet Literacy</span></div>
+          <div class="time-block"><strong>03</strong><span>Digital Literacy</span></div>
+          <div class="time-block"><strong>04</strong><span>AI Literacy</span></div>
+          <div class="time-block"><strong>Not</strong><span>Dependency</span></div>
+          <div class="time-block"><strong>Not</strong><span>Replacing Teachers</span></div>
+          <div class="time-block"><strong>Yes</strong><span>Human Oversight</span></div>
+          <div class="time-block"><strong>Yes</strong><span>Enhanced Capability</span></div>
+        </div>
+      </section>
+
+      <section class="slide" id="observations" data-section>
+        <span class="kicker">10:00 - 17:00 | Topic 1</span>
+        <h2 class="headline">AI can support observations without replacing leadership judgment.</h2>
+        <p class="lead">AI reduces administrative friction so leaders can focus more on coaching, mentorship, human interaction, and instructional strategy.</p>
+        <div class="workflow">
+          <div class="step" style="--accent: var(--cyan)"><b>1</b><h3>Observation Notes</h3><p>Administrator captures real classroom evidence and walkthrough details.</p></div>
+          <div class="step" style="--accent: var(--coral)"><b>2</b><h3>AI Organizes</h3><p>Strengths, engagement, pacing observations, concerns, and follow-up areas.</p></div>
+          <div class="step" style="--accent: var(--amber)"><b>3</b><h3>Leader Reviews</h3><p>Professional judgment checks tone, accuracy, and instructional relevance.</p></div>
+          <div class="step" style="--accent: var(--lime)"><b>4</b><h3>Coaching Action</h3><p>Feedback becomes clearer, faster, and more useful for the educator.</p></div>
+        </div>
+        <div class="quote">AI can help leaders process information faster, but people still lead people.</div>
+      </section>
+
+      <section class="slide" id="data" data-section>
+        <span class="kicker">17:00 - 24:00 | SY27 Data Review</span>
+        <h2 class="headline">AI Native data work starts with better triangulation.</h2>
+        <p class="lead">For high school, the focus is improving Math and Reading proficiency and growth. The practical move is reviewing PSSA and Keystone trends alongside MAP RIT data, Amplify units, and screening data so instructional adjustments are based on patterns, not isolated scores.</p>
+        <div class="matrix" id="signalMatrix">
+          <button class="signal active" data-signal="state"><small>Signal 01</small><strong>PSSA + Keystone</strong></button>
+          <button class="signal" data-signal="map"><small>Signal 02</small><strong>MAP RIT Growth</strong></button>
+          <button class="signal" data-signal="amplify"><small>Signal 03</small><strong>Amplify + EM2</strong></button>
+          <button class="signal" data-signal="screeners"><small>Signal 04</small><strong>Firefly Screening</strong></button>
+          <button class="signal" data-signal="qag"><small>Signal 05</small><strong>RP #1 QAG (Reporting Period #1 ~ Quarterly Action Goal) Planning</strong></button>
+          <button class="signal" data-signal="adjustments"><small>Signal 06</small><strong>Instructional Moves</strong></button>
+        </div>
+        <div class="signal-result" id="signalResult">PSSA and Keystone results show the long-view trend. AI Native leadership means reading that trend beside MAP RIT growth and unit-level evidence before deciding what instruction needs to change.</div>
+      </section>
+
+      <section class="slide" id="mtss" data-section>
+        <span class="kicker">SY27 Operating Rhythm | Schoolwide MTSS Tracker</span>
+        <h2 class="headline">The tracker turns scattered data into a schoolwide process.</h2>
+        <p class="lead">Next year, every school needs a comprehensive MTSS data tracker for grades 3-12, including students with IEPs. The tracker should make Math and Reading needs visible, assign supports, and monitor whether interventions are actually moving students forward.</p>
+        <div class="card-grid">
+          <article class="info-card" style="--accent: var(--cyan)"><h3>Required Evidence</h3><p>PSSA, MAP, Firefly screening, MAP RIT scores, growth goals, Amplify unit assessments, EM2, and other interim assessment data.</p></article>
+          <article class="info-card" style="--accent: var(--coral)"><h3>Reporting Rhythm</h3><p>At least four data points per reporting period, with student progress outcomes visible enough for biweekly review.</p></article>
+          <article class="info-card" style="--accent: var(--lime)"><h3>Intervention Record</h3><p>Clearly named Tier 2 and Tier 3 interventions for Math and Reading, including intervention details, progress, and next actions.</p></article>
+          <article class="info-card" style="--accent: var(--amber)"><h3>Ownership</h3><p>A dedicated instructional leadership team member should own the tracker, maintain quality, and prepare it for biweekly review.</p></article>
+          <article class="info-card" style="--accent: var(--cyan)"><h3>Planning Link</h3><p>Assistant Principals of Instruction should complete the PSSA, Keystone, MAP, and Amplify analysis soon enough to inform RP #1 QAG (Reporting Period #1 ~ Quarterly Action Goal) planning.</p></article>
+          <article class="info-card" style="--accent: var(--lime)"><h3>SLG Compliance</h3><p>Student Learning Goal updates are expected at the next All-Admin meeting, with minimal changes anticipated and full team compliance still required.</p></article>
+        </div>
+        <div class="quote">AI Native does not mean more dashboards. It means a clear review cycle: identify need, assign support, monitor progress, and adjust quickly.</div>
+      </section>
+
+      <section class="slide" id="assessments" data-section>
+        <span class="kicker">24:00 - 32:00 | Intervention + Extended Learning</span>
+        <h2 class="headline">AI can help leaders match evidence to support.</h2>
+        <p class="lead">Use the cards to connect the MTSS tracker to real action: defined Tier 2 and Tier 3 supports, online intervention options, structured extended learning time, and progress checks that stay grounded in educator judgment.</p>
+        <div class="card-grid">
+          <article class="info-card reveal-card" style="--accent: var(--cyan)"><h3>Tier 2 Math</h3><p>Targeted support.</p><button type="button">Reveal Use</button><div class="revealed">Use common data patterns to group students for focused practice, reteaching, and short-cycle progress monitoring.</div></article>
+          <article class="info-card reveal-card" style="--accent: var(--coral)"><h3>Tier 3 Reading</h3><p>Intensive response.</p><button type="button">Reveal Use</button><div class="revealed">Use multiple data points to identify students who need more intensive support, then document the intervention and outcome clearly.</div></article>
+          <article class="info-card reveal-card" style="--accent: var(--lime)"><h3>Online Programs</h3><p>Structured options.</p><button type="button">Reveal Use</button><div class="revealed">Consider approved online interventions as part of the support plan, with usage and growth evidence tracked over time.</div></article>
+          <article class="info-card reveal-card" style="--accent: var(--amber)"><h3>Extended Learning</h3><p>More time on need.</p><button type="button">Reveal Use</button><div class="revealed">Use structured extended learning time for the students and skills surfaced by the MTSS tracker.</div></article>
+          <article class="info-card reveal-card" style="--accent: var(--cyan)"><h3>Progress Checks</h3><p>Monitor movement.</p><button type="button">Reveal Use</button><div class="revealed">Bring at least four data points into each reporting period so teams can see whether support is working.</div></article>
+          <article class="info-card reveal-card" style="--accent: var(--coral)"><h3>Summer Guidance</h3><p>Menu coming.</p><button type="button">Reveal Use</button><div class="revealed">Additional guidance and a menu of approved interventions will shape final choices later in the summer.</div></article>
+        </div>
+      </section>
+
+      <section class="slide" id="routines" data-section>
+        <span class="kicker">32:00 - 38:00 | Topic 4</span>
+        <h2 class="headline">AI-native culture is built through daily routines.</h2>
+        <p class="lead">The goal is to normalize structured, responsible AI use so students and educators learn how to question, verify, and direct intelligent tools while keeping the MTSS process consistent across the school year.</p>
+        <div class="two-col">
+          <article class="list-card">
+            <h3>Teacher Routines</h3>
+            <ul>
+              <li>Lesson planning support</li>
+              <li>Parent communication drafts</li>
+              <li>Classroom activity brainstorming</li>
+              <li>Review material generation</li>
+              <li>Instructional resource organization</li>
+              <li>RP #1 QAG (Reporting Period #1 ~ Quarterly Action Goal) planning from verified trends</li>
+            </ul>
+          </article>
+          <article class="list-card">
+            <h3>Student Routines</h3>
+            <ul>
+              <li>Responsible research assistance</li>
+              <li>Idea development</li>
+              <li>Study support</li>
+              <li>Presentation organization</li>
+              <li>Prompt-writing exercises</li>
+              <li>Progress reflection from clear goals</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="stack" data-section>
+        <span class="kicker">AI Native in Practice | Lenfest Faculty Flow</span>
+        <h2 class="headline">AI Native becomes real when each role has a simple workflow.</h2>
+        <p class="lead">For Lenfest, this is not a separate tech demo. It is teachers, support teams, pathway advisors, leaders, and family-facing staff using AI inside the routines they already own: data review, QAG (Reporting Period #1 ~ Quarterly Action Goal) planning, intervention assignment, progress monitoring, and family communication.</p>
+
+        <div class="stack-preview">
+          <div class="stack-tabs" role="tablist" aria-label="Faculty AI Native role flow">
+            <button class="stack-tab active" type="button" data-stack="teacher" role="tab" aria-selected="true">Teacher Copilot<span>QAG (Reporting Period #1 ~ Quarterly Action Goal) planning, practice, exit tickets, parent drafts</span></button>
+            <button class="stack-tab" type="button" data-stack="student" role="tab" aria-selected="false">Student Support<span>MTSS tracker, Tier 2/3 notes, progress outcomes</span></button>
+            <button class="stack-tab" type="button" data-stack="pathways" role="tab" aria-selected="false">Pathways Hub<span>Internships, dual enrollment, career-connected learning</span></button>
+            <button class="stack-tab" type="button" data-stack="leader" role="tab" aria-selected="false">Leadership Lens<span>PSSA, Keystone, MAP, QAG (Reporting Period #1 ~ Quarterly Action Goal), biweekly review</span></button>
+            <button class="stack-tab" type="button" data-stack="family" role="tab" aria-selected="false">Family Comms<span>Clear outreach drafts with approval gates</span></button>
+          </div>
+
+          <div class="dashboard" aria-live="polite">
+            <div class="dashboard-top">
+              <div class="dashboard-title">
+                <strong id="stackTitle">Teacher Copilot</strong>
+                <small id="stackSubtitle">AI-native preparation and differentiation</small>
+              </div>
+              <div class="dashboard-status" id="stackStatus">Human review required</div>
+            </div>
+            <div class="dashboard-body">
+              <div class="dashboard-main">
+                <article class="demo-panel accent" style="--accent: var(--cyan)">
+                  <h3 id="stackPrimaryTitle">Daily routine to strengthen</h3>
+                  <p id="stackPrimaryText">Start with verified trends from PSSA, Keystone, MAP, and unit assessments, then let AI organize practice, checks for understanding, and QAG (Reporting Period #1 ~ Quarterly Action Goal)-aligned planning notes.</p>
+                  <div class="action-row" id="stackActions">
+                    <span class="action-chip">Plan QAG (Reporting Period #1 ~ Quarterly Action Goal)</span>
+                    <span class="action-chip">Build practice</span>
+                    <span class="action-chip">Draft exit ticket</span>
+                  </div>
+                </article>
+                <article class="demo-panel">
+                  <h3>Responsible workflow</h3>
+                  <div class="demo-flow" id="stackFlow">
+                    <span>Verified trend</span>
+                    <span>AI draft</span>
+                    <span>Teacher review</span>
+                    <span>Instructional move</span>
+                  </div>
+                </article>
+                <article class="demo-panel accent" style="--accent: var(--lime)">
+                  <h3>What this proves in the room</h3>
+                  <p id="stackProof">AI Native is not a vague idea. It becomes a structured rhythm for everyday faculty work, with educator judgment still in control.</p>
+                </article>
+              </div>
+              <aside class="dashboard-side">
+                <article class="demo-panel">
+                  <h3>Guardrails</h3>
+                  <ul id="stackGuardrails">
+                    <li>No student-sensitive details in open prompts</li>
+                    <li>Teacher approves every classroom-facing output</li>
+                    <li>Standards, goals, and evidence stay visible</li>
+                  </ul>
+                </article>
+                <article class="demo-panel">
+                  <h3>Work Inputs</h3>
+                  <ul id="stackObjects">
+                    <li>PSSA trend</li>
+                    <li>MAP RIT goal</li>
+                    <li>Amplify unit result</li>
+                    <li>Exit ticket</li>
+                  </ul>
+                </article>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="vision" data-section>
+        <span class="kicker">38:00 - 45:00 | Future Vision + Q&A</span>
+        <h2 class="headline">AI-native schools produce adaptive thinkers and stronger systems.</h2>
+        <p class="lead">An AI-ready school network adapts faster, communicates better, identifies patterns earlier, streamlines workflows, and prepares students for future industries.</p>
+        <div class="card-grid">
+          <article class="info-card" style="--accent: var(--cyan)"><h3>Students</h3><p>Adaptive thinkers, stronger communicators, organized problem-solvers, entrepreneurs, and strategic researchers.</p></article>
+          <article class="info-card" style="--accent: var(--coral)"><h3>Educators</h3><p>More efficient planners, data-aware decision-makers, innovation-driven mentors, and adaptive instructional leaders.</p></article>
+          <article class="info-card" style="--accent: var(--lime)"><h3>Network</h3><p>A culture that responsibly embeds AI into communication, instruction, assessment, and support systems.</p></article>
+        </div>
+        <div class="quote">My goal is helping this network develop AI-native educators and AI-native students prepared for the next era of society.</div>
+        <div class="contact-row" aria-label="Contact Nasirr Mayo">
+          <a class="contact-link" href="https://github.com/innergclaw" target="_blank" rel="noopener noreferrer">GitHub: @innergclaw</a>
+          <a class="contact-link" href="mailto:nasirr@innergintel.com">Email: nasirr@innergintel.com</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="controls" aria-label="Slide controls">
+    <button class="control-btn" type="button" id="prevBtn" aria-label="Previous section">←</button>
+    <button class="control-btn" type="button" id="nextBtn" aria-label="Next section">→</button>
+  </div>
+
+  <script>
+    const sections = Array.from(document.querySelectorAll("[data-section]"));
+    const links = Array.from(document.querySelectorAll("#sessionNav a"));
+    const progressBar = document.getElementById("progressBar");
+    const progressText = document.getElementById("progressText");
+
+    function currentIndex() {
+      const offset = window.innerHeight * 0.35;
+      let index = 0;
+      sections.forEach((section, i) => {
+        if (section.getBoundingClientRect().top <= offset) index = i;
+      });
+      return index;
+    }
+
+    function setActive() {
+      const index = currentIndex();
+      links.forEach((link, i) => link.classList.toggle("active", i === index));
+      const percent = Math.round((index / Math.max(1, sections.length - 1)) * 100);
+      progressBar.style.width = `${percent}%`;
+      progressText.textContent = `${percent}%`;
+    }
+
+    function go(delta) {
+      const index = Math.min(sections.length - 1, Math.max(0, currentIndex() + delta));
+      sections[index].scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.getElementById("prevBtn").addEventListener("click", () => go(-1));
+    document.getElementById("nextBtn").addEventListener("click", () => go(1));
+    window.addEventListener("scroll", setActive, { passive: true });
+    window.addEventListener("resize", setActive);
+    setActive();
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === "PageDown") go(1);
+      if (event.key === "ArrowLeft" || event.key === "PageUp") go(-1);
+    });
+
+    document.querySelectorAll(".reveal-card button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".reveal-card");
+        card.classList.toggle("open");
+        button.textContent = card.classList.contains("open") ? "Hide Use" : "Reveal Use";
+      });
+    });
+
+    const signalCopy = {
+      state: "PSSA and Keystone results show the long-view trend. AI Native leadership means reading that trend beside MAP RIT growth and unit-level evidence before deciding what instruction needs to change.",
+      map: "Winter and Spring MAP RIT data help teams understand growth, not just proficiency. AI can help organize growth goals, student clusters, and where the trend changed.",
+      amplify: "Amplify unit assessments and EM2 add closer-to-instruction evidence. They help teams see whether daily instruction is moving students toward the larger PSSA and Keystone goals.",
+      screeners: "Firefly screening data belongs in the same conversation as MAP, PSSA, Keystone, and unit assessments so intervention decisions are based on a fuller student picture.",
+      qag: "Assistant Principals of Instruction should complete this analysis within the next few weeks so it directly informs RP #1 QAG (Reporting Period #1 ~ Quarterly Action Goal) planning.",
+      adjustments: "The goal is not a prettier data wall. The goal is sharper instructional adjustment: what students need, which intervention fits, who owns the follow-up, and how progress will be reviewed."
+    };
+
+    document.querySelectorAll(".signal").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".signal").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        document.getElementById("signalResult").textContent = signalCopy[button.dataset.signal];
+      });
+    });
+
+    const stackViews = {
+      teacher: {
+        title: "Teacher Copilot",
+        subtitle: "AI-native preparation and differentiation",
+        status: "Human review required",
+        primaryTitle: "Daily routine to strengthen",
+        primaryText: "Start with verified trends from PSSA, Keystone, MAP, and unit assessments, then let AI organize practice, checks for understanding, and QAG (Reporting Period #1 ~ Quarterly Action Goal)-aligned planning notes.",
+        actions: ["Plan QAG (Reporting Period #1 ~ Quarterly Action Goal)", "Build practice", "Draft exit ticket"],
+        flow: ["Verified trend", "AI draft", "Teacher review", "Instructional move"],
+        proof: "This is how AI Native lands in normal school work: teachers turn data into clearer lessons without giving up professional judgment.",
+        guardrails: ["No student-sensitive details in open prompts", "Teacher approves every classroom-facing output", "Standards, goals, and evidence stay visible"],
+        objects: ["PSSA trend", "MAP RIT goal", "Amplify unit result", "Exit ticket"]
+      },
+      student: {
+        title: "Student Support",
+        subtitle: "AI-native MTSS support with educator care",
+        status: "Support team review",
+        primaryTitle: "MTSS tracker signal",
+        primaryText: "Use the tracker to connect Math and Reading data, IEP status where relevant, intervention details, and student progress outcomes across grades 3-12.",
+        actions: ["Update tracker", "Name support", "Monitor progress"],
+        flow: ["Student data", "AI organizer", "Team review", "Tiered support"],
+        proof: "This keeps AI Native centered on care: the system helps teams see needs earlier while people decide the right intervention.",
+        guardrails: ["No automated student labeling", "Interventions require team approval", "Sensitive notes stay permissioned"],
+        objects: ["MTSS row", "Tier 2 or Tier 3 plan", "Progress outcome", "Next review"]
+      },
+      pathways: {
+        title: "Pathways Hub",
+        subtitle: "AI-native planning for postsecondary pathways",
+        status: "Advisor review required",
+        primaryTitle: "Pathway next-step brief",
+        primaryText: "Help students compare internships, dual enrollment, Future Educators Academy, medical assistant certification, or municipal employment pathways using their goals and advisor-approved next steps.",
+        actions: ["Match pathway", "Draft checklist", "Prepare reflection"],
+        flow: ["Student goal", "AI organizer", "Advisor review", "Pathway plan"],
+        proof: "This makes the AI-native message practical for Lenfest because the school already highlights postsecondary pathways and career-connected learning.",
+        guardrails: ["AI does not decide placement", "Advisor confirms requirements", "Student choice and family context stay central"],
+        objects: ["Internship interest", "Dual enrollment option", "Career pathway", "Advisor checklist"]
+      },
+      leader: {
+        title: "Leadership Lens",
+        subtitle: "AI-native data review and accountability",
+        status: "Admin approval gate",
+        primaryTitle: "Biweekly MTSS review",
+        primaryText: "Organize PSSA, Keystone, MAP RIT, Amplify, EM2, and Firefly evidence so leaders can review the tracker biweekly and keep RP #1 QAG (Reporting Period #1 ~ Quarterly Action Goal) planning connected to real student needs.",
+        actions: ["Review trends", "Check tracker", "Plan QAG (Reporting Period #1 ~ Quarterly Action Goal)"],
+        flow: ["Assessment evidence", "AI synthesis", "Leader decision", "Schoolwide follow-up"],
+        proof: "This aligns with Mastery’s focus on actionable data, coaching cycles, and schoolwide accountability for student growth.",
+        guardrails: ["AI does not make placement decisions", "Leadership validates trends", "Context and evidence stay attached"],
+        objects: ["PSSA/Keystone data", "MAP RIT growth", "Tracker review", "QAG (Reporting Period #1 ~ Quarterly Action Goal) priority"]
+      },
+      family: {
+        title: "Family Comms",
+        subtitle: "AI-native communication with school voice",
+        status: "Send only after approval",
+        primaryTitle: "Family communication draft",
+        primaryText: "Create a clear family update from teacher notes, with a supportive tone, next step, and plain-language explanation.",
+        actions: ["Draft message", "Adjust tone", "Translate summary"],
+        flow: ["Teacher note", "AI draft", "Staff approval", "Family message"],
+        proof: "AI Native communication should still sound human. AI can help staff move faster while keeping warmth and accountability in the final message.",
+        guardrails: ["No auto-send", "Tone checked by staff", "Private details minimized"],
+        objects: ["Teacher note", "Family update", "Next step", "Plain-language version"]
+      }
+    };
+
+    function renderStackView(key) {
+      const view = stackViews[key];
+      if (!view) return;
+      document.getElementById("stackTitle").textContent = view.title;
+      document.getElementById("stackSubtitle").textContent = view.subtitle;
+      document.getElementById("stackStatus").textContent = view.status;
+      document.getElementById("stackPrimaryTitle").textContent = view.primaryTitle;
+      document.getElementById("stackPrimaryText").textContent = view.primaryText;
+      document.getElementById("stackProof").textContent = view.proof;
+      document.getElementById("stackActions").innerHTML = view.actions.map((item) => `<span class="action-chip">${item}</span>`).join("");
+      document.getElementById("stackFlow").innerHTML = view.flow.map((item) => `<span>${item}</span>`).join("");
+      document.getElementById("stackGuardrails").innerHTML = view.guardrails.map((item) => `<li>${item}</li>`).join("");
+      document.getElementById("stackObjects").innerHTML = view.objects.map((item) => `<li>${item}</li>`).join("");
+    }
+
+    document.querySelectorAll(".stack-tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".stack-tab").forEach((item) => {
+          item.classList.remove("active");
+          item.setAttribute("aria-selected", "false");
+        });
+        button.classList.add("active");
+        button.setAttribute("aria-selected", "true");
+        renderStackView(button.dataset.stack);
+      });
+    });
+  </script>
+</body>
+</html>
