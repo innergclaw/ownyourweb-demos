@@ -1,0 +1,2055 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mastery Charter | MTSS Access Dashboard V1</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #18212f;
+        --muted: #617084;
+        --line: #d9e0e8;
+        --soft-line: #edf1f5;
+        --bg: #f6f8fb;
+        --panel: #ffffff;
+        --navy: #17375e;
+        --blue: #2d6cdf;
+        --teal: #0f9f8f;
+        --green: #1f8f4d;
+        --gold: #b7791f;
+        --red: #c2413b;
+        --purple: #6554c0;
+        --shadow: 0 10px 26px rgba(23, 55, 94, 0.08);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      button,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .app {
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 61px;
+        z-index: 4;
+        order: 2;
+        display: grid;
+        grid-template-columns: 190px minmax(420px, 1fr) minmax(520px, 0.95fr);
+        gap: 12px;
+        align-items: start;
+        height: auto;
+        padding: 10px 16px;
+        background: #102b4b;
+        color: #ffffff;
+        overflow: visible;
+      }
+
+      body.controls-collapsed .sidebar {
+        display: none;
+      }
+
+      .brand {
+        display: grid;
+        gap: 6px;
+        min-height: 100%;
+        padding-right: 14px;
+        border-right: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      .brand strong {
+        font-size: 18px;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .brand span {
+        color: #bfd3ee;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .sidebar-section {
+        display: grid;
+        gap: 8px;
+        margin-top: 0;
+      }
+
+      .sidebar-section[aria-label="Filters"] {
+        grid-template-columns: repeat(3, minmax(150px, 1fr));
+      }
+
+      .sidebar-section[aria-label="Filters"] h2 {
+        grid-column: 1 / -1;
+      }
+
+      .sidebar-section[aria-label="Sync status"] {
+        grid-template-columns: 100px 100px 138px minmax(140px, 1fr) auto;
+        align-items: end;
+      }
+
+      .sidebar-section[aria-label="Sync status"] h2 {
+        grid-column: 1 / -1;
+      }
+
+      .sidebar-section h2 {
+        margin: 0;
+        color: #bfd3ee;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+
+      .field label {
+        color: #d9e8fb;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+      }
+
+      .field select {
+        min-height: 36px;
+        padding: 0 10px;
+      }
+
+      .field textarea {
+        min-height: 36px;
+        padding: 10px;
+        resize: vertical;
+      }
+
+      .field option {
+        color: var(--ink);
+      }
+
+      .sync-card {
+        display: grid;
+        gap: 3px;
+        min-height: 58px;
+        padding: 8px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.17);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .sync-card span {
+        color: #d9e8fb;
+        font-size: 12px;
+      }
+
+      .sync-card strong {
+        font-size: 16px;
+      }
+
+      .main {
+        display: contents;
+        min-width: 0;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        order: 1;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 18px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(246, 248, 251, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      .page-title {
+        min-width: 0;
+      }
+
+      .page-title h1 {
+        margin: 0 0 4px;
+        font-size: 22px;
+        line-height: 1.1;
+      }
+
+      .page-title p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .top-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        min-height: 36px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .button.primary {
+        border-color: var(--navy);
+        background: var(--navy);
+        color: #ffffff;
+      }
+
+      .access-switcher {
+        display: flex;
+        gap: 6px;
+        padding: 5px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .access-tab {
+        min-height: 34px;
+        padding: 0 11px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .access-tab.is-active {
+        background: var(--navy);
+        color: #ffffff;
+      }
+
+      .content {
+        display: grid;
+        order: 3;
+        gap: 12px;
+        padding: 14px 18px 22px;
+      }
+
+      .hero-band {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 12px;
+        align-items: stretch;
+      }
+
+      .purpose-panel,
+      .panel,
+      .metric,
+      .student-card,
+      .mini-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .purpose-panel {
+        position: relative;
+        overflow: hidden;
+        min-height: 0;
+        padding: 16px;
+      }
+
+      .purpose-panel h2 {
+        position: relative;
+        z-index: 1;
+        max-width: 860px;
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.12;
+      }
+
+      .purpose-panel p {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.42;
+      }
+
+      .data-flow {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .data-flow span,
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 0 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #f8fafc;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .meeting-panel {
+        padding: 14px;
+        border: 1px solid #b8c8dc;
+        border-radius: 8px;
+        background: #eef6ff;
+      }
+
+      .meeting-panel h2,
+      .panel h2,
+      .mini-panel h2 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .meeting-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .meeting-list div {
+        display: grid;
+        gap: 3px;
+        padding-left: 12px;
+        border-left: 4px solid var(--blue);
+      }
+
+      .meeting-list strong {
+        font-size: 13px;
+      }
+
+      .meeting-list span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .access-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .access-card {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .access-card header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .access-card h2 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .access-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .access-card ul {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .access-card li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 6px;
+        border-top: 1px solid var(--soft-line);
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .access-card li strong {
+        color: var(--ink);
+      }
+
+      .access-card.is-focused {
+        border-color: var(--blue);
+        box-shadow: 0 20px 50px rgba(45, 108, 223, 0.18);
+      }
+
+      .metric {
+        padding: 12px;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .metric strong {
+        display: block;
+        margin-top: 5px;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .metric small {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(520px, 1fr) 420px;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .panel {
+        min-width: 0;
+        padding: 14px;
+      }
+
+      .panel-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+        margin-bottom: 10px;
+      }
+
+      .panel-head p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 690px;
+      }
+
+      th,
+      td {
+        padding: 8px 9px;
+        border-bottom: 1px solid var(--soft-line);
+        text-align: left;
+        vertical-align: middle;
+        font-size: 13px;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+
+      tr[data-student-id] {
+        cursor: pointer;
+      }
+
+      tr[data-student-id]:hover,
+      tr[data-student-id].is-selected {
+        background: #f0f6ff;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 0 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 900;
+      }
+
+      .status.watch {
+        background: #fff4d6;
+        color: #865d12;
+      }
+
+      .status.review {
+        background: #ffe3e1;
+        color: #a12d27;
+      }
+
+      .status.ontrack {
+        background: #dbf5e6;
+        color: #17663b;
+      }
+
+      .status.sync {
+        background: #e6edff;
+        color: #284eae;
+      }
+
+      .bar {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .bar span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .track {
+        height: 8px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #e7edf4;
+      }
+
+      .track i {
+        display: block;
+        width: var(--value);
+        height: 100%;
+        border-radius: inherit;
+        background: var(--blue);
+      }
+
+      .student-card {
+        overflow: hidden;
+      }
+
+      .student-head {
+        padding: 14px;
+        background: var(--navy);
+        color: #ffffff;
+      }
+
+      .student-head span {
+        display: block;
+        color: #c5d9f2;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .student-head h2 {
+        margin: 5px 0 0;
+        font-size: 21px;
+      }
+
+      .student-body {
+        display: grid;
+        gap: 10px;
+        padding: 14px;
+      }
+
+      .student-stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .stat-box {
+        padding: 10px;
+        border: 1px solid var(--soft-line);
+        border-radius: 8px;
+        background: #fbfcfe;
+      }
+
+      .stat-box span {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .stat-box strong {
+        display: block;
+        margin-top: 5px;
+        font-size: 18px;
+      }
+
+      .gpa-tracker {
+        display: grid;
+        gap: 9px;
+        padding: 12px;
+        border: 1px solid #cbd8ea;
+        border-radius: 8px;
+        background: #f5f9ff;
+      }
+
+      .gpa-tracker header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .gpa-tracker h3 {
+        margin: 0;
+        font-size: 15px;
+      }
+
+      .gpa-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .gpa-box {
+        padding: 10px;
+        border: 1px solid var(--soft-line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .gpa-box span {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .gpa-box strong {
+        display: block;
+        margin-top: 5px;
+        font-size: 20px;
+      }
+
+      .gpa-meter {
+        display: grid;
+        gap: 7px;
+      }
+
+      .gpa-meter-row {
+        display: grid;
+        grid-template-columns: 96px 1fr 46px;
+        gap: 8px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .gpa-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .evidence-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .evidence-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px;
+        border: 1px solid var(--soft-line);
+        border-radius: 8px;
+      }
+
+      .evidence-list span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .lower-grid {
+        display: grid;
+        grid-column: 1 / 2;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .lower-grid .mini-panel:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .mini-panel {
+        min-width: 0;
+        padding: 14px;
+      }
+
+      .panel .mini-panel {
+        box-shadow: none;
+      }
+
+      .matrix {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .matrix-row {
+        display: grid;
+        grid-template-columns: 92px 1fr 1fr;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .matrix-row strong {
+        font-size: 13px;
+      }
+
+      .matrix-cell {
+        min-height: 38px;
+        padding: 9px;
+        border-radius: 8px;
+        background: #f5f7fa;
+        font-size: 12px;
+      }
+
+      .teacher-feed {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .teacher-feed article {
+        padding: 12px;
+        border: 1px solid var(--soft-line);
+        border-radius: 8px;
+        background: #fbfcfe;
+      }
+
+      .teacher-feed strong {
+        display: block;
+        font-size: 13px;
+      }
+
+      .teacher-feed span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .intervention-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .intervention-list article {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        padding: 12px;
+        border-left: 4px solid var(--teal);
+        background: #f7fbfa;
+      }
+
+      .intervention-list p {
+        grid-column: 1 / -1;
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .message-portal {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 1fr);
+        gap: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .message-sidebar {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        padding: 14px;
+        border-right: 1px solid var(--line);
+        background: #f8fafc;
+      }
+
+      .message-sidebar .panel-head {
+        display: grid;
+        gap: 4px;
+        margin: 0;
+      }
+
+      .message-form {
+        display: grid;
+        grid-template-columns: 210px 210px minmax(260px, 1fr) auto;
+        gap: 8px;
+        align-items: end;
+        padding: 12px;
+        border-top: 1px solid var(--line);
+        background: #fbfcfe;
+      }
+
+      .message-form .field label,
+      .message-form label {
+        color: var(--ink);
+      }
+
+      .message-form select,
+      .message-form textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--ink);
+      }
+
+      .message-form select {
+        min-height: 38px;
+        padding: 0 10px;
+      }
+
+      .message-form textarea {
+        min-height: 38px;
+        padding: 11px;
+        resize: vertical;
+      }
+
+      .rule-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 0;
+      }
+
+      .rule-card {
+        padding: 10px;
+        border: 1px solid var(--soft-line);
+        border-radius: 8px;
+        background: #fbfcfe;
+      }
+
+      .rule-card strong {
+        display: block;
+        font-size: 13px;
+      }
+
+      .rule-card span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .message-feed {
+        display: grid;
+        gap: 10px;
+        align-content: start;
+        min-height: 330px;
+        max-height: 460px;
+        margin-top: 0;
+        padding: 14px;
+        overflow-y: auto;
+        background: #ffffff;
+      }
+
+      .message-feed article {
+        display: grid;
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 10px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .message-feed header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .message-feed strong {
+        font-size: 13px;
+      }
+
+      .message-feed p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .message-avatar {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        aspect-ratio: 1;
+        border-radius: 8px;
+        background: var(--navy);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .message-bubble {
+        display: grid;
+        gap: 5px;
+        min-width: 0;
+        padding: 10px 12px;
+        border: 1px solid var(--soft-line);
+        border-radius: 8px;
+        background: #f8fafc;
+      }
+
+      .message-main {
+        min-width: 0;
+      }
+
+      .message-main > .panel-head {
+        margin: 0;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        background: #ffffff;
+      }
+
+      .channel-list {
+        display: grid;
+        gap: 6px;
+      }
+
+      .channel-button {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: center;
+        min-height: 34px;
+        padding: 0 10px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .channel-button.is-active {
+        border-color: #ccd7e6;
+        background: #ffffff;
+      }
+
+      .meeting-alert {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 12px 14px;
+        border: 1px solid #c9d7ff;
+        border-width: 1px 0 0;
+        border-radius: 0;
+        background: #f0f5ff;
+      }
+
+      .meeting-alert strong {
+        font-size: 14px;
+      }
+
+      .meeting-alert span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .toast {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 20;
+        max-width: 360px;
+        padding: 12px 14px;
+        border-radius: 8px;
+        background: #102b4b;
+        color: #ffffff;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateY(12px);
+        pointer-events: none;
+        transition: 180ms ease;
+      }
+
+      .toast.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1160px) {
+        .app {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+
+        .brand {
+          min-height: auto;
+          padding-right: 0;
+          padding-bottom: 12px;
+          border-right: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .sidebar-section[aria-label="Filters"],
+        .sidebar-section[aria-label="Sync status"] {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar-section[aria-label="Filters"] h2,
+        .sidebar-section[aria-label="Sync status"] h2 {
+          grid-column: auto;
+        }
+
+        .hero-band,
+        .grid,
+        .lower-grid,
+        .message-portal {
+          grid-template-columns: 1fr;
+        }
+
+        .message-sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .message-form {
+          grid-template-columns: 1fr;
+        }
+
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .access-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .content {
+          padding: 18px 14px 28px;
+        }
+
+        .purpose-panel h2 {
+          font-size: 27px;
+        }
+
+        .metrics,
+        .student-stats,
+        .gpa-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <section class="brand" aria-label="Mastery Charter">
+          <strong>MASTERY<br />CHARTER</strong>
+          <span>Admin Student Parent Sync</span>
+        </section>
+
+        <section class="sidebar-section" aria-label="Filters">
+          <h2>Dashboard Controls</h2>
+          <div class="field">
+            <label for="grade-filter">Grade Band</label>
+            <select id="grade-filter">
+              <option>All Grades 3-12</option>
+              <option>Grades 3-5</option>
+              <option>Grades 6-8</option>
+              <option>Grades 9-12</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="subject-filter">Subject Focus</label>
+            <select id="subject-filter">
+              <option>Math and Reading</option>
+              <option>Math</option>
+              <option>Reading</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="period-filter">Reporting Period</label>
+            <select id="period-filter">
+              <option>SY27 Planning</option>
+              <option>Q1 Biweekly Review</option>
+              <option>Q2 Biweekly Review</option>
+              <option>Q3 Biweekly Review</option>
+              <option>Q4 Biweekly Review</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="sidebar-section" aria-label="Sync status">
+          <h2>Shared Access Sync</h2>
+          <div class="sync-card">
+            <span>Last cross-access sync</span>
+            <strong id="sync-time">Today, 9:20 AM</strong>
+          </div>
+          <div class="sync-card">
+            <span>Access views connected</span>
+            <strong>3 / 3</strong>
+          </div>
+          <div class="field">
+            <label for="access-mode">Current Access View</label>
+            <select id="access-mode">
+              <option value="admin">Admin Access</option>
+              <option value="student">Student Access</option>
+              <option value="parent">Parent Access</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="team-note">Add synced note</label>
+            <textarea id="team-note" placeholder="Example: Parent conference scheduled; student goal updated."></textarea>
+          </div>
+          <button class="button primary" type="button" id="sync-note">Sync Note</button>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="page-title">
+            <h1>MTSS Access Dashboard V1</h1>
+            <p>Purpose: track student progress and sync across admin, student, and parent access.</p>
+          </div>
+          <div class="top-actions">
+            <div class="access-switcher" aria-label="Access mode switcher">
+              <button class="access-tab is-active" type="button" data-access-target="admin">Admin</button>
+              <button class="access-tab" type="button" data-access-target="student">Student</button>
+              <button class="access-tab" type="button" data-access-target="parent">Parent</button>
+            </div>
+            <button class="button" type="button" id="export-summary">Export Summary</button>
+            <button class="button" type="button" id="toggle-controls" aria-expanded="true">Hide Controls</button>
+            <button class="button primary" type="button" id="run-review">Run Biweekly Review</button>
+          </div>
+        </header>
+
+        <div class="content">
+          <section class="hero-band">
+            <article class="purpose-panel">
+              <h2>One synced progress system with the right view for each person.</h2>
+              <p>
+                Built from the summer MTSS expectations: grades 3-12, Math and Reading,
+                PSSA, Keystone, MAP RIT, Firefly screening, interim assessments, SLGs,
+                IEP goals, and intervention outcomes. Admins see schoolwide action, students see
+                goals and next steps, and parents see progress, support, and communication.
+              </p>
+              <div class="data-flow" aria-label="Data flow">
+                <span>PSSA</span>
+                <span>Keystone</span>
+                <span>MAP RIT</span>
+                <span>Amplify</span>
+                <span>EM2</span>
+                <span>Firefly</span>
+                <span>IEP Goals</span>
+                <span>SLGs</span>
+              </div>
+            </article>
+
+            <aside class="meeting-panel">
+              <h2>Biweekly Meeting View</h2>
+              <div class="meeting-list">
+                <div>
+                  <strong>1. Review trend</strong>
+                  <span>Triangulate PSSA or Keystone with MAP and interim data.</span>
+                </div>
+                <div>
+                  <strong>2. Confirm support</strong>
+                  <span>Check Tier 2 and Tier 3 interventions for Math and Reading.</span>
+                </div>
+                <div>
+                  <strong>3. Assign next step</strong>
+                  <span>Owner, due date, and progress outcome stay visible to the team.</span>
+                </div>
+              </div>
+            </aside>
+          </section>
+
+          <section class="metrics" aria-label="Schoolwide metrics">
+            <article class="metric">
+              <span>Students Tracked</span>
+              <strong id="metric-students">428</strong>
+              <small>Grades 3-12, includes IEPs</small>
+            </article>
+            <article class="metric">
+              <span>Need Review</span>
+              <strong id="metric-review">64</strong>
+              <small>Tier, attendance, growth, or IEP concern</small>
+            </article>
+            <article class="metric">
+              <span>Reading Growth Met</span>
+              <strong id="metric-reading">71%</strong>
+              <small>MAP plus interim evidence</small>
+            </article>
+            <article class="metric">
+              <span>Math Growth Met</span>
+              <strong id="metric-math">66%</strong>
+              <small>MAP RIT and unit assessments</small>
+            </article>
+            <article class="metric">
+              <span>Missing Data</span>
+              <strong id="metric-missing">22</strong>
+              <small>Records to clean before review</small>
+            </article>
+          </section>
+
+          <section class="access-grid" aria-label="Access views">
+            <article class="access-card is-focused" data-access-card="admin">
+              <header>
+                <h2>Admin Access</h2>
+                <span class="status sync">Full View</span>
+              </header>
+              <p>Schoolwide MTSS review, compliance readiness, intervention ownership, data gaps, and biweekly action tracking.</p>
+              <ul>
+                <li><span>Can view</span><strong>All grades 3-12</strong></li>
+                <li><span>Can edit</span><strong>Roster, tiers, outcomes</strong></li>
+                <li><span>Syncs to</span><strong>Teacher, student, parent views</strong></li>
+              </ul>
+            </article>
+
+            <article class="access-card" data-access-card="student">
+              <header>
+                <h2>Student Access</h2>
+                <span class="status ontrack">Goal View</span>
+              </header>
+              <p>Simple student-facing goals, MAP growth targets, assignments, intervention tasks, and wins without private admin notes.</p>
+              <ul>
+                <li><span>Can view</span><strong>Own progress</strong></li>
+                <li><span>Can update</span><strong>Reflection and goal check-in</strong></li>
+                <li><span>Syncs to</span><strong>Teacher/admin review</strong></li>
+              </ul>
+            </article>
+
+            <article class="access-card" data-access-card="parent">
+              <header>
+                <h2>Parent Access</h2>
+                <span class="status watch">Family View</span>
+              </header>
+              <p>Family-friendly progress, attendance, next steps, intervention schedule, teacher messages, and support actions at home.</p>
+              <ul>
+                <li><span>Can view</span><strong>Student summary</strong></li>
+                <li><span>Can send</span><strong>Questions and confirmations</strong></li>
+                <li><span>Syncs to</span><strong>Admin and teacher feed</strong></li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="grid">
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Student Review Queue</h2>
+                  <p id="queue-copy">Fictional demo data showing the admin review workflow.</p>
+                </div>
+                <span class="pill">Click a student</span>
+              </div>
+              <div class="table-wrap">
+                <table aria-label="Student review queue">
+                  <thead>
+                    <tr>
+                      <th>Student</th>
+                      <th>Grade</th>
+                      <th>Tier</th>
+                      <th>Reading</th>
+                      <th>Math</th>
+                      <th>Attendance</th>
+                      <th>Status</th>
+                      <th>Owner</th>
+                    </tr>
+                  </thead>
+                  <tbody id="student-rows"></tbody>
+                </table>
+              </div>
+
+              <section class="lower-grid">
+                <article class="mini-panel">
+                  <h2>Triangulation Snapshot</h2>
+                  <div class="matrix" aria-label="Data triangulation matrix">
+                    <div class="matrix-row">
+                      <strong>Reading</strong>
+                      <div class="matrix-cell">MAP RIT: 71% met projected growth</div>
+                      <div class="matrix-cell">Amplify: 4 units logged, 2 below target</div>
+                    </div>
+                    <div class="matrix-row">
+                      <strong>Math</strong>
+                      <div class="matrix-cell">MAP RIT: 66% met projected growth</div>
+                      <div class="matrix-cell">EM2: 3 of 4 checkpoints uploaded</div>
+                    </div>
+                    <div class="matrix-row">
+                      <strong>State</strong>
+                      <div class="matrix-cell">PSSA trends tagged by standard</div>
+                      <div class="matrix-cell">Keystone pending import</div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="mini-panel">
+                  <h2>Cross-Access Sync Feed</h2>
+                  <div class="teacher-feed" id="teacher-feed">
+                    <article>
+                      <strong>Admin updated Grade 6 Reading</strong>
+                      <span>Added Amplify Unit 4 scores and two intervention notes.</span>
+                    </article>
+                    <article>
+                      <strong>Student goal check-in received</strong>
+                      <span>Aaliyah marked reading practice complete for this week.</span>
+                    </article>
+                    <article>
+                      <strong>Parent confirmation synced</strong>
+                      <span>Family confirmed intervention schedule and attendance reminder.</span>
+                    </article>
+                  </div>
+                </article>
+
+                <article class="mini-panel">
+                  <h2>Intervention Board</h2>
+                  <div class="intervention-list">
+                    <article>
+                      <strong>Tier 2 Reading Fluency</strong>
+                      <span class="status sync">Active</span>
+                      <p>34 students, 3x weekly, outcome review due in 10 school days.</p>
+                    </article>
+                    <article>
+                      <strong>Tier 3 Math Concepts</strong>
+                      <span class="status review">Review</span>
+                      <p>12 students, progress flat across two interim checks.</p>
+                    </article>
+                    <article>
+                      <strong>Extended Learning Block</strong>
+                      <span class="status ontrack">Ready</span>
+                      <p>Roster aligned to MAP domain gaps and teacher availability.</p>
+                    </article>
+                  </div>
+                </article>
+              </section>
+            </article>
+
+            <aside class="student-card" aria-label="Selected student detail">
+              <div class="student-head">
+                <span id="student-id">MC-0821</span>
+                <h2 id="student-name">Aaliyah Carter</h2>
+              </div>
+              <div class="student-body">
+                <div class="student-stats">
+                  <div class="stat-box">
+                    <span>Grade / Team</span>
+                    <strong id="student-grade">6 / Team Phoenix</strong>
+                  </div>
+                  <div class="stat-box">
+                    <span>MTSS Tier</span>
+                    <strong id="student-tier">Tier 2</strong>
+                  </div>
+                  <div class="stat-box">
+                    <span>Reading RIT</span>
+                    <strong id="student-reading">211 / +4 goal</strong>
+                  </div>
+                  <div class="stat-box">
+                    <span>Math RIT</span>
+                    <strong id="student-math">206 / +6 goal</strong>
+                  </div>
+                </div>
+                <section class="gpa-tracker" aria-label="GPA and promotion tracker">
+                  <header>
+                    <h3 id="gpa-title">GPA / Promotion Tracker</h3>
+                    <span class="status watch" id="gpa-status">Watch</span>
+                  </header>
+                  <div class="gpa-grid">
+                    <div class="gpa-box">
+                      <span>Current GPA</span>
+                      <strong id="student-gpa">2.42</strong>
+                    </div>
+                    <div class="gpa-box">
+                      <span>Passing GPA</span>
+                      <strong id="passing-gpa">2.00</strong>
+                    </div>
+                    <div class="gpa-box">
+                      <span>Target GPA</span>
+                      <strong id="target-gpa">2.75</strong>
+                    </div>
+                  </div>
+                  <div class="gpa-meter">
+                    <div class="gpa-meter-row">
+                      <span>Passing</span>
+                      <div class="track"><i id="passing-gpa-bar" style="--value: 50%"></i></div>
+                      <strong id="passing-gpa-percent">50%</strong>
+                    </div>
+                    <div class="gpa-meter-row">
+                      <span>Current</span>
+                      <div class="track"><i id="current-gpa-bar" style="--value: 61%"></i></div>
+                      <strong id="current-gpa-percent">61%</strong>
+                    </div>
+                    <div class="gpa-meter-row">
+                      <span>Target</span>
+                      <div class="track"><i id="target-gpa-bar" style="--value: 69%"></i></div>
+                      <strong id="target-gpa-percent">69%</strong>
+                    </div>
+                  </div>
+                  <p class="gpa-note" id="gpa-gap">Current GPA is 0.42 above passing and 0.33 below the target pace.</p>
+                  <p class="gpa-note" id="credit-gap">Promotion evidence: 7 of 8 required coursework checkpoints complete.</p>
+                </section>
+                <ul class="evidence-list">
+                  <li><strong>Assessment trend</strong><span id="student-trend">MAP improved, Amplify below target</span></li>
+                  <li><strong>Intervention</strong><span id="student-intervention">Small-group reading, 3x weekly</span></li>
+                  <li><strong>IEP / Firefly</strong><span id="student-iep">No IEP, Firefly watch</span></li>
+                  <li><strong id="next-label">Next admin move</strong><span id="student-next">Upload two interim data points</span></li>
+                </ul>
+              </div>
+            </aside>
+
+          </section>
+
+          <section class="message-portal" aria-label="Messaging portal">
+            <aside class="message-sidebar">
+              <div class="panel-head">
+                <div>
+                  <h2>Private Messaging Portal</h2>
+                  <p>Approved channels only. Student access receives scheduled alerts, not chat.</p>
+                </div>
+              </div>
+
+              <div class="channel-list" aria-label="Messaging channels">
+                <button class="channel-button is-active" type="button">
+                  <span># staff-mtss</span>
+                  <span class="status sync">3</span>
+                </button>
+                <button class="channel-button" type="button">
+                  <span># family-updates</span>
+                  <span class="status watch">2</span>
+                </button>
+                <button class="channel-button" type="button">
+                  <span># student-alerts</span>
+                  <span class="status ontrack">1</span>
+                </button>
+              </div>
+
+              <div class="rule-grid" aria-label="Communication rules">
+                <div class="rule-card">
+                  <strong>Teacher to Teacher</strong>
+                  <span>Private staff coordination for intervention notes, assessment gaps, and meeting prep.</span>
+                </div>
+                <div class="rule-card">
+                  <strong>Teacher to Parent</strong>
+                  <span>Private family updates, questions, schedule confirmations, and support next steps.</span>
+                </div>
+                <div class="rule-card">
+                  <strong>Student Alerts Only</strong>
+                  <span>Students receive scheduled meeting alerts. Teaching conversations happen in person.</span>
+                </div>
+              </div>
+            </aside>
+
+            <article class="message-main">
+              <div class="panel-head">
+                <div>
+                  <h2>Shared Communication Log</h2>
+                  <p>Messages sync to admin and staff records. Parent messages sync to the family thread. Student alerts are one-way reminders.</p>
+                </div>
+                <span class="status sync">Synced</span>
+              </div>
+
+              <div class="message-feed" id="message-feed">
+                <article>
+                  <span class="message-avatar">MR</span>
+                  <div class="message-bubble">
+                    <header>
+                      <strong>Teacher to Teacher - Private</strong>
+                      <span class="status sync">Staff</span>
+                    </header>
+                    <p>Ms. Rivera sent Mr. Hall the updated MAP and Amplify notes before the biweekly review.</p>
+                  </div>
+                </article>
+                <article>
+                  <span class="message-avatar">AF</span>
+                  <div class="message-bubble">
+                    <header>
+                      <strong>Teacher to Parent - Private</strong>
+                      <span class="status watch">Family</span>
+                    </header>
+                    <p>Aaliyah Carter Family received a reading intervention schedule confirmation.</p>
+                  </div>
+                </article>
+                <article>
+                  <span class="message-avatar">SA</span>
+                  <div class="message-bubble">
+                    <header>
+                      <strong>Student Scheduled Alert</strong>
+                      <span class="status ontrack">Alert</span>
+                    </header>
+                    <p>Student alert scheduled: reading goal conference with Ms. Rivera on Thursday at 2:15 PM.</p>
+                  </div>
+                </article>
+              </div>
+
+              <div class="meeting-alert">
+                <strong id="student-alert-title">Student Meeting Alert Preview</strong>
+                <span id="student-alert-copy">A scheduled alert can remind the selected student to attend a teacher or parent teaching meeting. No direct message thread opens for students.</span>
+              </div>
+
+              <form class="message-form" id="message-form">
+                <div class="field">
+                  <label for="message-channel">Message Type</label>
+                  <select id="message-channel">
+                    <option value="teacher-teacher">Teacher to Teacher - Private</option>
+                    <option value="teacher-parent">Teacher to Parent - Private</option>
+                    <option value="parent-teacher">Parent to Teacher/Admin - Private</option>
+                    <option value="student-alert">Student Scheduled Alert - Meeting Only</option>
+                    <option value="blocked-student">Blocked: Direct Student Message</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="message-recipient">Recipient</label>
+                  <select id="message-recipient">
+                    <option>Ms. Rivera - Reading Lead</option>
+                    <option>Mr. Hall - Math Lead</option>
+                    <option>Aaliyah Carter Family</option>
+                    <option>Malik Johnson Family</option>
+                    <option>Selected Student - Alert Only</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="message-body">Message or Alert</label>
+                  <textarea id="message-body" placeholder="Example: Please confirm the Tier 2 reading meeting for Thursday at 2:15 PM."></textarea>
+                </div>
+                <button class="button primary" type="submit">Sync Message</button>
+              </form>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const students = [
+        {
+          id: "MC-0821",
+          name: "Aaliyah Carter",
+          grade: "6 / Team Phoenix",
+          gradeShort: "6",
+          tier: "Tier 2",
+          reading: 58,
+          math: 72,
+          attendance: 94,
+          status: "Watch",
+          owner: "Ms. Rivera",
+          readingText: "211 / +4 goal",
+          mathText: "206 / +6 goal",
+          gpa: 2.42,
+          passingGpa: 2.0,
+          targetGpa: 2.75,
+          creditsEarned: 7,
+          creditsExpected: 8,
+          creditLabel: "coursework checkpoints",
+          gpaStatus: "Watch",
+          trend: "MAP improved, Amplify below target",
+          intervention: "Small-group reading, 3x weekly",
+          iep: "No IEP, Firefly watch",
+          next: "Upload two interim data points",
+        },
+        {
+          id: "MC-1044",
+          name: "Malik Johnson",
+          grade: "9 / Keystone Prep",
+          gradeShort: "9",
+          tier: "Tier 3",
+          reading: 49,
+          math: 44,
+          attendance: 88,
+          status: "Review",
+          owner: "Mr. Hall",
+          readingText: "218 / +7 goal",
+          mathText: "212 / +8 goal",
+          gpa: 1.82,
+          passingGpa: 2.0,
+          targetGpa: 2.5,
+          creditsEarned: 5.5,
+          creditsExpected: 6.5,
+          creditLabel: "credits earned",
+          gpaStatus: "Review",
+          trend: "Keystone readiness low, MAP projection missed",
+          intervention: "Tier 3 math concepts, daily block",
+          iep: "IEP goal progress needs evidence",
+          next: "Schedule case manager and math review",
+        },
+        {
+          id: "MC-0632",
+          name: "Sofia Nguyen",
+          grade: "4 / Reading Lab",
+          gradeShort: "4",
+          tier: "Tier 1",
+          reading: 82,
+          math: 76,
+          attendance: 97,
+          status: "On Track",
+          owner: "Dr. Lane",
+          readingText: "198 / +3 goal",
+          mathText: "201 / +4 goal",
+          gpa: 3.12,
+          passingGpa: 2.0,
+          targetGpa: 2.75,
+          creditsEarned: 8,
+          creditsExpected: 8,
+          creditLabel: "coursework checkpoints",
+          gpaStatus: "On Track",
+          trend: "PSSA-aligned skill practice on pace",
+          intervention: "No active intervention",
+          iep: "No IEP, Firefly on track",
+          next: "Maintain SLG evidence collection",
+        },
+        {
+          id: "MC-1278",
+          name: "Darius Brooks",
+          grade: "11 / Credit Check",
+          gradeShort: "11",
+          tier: "Tier 2",
+          reading: 69,
+          math: 52,
+          attendance: 91,
+          status: "Watch",
+          owner: "Ms. Patel",
+          readingText: "224 / +2 goal",
+          mathText: "219 / +7 goal",
+          gpa: 2.31,
+          passingGpa: 2.0,
+          targetGpa: 2.7,
+          creditsEarned: 17,
+          creditsExpected: 18,
+          creditLabel: "credits earned",
+          gpaStatus: "Watch",
+          trend: "GPA on track, math growth below goal",
+          intervention: "Extended learning Algebra support",
+          iep: "No IEP",
+          next: "Add EM2 checkpoint and credit note",
+        },
+        {
+          id: "MC-0915",
+          name: "Imani Williams",
+          grade: "7 / Firefly Review",
+          gradeShort: "7",
+          tier: "Tier 3",
+          reading: 46,
+          math: 61,
+          attendance: 86,
+          status: "Review",
+          owner: "Case Team",
+          readingText: "207 / +8 goal",
+          mathText: "210 / +5 goal",
+          gpa: 1.94,
+          passingGpa: 2.0,
+          targetGpa: 2.6,
+          creditsEarned: 6,
+          creditsExpected: 8,
+          creditLabel: "coursework checkpoints",
+          gpaStatus: "Review",
+          trend: "Firefly reading concern, attendance below 90%",
+          intervention: "Reading intervention plus attendance plan",
+          iep: "IEP reading goal requires update",
+          next: "Post progress outcome before biweekly review",
+        },
+      ];
+
+      const rows = document.querySelector("#student-rows");
+      const toast = document.querySelector("#toast");
+      const syncTime = document.querySelector("#sync-time");
+      const teacherFeed = document.querySelector("#teacher-feed");
+      const accessMode = document.querySelector("#access-mode");
+      const accessTabs = document.querySelectorAll("[data-access-target]");
+      const accessCards = document.querySelectorAll("[data-access-card]");
+      const queueCopy = document.querySelector("#queue-copy");
+      const nextLabel = document.querySelector("#next-label");
+      const messageForm = document.querySelector("#message-form");
+      const messageChannel = document.querySelector("#message-channel");
+      const messageRecipient = document.querySelector("#message-recipient");
+      const messageBody = document.querySelector("#message-body");
+      const messageFeed = document.querySelector("#message-feed");
+      const studentAlertTitle = document.querySelector("#student-alert-title");
+      const studentAlertCopy = document.querySelector("#student-alert-copy");
+      const toggleControls = document.querySelector("#toggle-controls");
+      let currentAccess = "admin";
+
+      const accessContent = {
+        admin: {
+          queue: "Fictional demo data showing the admin review workflow.",
+          nextLabel: "Next admin move",
+          toast: "Admin access active: full MTSS and schoolwide sync view.",
+          notePrefix: "Admin note synced",
+          exportMessage: "Admin export queued: schoolwide tracker, gaps, and intervention summary.",
+          reviewMessage: "Admin biweekly review queue refreshed across all access views.",
+        },
+        student: {
+          queue: "Student access shows simple goals, growth targets, and next steps for the selected learner.",
+          nextLabel: "My next step",
+          toast: "Student access active: personal goals and progress view.",
+          notePrefix: "Student reflection synced",
+          exportMessage: "Student progress snapshot queued.",
+          reviewMessage: "Student goal view refreshed from shared MTSS record.",
+        },
+        parent: {
+          queue: "Parent access shows family-friendly progress, support plans, attendance, and teacher messages.",
+          nextLabel: "Family next step",
+          toast: "Parent access active: family progress and support view.",
+          notePrefix: "Parent message synced",
+          exportMessage: "Parent summary queued: progress, supports, and next family steps.",
+          reviewMessage: "Parent view refreshed from shared MTSS record.",
+        },
+      };
+
+      function statusClass(status) {
+        if (status === "Review") return "review";
+        if (status === "On Track") return "ontrack";
+        return "watch";
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("is-visible");
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toast.classList.remove("is-visible"), 2400);
+      }
+
+      function renderRows() {
+        rows.innerHTML = students
+          .map(
+            (student, index) => `
+              <tr data-student-id="${student.id}" class="${index === 0 ? "is-selected" : ""}">
+                <td><strong>${student.name}</strong><br><span>${student.id}</span></td>
+                <td>${student.gradeShort}</td>
+                <td>${student.tier}</td>
+                <td><div class="bar"><span>${student.reading}%</span><div class="track"><i style="--value: ${student.reading}%"></i></div></div></td>
+                <td><div class="bar"><span>${student.math}%</span><div class="track"><i style="--value: ${student.math}%"></i></div></div></td>
+                <td>${student.attendance}%</td>
+                <td><span class="status ${statusClass(student.status)}">${student.status}</span></td>
+                <td>${student.owner}</td>
+              </tr>
+            `,
+          )
+          .join("");
+      }
+
+      function formatGpa(value) {
+        return Number(value).toFixed(2);
+      }
+
+      function gpaPercent(value) {
+        return `${Math.max(0, Math.min(100, Math.round((Number(value) / 4) * 100)))}%`;
+      }
+
+      function updateGpaTracker(student) {
+        const current = Number(student.gpa);
+        const passing = Number(student.passingGpa);
+        const target = Number(student.targetGpa);
+        const passingGap = current - passing;
+        const targetGap = target - current;
+        const creditGap = Number(student.creditsExpected) - Number(student.creditsEarned);
+        const statusClassName = statusClass(student.gpaStatus);
+
+        document.querySelector("#student-gpa").textContent = formatGpa(current);
+        document.querySelector("#passing-gpa").textContent = formatGpa(passing);
+        document.querySelector("#target-gpa").textContent = formatGpa(target);
+        document.querySelector("#passing-gpa-percent").textContent = gpaPercent(passing);
+        document.querySelector("#current-gpa-percent").textContent = gpaPercent(current);
+        document.querySelector("#target-gpa-percent").textContent = gpaPercent(target);
+        document.querySelector("#passing-gpa-bar").style.setProperty("--value", gpaPercent(passing));
+        document.querySelector("#current-gpa-bar").style.setProperty("--value", gpaPercent(current));
+        document.querySelector("#target-gpa-bar").style.setProperty("--value", gpaPercent(target));
+
+        const status = document.querySelector("#gpa-status");
+        status.textContent = student.gpaStatus;
+        status.className = `status ${statusClassName}`;
+        document.querySelector("#gpa-title").textContent =
+          Number(student.gradeShort) >= 9 ? "GPA / Graduation Tracker" : "GPA / Promotion Tracker";
+
+        const passingText =
+          passingGap >= 0
+            ? `${formatGpa(passingGap)} above passing`
+            : `${formatGpa(Math.abs(passingGap))} below passing`;
+        const targetText =
+          targetGap <= 0
+            ? `${formatGpa(Math.abs(targetGap))} above target pace`
+            : `${formatGpa(targetGap)} below target pace`;
+        document.querySelector("#gpa-gap").textContent = `Current GPA is ${passingText} and ${targetText}.`;
+
+        const creditText =
+          creditGap <= 0
+            ? `${student.creditsEarned} of ${student.creditsExpected} ${student.creditLabel} complete. Student is at or above expected pace.`
+            : `${student.creditsEarned} of ${student.creditsExpected} ${student.creditLabel} complete. Needs ${creditGap} more by this checkpoint.`;
+        document.querySelector("#credit-gap").textContent = creditText;
+      }
+
+      function selectStudent(id) {
+        const student = students.find((item) => item.id === id);
+        if (!student) return;
+
+        document.querySelector("#student-id").textContent = student.id;
+        document.querySelector("#student-name").textContent = student.name;
+        document.querySelector("#student-grade").textContent = student.grade;
+        document.querySelector("#student-tier").textContent = student.tier;
+        document.querySelector("#student-reading").textContent = student.readingText;
+        document.querySelector("#student-math").textContent = student.mathText;
+        document.querySelector("#student-trend").textContent = student.trend;
+        document.querySelector("#student-intervention").textContent = student.intervention;
+        document.querySelector("#student-iep").textContent = student.iep;
+        document.querySelector("#student-next").textContent = student.next;
+        updateGpaTracker(student);
+
+        document.querySelectorAll("[data-student-id]").forEach((row) => {
+          row.classList.toggle("is-selected", row.dataset.studentId === id);
+        });
+      }
+
+      function setAccess(nextAccess, silent = false) {
+        currentAccess = nextAccess;
+        accessMode.value = nextAccess;
+        accessTabs.forEach((tab) => {
+          tab.classList.toggle("is-active", tab.dataset.accessTarget === nextAccess);
+        });
+        accessCards.forEach((card) => {
+          card.classList.toggle("is-focused", card.dataset.accessCard === nextAccess);
+        });
+        queueCopy.textContent = accessContent[nextAccess].queue;
+        nextLabel.textContent = accessContent[nextAccess].nextLabel;
+
+        if (!silent) {
+          syncTime.textContent = "Just now";
+          showToast(accessContent[nextAccess].toast);
+        }
+      }
+
+      function channelLabel(value) {
+        return {
+          "teacher-teacher": "Teacher to Teacher - Private",
+          "teacher-parent": "Teacher to Parent - Private",
+          "parent-teacher": "Parent to Teacher/Admin - Private",
+          "student-alert": "Student Scheduled Alert",
+          "blocked-student": "Blocked Direct Student Message",
+        }[value];
+      }
+
+      function channelStatus(value) {
+        if (value === "student-alert") return ["ontrack", "Alert"];
+        if (value === "teacher-parent" || value === "parent-teacher") return ["watch", "Family"];
+        return ["sync", "Private"];
+      }
+
+      function recipientInitials(value) {
+        if (value.includes("Family")) return "FA";
+        if (value.includes("Hall")) return "MH";
+        if (value.includes("Rivera")) return "MR";
+        if (value.includes("Student")) return "SA";
+        return "MC";
+      }
+
+      function syncMessage(event) {
+        event.preventDefault();
+
+        const channel = messageChannel.value;
+        const recipient = messageRecipient.value;
+        const body = messageBody.value.trim();
+
+        if (channel === "blocked-student") {
+          showToast("Direct parent-to-student or teacher-to-student messaging is disabled. Schedule an in-person meeting alert instead.");
+          return;
+        }
+
+        if (!body) {
+          showToast("Add a message or meeting alert before syncing.");
+          return;
+        }
+
+        const [statusClassName, statusLabel] = channelStatus(channel);
+        const entry = document.createElement("article");
+        entry.innerHTML = `
+          <span class="message-avatar">${recipientInitials(recipient)}</span>
+          <div class="message-bubble">
+            <header>
+              <strong>${channelLabel(channel)}</strong>
+              <span class="status ${statusClassName}">${statusLabel}</span>
+            </header>
+            <p>${recipient}: ${body}</p>
+          </div>
+        `;
+        messageFeed.prepend(entry);
+
+        const syncEntry = document.createElement("article");
+        syncEntry.innerHTML = `<strong>${channelLabel(channel)} synced</strong><span>${recipient}: ${body}</span>`;
+        teacherFeed.prepend(syncEntry);
+
+        if (channel === "student-alert") {
+          studentAlertTitle.textContent = "Student Meeting Alert Scheduled";
+          studentAlertCopy.textContent = `${recipient}: ${body}. This is a one-way scheduled alert only; no direct student message thread is opened.`;
+        }
+
+        messageBody.value = "";
+        syncTime.textContent = "Just now";
+        showToast("Communication synced across approved access views.");
+      }
+
+      function updateMetrics() {
+        const subject = document.querySelector("#subject-filter").value;
+        const grade = document.querySelector("#grade-filter").value;
+        const period = document.querySelector("#period-filter").value;
+
+        const baseReview = grade === "Grades 9-12" ? 24 : grade === "Grades 3-5" ? 18 : 64;
+        document.querySelector("#metric-review").textContent = subject === "Math" ? baseReview + 7 : baseReview;
+        document.querySelector("#metric-reading").textContent = subject === "Math" ? "N/A" : "71%";
+        document.querySelector("#metric-math").textContent = subject === "Reading" ? "N/A" : "66%";
+        document.querySelector("#metric-missing").textContent = period.includes("Planning") ? "22" : "14";
+        showToast("Dashboard view updated.");
+      }
+
+      document.addEventListener("click", (event) => {
+        const row = event.target.closest("[data-student-id]");
+        if (row) selectStudent(row.dataset.studentId);
+      });
+
+      document.querySelectorAll("#grade-filter, #subject-filter, #period-filter").forEach((select) => {
+        select.addEventListener("change", updateMetrics);
+      });
+
+      accessTabs.forEach((tab) => {
+        tab.addEventListener("click", () => setAccess(tab.dataset.accessTarget));
+      });
+
+      accessMode.addEventListener("change", () => setAccess(accessMode.value));
+
+      document.querySelector("#sync-note").addEventListener("click", () => {
+        const note = document.querySelector("#team-note");
+        const value = note.value.trim();
+        if (!value) {
+          showToast("Add a team note before syncing.");
+          return;
+        }
+
+        const entry = document.createElement("article");
+        entry.innerHTML = `<strong>${accessContent[currentAccess].notePrefix}</strong><span>${value}</span>`;
+        teacherFeed.prepend(entry);
+        note.value = "";
+        syncTime.textContent = "Just now";
+        showToast("Note synced across admin, student, and parent access.");
+      });
+
+      messageForm.addEventListener("submit", syncMessage);
+
+      messageChannel.addEventListener("change", () => {
+        if (messageChannel.value === "student-alert") {
+          messageRecipient.value = "Selected Student - Alert Only";
+          messageBody.placeholder = "Example: Reminder: attend reading goal meeting with Ms. Rivera Thursday at 2:15 PM.";
+          return;
+        }
+
+        if (messageChannel.value === "blocked-student") {
+          messageRecipient.value = "Selected Student - Alert Only";
+          messageBody.placeholder = "Direct student messaging is blocked. Use Student Scheduled Alert for meeting reminders.";
+          return;
+        }
+
+        messageBody.placeholder = "Example: Please confirm the Tier 2 reading meeting for Thursday at 2:15 PM.";
+      });
+
+      document.querySelector("#run-review").addEventListener("click", () => {
+        syncTime.textContent = "Just now";
+        showToast(accessContent[currentAccess].reviewMessage);
+      });
+
+      document.querySelector("#export-summary").addEventListener("click", () => {
+        showToast(accessContent[currentAccess].exportMessage);
+      });
+
+      toggleControls.addEventListener("click", () => {
+        const collapsed = document.body.classList.toggle("controls-collapsed");
+        toggleControls.textContent = collapsed ? "Show Controls" : "Hide Controls";
+        toggleControls.setAttribute("aria-expanded", String(!collapsed));
+        showToast(collapsed ? "Dashboard controls hidden." : "Dashboard controls shown.");
+      });
+
+      renderRows();
+      selectStudent(students[0].id);
+      setAccess("admin", true);
+    </script>
+  </body>
+</html>
