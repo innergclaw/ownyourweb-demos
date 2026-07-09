@@ -832,6 +832,141 @@
         box-shadow: var(--shadow);
       }
 
+      .agent-prototype {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .agent-sidebar {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        padding: 14px;
+        border-right: 1px solid var(--line);
+        background: #f8fafc;
+      }
+
+      .agent-sidebar h2,
+      .agent-main h2 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .agent-sidebar p,
+      .agent-main p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .prompt-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .prompt-button {
+        min-height: 38px;
+        padding: 9px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--ink);
+        text-align: left;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .prompt-button:hover {
+        border-color: var(--blue);
+        background: #f0f6ff;
+      }
+
+      .agent-main {
+        display: grid;
+        min-width: 0;
+      }
+
+      .agent-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .agent-log {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+        min-height: 360px;
+        max-height: 520px;
+        overflow-y: auto;
+        padding: 14px;
+        background: #ffffff;
+      }
+
+      .agent-turn {
+        display: grid;
+        gap: 8px;
+      }
+
+      .agent-turn.user {
+        justify-items: end;
+      }
+
+      .agent-bubble {
+        width: min(760px, 100%);
+        padding: 12px;
+        border: 1px solid var(--soft-line);
+        border-radius: 8px;
+        background: #f8fafc;
+      }
+
+      .agent-turn.user .agent-bubble {
+        background: #eaf2ff;
+      }
+
+      .agent-bubble strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 13px;
+      }
+
+      .agent-bubble pre {
+        margin: 0;
+        white-space: pre-wrap;
+        color: var(--ink);
+        font-family: inherit;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .agent-composer {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        padding: 12px;
+        border-top: 1px solid var(--line);
+        background: #fbfcfe;
+      }
+
+      .agent-composer textarea {
+        min-height: 42px;
+        padding: 11px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        resize: vertical;
+        color: var(--ink);
+      }
+
       .message-sidebar {
         display: grid;
         align-content: start;
@@ -1081,15 +1216,18 @@
         .hero-band,
         .grid,
         .lower-grid,
-        .message-portal {
+        .message-portal,
+        .agent-prototype {
           grid-template-columns: 1fr;
         }
 
+        .agent-sidebar,
         .message-sidebar {
           border-right: 0;
           border-bottom: 1px solid var(--line);
         }
 
+        .agent-composer,
         .message-form {
           grid-template-columns: 1fr;
         }
@@ -1482,6 +1620,45 @@
 
           </section>
 
+          <section class="agent-prototype" aria-label="Mastery MTSS staff agent prototype">
+            <aside class="agent-sidebar">
+              <div>
+                <h2>Staff Agent Prototype</h2>
+                <p>Static demo agent. Uses sample records only. Built to port into Copilot Studio later.</p>
+              </div>
+              <div class="prompt-grid" aria-label="Suggested agent prompts">
+                <button class="prompt-button" type="button" data-agent-prompt="Show me Grade 6 students who need reading review.">Grade 6 reading review</button>
+                <button class="prompt-button" type="button" data-agent-prompt="Summarize Aaliyah Carter for the biweekly MTSS meeting.">Summarize Aaliyah</button>
+                <button class="prompt-button" type="button" data-agent-prompt="Which students are missing four interim assessment data points?">Find missing interim data</button>
+                <button class="prompt-button" type="button" data-agent-prompt="Draft a parent update for Malik Johnson.">Draft parent update</button>
+                <button class="prompt-button" type="button" data-agent-prompt="Schedule a student meeting alert for Darius Brooks Thursday at 2:15 PM.">Schedule student alert</button>
+                <button class="prompt-button" type="button" data-agent-prompt="Send a direct message to Aaliyah Carter.">Test blocked student chat</button>
+              </div>
+            </aside>
+
+            <article class="agent-main">
+              <div class="agent-head">
+                <div>
+                  <h2>Mastery MTSS Staff Agent</h2>
+                  <p>Prototype workflows: student summary, risk queue, parent draft, meeting alert, and communication guardrails.</p>
+                </div>
+                <span class="status sync">Demo Mode</span>
+              </div>
+              <div class="agent-log" id="agent-log" aria-live="polite">
+                <div class="agent-turn">
+                  <div class="agent-bubble">
+                    <strong>Agent</strong>
+                    <pre>Ask a staff workflow question or use a suggested prompt. This prototype is deterministic and uses only demo data.</pre>
+                  </div>
+                </div>
+              </div>
+              <form class="agent-composer" id="agent-form">
+                <textarea id="agent-input" placeholder="Ask: Summarize Malik Johnson for the biweekly MTSS meeting."></textarea>
+                <button class="button primary" type="submit">Ask Agent</button>
+              </form>
+            </article>
+          </section>
+
           <section class="message-portal" aria-label="Messaging portal">
             <aside class="message-sidebar">
               <div class="panel-head">
@@ -1750,6 +1927,10 @@
       const studentAlertTitle = document.querySelector("#student-alert-title");
       const studentAlertCopy = document.querySelector("#student-alert-copy");
       const toggleControls = document.querySelector("#toggle-controls");
+      const agentLog = document.querySelector("#agent-log");
+      const agentForm = document.querySelector("#agent-form");
+      const agentInput = document.querySelector("#agent-input");
+      const agentPromptButtons = document.querySelectorAll("[data-agent-prompt]");
       let currentAccess = "admin";
 
       const accessContent = {
@@ -1924,6 +2105,155 @@
         return "MC";
       }
 
+      function normalize(value) {
+        return String(value || "").toLowerCase();
+      }
+
+      function findStudentFromText(text) {
+        const query = normalize(text);
+        return students.find((student) => {
+          const [first, last] = student.name.toLowerCase().split(" ");
+          return query.includes(student.name.toLowerCase()) || query.includes(first) || query.includes(last);
+        }) || students[0];
+      }
+
+      function missingDataFor(student) {
+        const missing = [];
+        if (student.reading < 60) missing.push("reading growth evidence needs review");
+        if (student.math < 60) missing.push("math growth evidence needs review");
+        if (student.attendance < 90) missing.push("attendance below 90%");
+        if (student.gpa < student.passingGpa) missing.push("GPA below passing threshold");
+        if (student.creditsEarned < student.creditsExpected) missing.push(`${student.creditLabel} below expected pace`);
+        if (student.status === "Review") missing.push("intervention outcome needs staff review");
+        return missing.length ? missing : ["no major data gaps in demo record"];
+      }
+
+      function studentSummary(student) {
+        const missing = missingDataFor(student).join("; ");
+        return `Student: ${student.name} (${student.id})
+Current status: ${student.status}, ${student.tier}, ${student.grade}
+Evidence: Reading ${student.readingText}; Math ${student.mathText}; Attendance ${student.attendance}%; GPA ${formatGpa(student.gpa)} vs passing ${formatGpa(student.passingGpa)} and target ${formatGpa(student.targetGpa)}
+Risk: ${student.gpaStatus}
+Missing data / watch items: ${missing}
+Intervention: ${student.intervention}
+Recommended next action: ${student.next}
+Owner: ${student.owner}`;
+      }
+
+      function reviewQueueResponse(text) {
+        const query = normalize(text);
+        const gradeMatch = query.match(/grade\\s*(\\d+)/);
+        const subject = query.includes("math") ? "math" : query.includes("reading") ? "reading" : "all subjects";
+        const filtered = students.filter((student) => {
+          const gradeOk = gradeMatch ? student.gradeShort === gradeMatch[1] : true;
+          const subjectOk =
+            subject === "reading" ? student.reading < 70 :
+            subject === "math" ? student.math < 70 :
+            student.status !== "On Track";
+          return gradeOk && subjectOk;
+        });
+
+        if (!filtered.length) return "No matching demo students found for that filter.";
+
+        return `Students needing review (${subject}):
+${filtered.map((student) => `- ${student.name}, Grade ${student.gradeShort}: ${student.status}; Reading ${student.reading}%, Math ${student.math}%, Attendance ${student.attendance}%; owner ${student.owner}`).join("\\n")}`;
+      }
+
+      function parentDraft(student) {
+        return `Parent update draft for ${student.name}:
+
+Hi,
+
+I’m reaching out with a progress update. ${student.name} is currently at a ${formatGpa(student.gpa)} GPA. The passing benchmark is ${formatGpa(student.passingGpa)}, and the current target is ${formatGpa(student.targetGpa)}.
+
+Current support: ${student.intervention}.
+
+What we are watching: ${missingDataFor(student).join("; ")}.
+
+Next school action: ${student.next}.
+
+Please reply with any questions or confirm a time to discuss the support plan.`;
+      }
+
+      function studentAlertDraft(student, text) {
+        const timeMatch = text.match(/(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)?\\s*(?:at\\s*)?\\d{1,2}:\\d{2}\\s*(?:am|pm)?/i);
+        const meetingTime = timeMatch ? timeMatch[0].trim() : "next available scheduled time";
+        return `Student meeting alert scheduled:
+Student: ${student.name}
+Date/time: ${meetingTime}
+With: ${student.owner}
+Reason: MTSS progress check and next-step conference
+Rule: This is a one-way scheduled alert only. No direct student chat thread is opened.`;
+      }
+
+      function missingInterimResponse() {
+        const flagged = students.filter((student) => student.status !== "On Track" || student.reading < 60 || student.math < 60);
+        return `Students likely missing complete interim evidence in this demo:
+${flagged.map((student) => `- ${student.name}: ${missingDataFor(student).join("; ")}`).join("\\n")}`;
+      }
+
+      function agentResponse(prompt) {
+        const query = normalize(prompt);
+        const student = findStudentFromText(prompt);
+
+        if ((query.includes("direct message") || query.includes("message")) && query.includes("student")) {
+          return "Blocked: direct teacher-to-student or parent-to-student messaging is not allowed in this design. Use a scheduled student meeting alert instead.";
+        }
+
+        if (query.includes("schedule") && query.includes("alert")) {
+          return studentAlertDraft(student, prompt);
+        }
+
+        if (query.includes("parent") || query.includes("draft")) {
+          return parentDraft(student);
+        }
+
+        if (query.includes("missing") || query.includes("interim")) {
+          return missingInterimResponse();
+        }
+
+        if (query.includes("show") || query.includes("need") || query.includes("review") || query.includes("queue")) {
+          return reviewQueueResponse(prompt);
+        }
+
+        if (query.includes("summarize") || query.includes("summary") || query.includes("biweekly")) {
+          return studentSummary(student);
+        }
+
+        return `I can run these demo workflows:
+- summarize a student
+- show students needing review
+- identify missing interim data
+- draft a parent update
+- schedule a student meeting alert
+- block direct student messaging`;
+      }
+
+      function addAgentTurn(role, text) {
+        const turn = document.createElement("div");
+        turn.className = `agent-turn ${role === "You" ? "user" : ""}`;
+        turn.innerHTML = `
+          <div class="agent-bubble">
+            <strong>${role}</strong>
+            <pre>${text}</pre>
+          </div>
+        `;
+        agentLog.appendChild(turn);
+        agentLog.scrollTop = agentLog.scrollHeight;
+      }
+
+      function runAgentPrompt(prompt) {
+        const value = prompt.trim();
+        if (!value) {
+          showToast("Enter an agent prompt first.");
+          return;
+        }
+
+        addAgentTurn("You", value);
+        addAgentTurn("Agent", agentResponse(value));
+        agentInput.value = "";
+      }
+
       function syncMessage(event) {
         event.preventDefault();
 
@@ -2014,6 +2344,15 @@
       });
 
       messageForm.addEventListener("submit", syncMessage);
+
+      agentForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        runAgentPrompt(agentInput.value);
+      });
+
+      agentPromptButtons.forEach((button) => {
+        button.addEventListener("click", () => runAgentPrompt(button.dataset.agentPrompt));
+      });
 
       messageChannel.addEventListener("change", () => {
         if (messageChannel.value === "student-alert") {
