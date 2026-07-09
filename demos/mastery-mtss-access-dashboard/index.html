@@ -1268,7 +1268,7 @@
       <aside class="sidebar">
         <section class="brand" aria-label="Mastery Charter">
           <strong>MASTERY<br />CHARTER</strong>
-          <span>Admin Student Parent Sync</span>
+          <span>Admin MTSS Staff Workspace</span>
         </section>
 
         <section class="sidebar-section" aria-label="Filters">
@@ -1303,26 +1303,18 @@
         </section>
 
         <section class="sidebar-section" aria-label="Sync status">
-          <h2>Shared Access Sync</h2>
+          <h2>Admin Workspace Sync</h2>
           <div class="sync-card">
-            <span>Last cross-access sync</span>
+            <span>Last admin sync</span>
             <strong id="sync-time">Today, 9:20 AM</strong>
           </div>
           <div class="sync-card">
-            <span>Access views connected</span>
-            <strong>3 / 3</strong>
-          </div>
-          <div class="field">
-            <label for="access-mode">Current Access View</label>
-            <select id="access-mode">
-              <option value="admin">Admin Access</option>
-              <option value="student">Student Access</option>
-              <option value="parent">Parent Access</option>
-            </select>
+            <span>Workspace mode</span>
+            <strong>Admin</strong>
           </div>
           <div class="field">
             <label for="team-note">Add synced note</label>
-            <textarea id="team-note" placeholder="Example: Parent conference scheduled; student goal updated."></textarea>
+            <textarea id="team-note" placeholder="Example: Grade 6 reading review assigned to API team."></textarea>
           </div>
           <button class="button primary" type="button" id="sync-note">Sync Note</button>
         </section>
@@ -1332,14 +1324,9 @@
         <header class="topbar">
           <div class="page-title">
             <h1>MTSS Access Dashboard V1</h1>
-            <p>Purpose: track student progress and sync across admin, student, and parent access.</p>
+            <p>Purpose: admin staff workspace for student progress, MTSS review, GPA tracking, and intervention action.</p>
           </div>
           <div class="top-actions">
-            <div class="access-switcher" aria-label="Access mode switcher">
-              <button class="access-tab is-active" type="button" data-access-target="admin">Admin</button>
-              <button class="access-tab" type="button" data-access-target="student">Student</button>
-              <button class="access-tab" type="button" data-access-target="parent">Parent</button>
-            </div>
             <button class="button" type="button" id="export-summary">Export Summary</button>
             <button class="button" type="button" id="toggle-controls" aria-expanded="true">Hide Controls</button>
             <button class="button primary" type="button" id="run-review">Run Biweekly Review</button>
@@ -1349,12 +1336,12 @@
         <div class="content">
           <section class="hero-band">
             <article class="purpose-panel">
-              <h2>One synced progress system with the right view for each person.</h2>
+              <h2>One admin workspace for schoolwide MTSS review and action.</h2>
               <p>
                 Built from the summer MTSS expectations: grades 3-12, Math and Reading,
                 PSSA, Keystone, MAP RIT, Firefly screening, interim assessments, SLGs,
-                IEP goals, and intervention outcomes. Admins see schoolwide action, students see
-                goals and next steps, and parents see progress, support, and communication.
+                IEP goals, and intervention outcomes. Admins can review trends, identify missing
+                data, assign owners, and coordinate staff follow-up from one view.
               </p>
               <div class="data-flow" aria-label="Data flow">
                 <span>PSSA</span>
@@ -1415,43 +1402,17 @@
             </article>
           </section>
 
-          <section class="access-grid" aria-label="Access views">
+          <section class="access-grid" aria-label="Admin access view">
             <article class="access-card is-focused" data-access-card="admin">
               <header>
-                <h2>Admin Access</h2>
+                <h2>Admin Access Only</h2>
                 <span class="status sync">Full View</span>
               </header>
               <p>Schoolwide MTSS review, compliance readiness, intervention ownership, data gaps, and biweekly action tracking.</p>
               <ul>
                 <li><span>Can view</span><strong>All grades 3-12</strong></li>
                 <li><span>Can edit</span><strong>Roster, tiers, outcomes</strong></li>
-                <li><span>Syncs to</span><strong>Teacher, student, parent views</strong></li>
-              </ul>
-            </article>
-
-            <article class="access-card" data-access-card="student">
-              <header>
-                <h2>Student Access</h2>
-                <span class="status ontrack">Goal View</span>
-              </header>
-              <p>Simple student-facing goals, MAP growth targets, assignments, intervention tasks, and wins without private admin notes.</p>
-              <ul>
-                <li><span>Can view</span><strong>Own progress</strong></li>
-                <li><span>Can update</span><strong>Reflection and goal check-in</strong></li>
-                <li><span>Syncs to</span><strong>Teacher/admin review</strong></li>
-              </ul>
-            </article>
-
-            <article class="access-card" data-access-card="parent">
-              <header>
-                <h2>Parent Access</h2>
-                <span class="status watch">Family View</span>
-              </header>
-              <p>Family-friendly progress, attendance, next steps, intervention schedule, teacher messages, and support actions at home.</p>
-              <ul>
-                <li><span>Can view</span><strong>Student summary</strong></li>
-                <li><span>Can send</span><strong>Questions and confirmations</strong></li>
-                <li><span>Syncs to</span><strong>Admin and teacher feed</strong></li>
+                <li><span>Current scope</span><strong>Admin/staff prototype only</strong></li>
               </ul>
             </article>
           </section>
@@ -1506,19 +1467,19 @@
                 </article>
 
                 <article class="mini-panel">
-                  <h2>Cross-Access Sync Feed</h2>
+                  <h2>Admin Staff Sync Feed</h2>
                   <div class="teacher-feed" id="teacher-feed">
                     <article>
                       <strong>Admin updated Grade 6 Reading</strong>
                       <span>Added Amplify Unit 4 scores and two intervention notes.</span>
                     </article>
                     <article>
-                      <strong>Student goal check-in received</strong>
-                      <span>Aaliyah marked reading practice complete for this week.</span>
+                      <strong>API review assigned</strong>
+                      <span>Grade 9 Keystone readiness group moved to biweekly review queue.</span>
                     </article>
                     <article>
-                      <strong>Parent confirmation synced</strong>
-                      <span>Family confirmed intervention schedule and attendance reminder.</span>
+                      <strong>Case manager review queued</strong>
+                      <span>IEP goal evidence review assigned before Friday.</span>
                     </article>
                   </div>
                 </article>
@@ -1664,7 +1625,7 @@
               <div class="panel-head">
                 <div>
                   <h2>Private Messaging Portal</h2>
-                  <p>Approved channels only. Student access receives scheduled alerts, not chat.</p>
+                  <p>Admin/staff coordination only. Student items remain scheduled alerts, not chat.</p>
                 </div>
               </div>
 
@@ -1703,7 +1664,7 @@
               <div class="panel-head">
                 <div>
                   <h2>Shared Communication Log</h2>
-                  <p>Messages sync to admin and staff records. Parent messages sync to the family thread. Student alerts are one-way reminders.</p>
+                  <p>Messages sync to the admin staff record. Student alerts remain one-way reminders.</p>
                 </div>
                 <span class="status sync">Synced</span>
               </div>
@@ -1937,26 +1898,10 @@
         admin: {
           queue: "Fictional demo data showing the admin review workflow.",
           nextLabel: "Next admin move",
-          toast: "Admin access active: full MTSS and schoolwide sync view.",
+          toast: "Admin workspace active.",
           notePrefix: "Admin note synced",
           exportMessage: "Admin export queued: schoolwide tracker, gaps, and intervention summary.",
-          reviewMessage: "Admin biweekly review queue refreshed across all access views.",
-        },
-        student: {
-          queue: "Student access shows simple goals, growth targets, and next steps for the selected learner.",
-          nextLabel: "My next step",
-          toast: "Student access active: personal goals and progress view.",
-          notePrefix: "Student reflection synced",
-          exportMessage: "Student progress snapshot queued.",
-          reviewMessage: "Student goal view refreshed from shared MTSS record.",
-        },
-        parent: {
-          queue: "Parent access shows family-friendly progress, support plans, attendance, and teacher messages.",
-          nextLabel: "Family next step",
-          toast: "Parent access active: family progress and support view.",
-          notePrefix: "Parent message synced",
-          exportMessage: "Parent summary queued: progress, supports, and next family steps.",
-          reviewMessage: "Parent view refreshed from shared MTSS record.",
+          reviewMessage: "Admin biweekly review queue refreshed.",
         },
       };
 
@@ -2065,19 +2010,19 @@
 
       function setAccess(nextAccess, silent = false) {
         currentAccess = nextAccess;
-        accessMode.value = nextAccess;
+        if (accessMode) accessMode.value = nextAccess;
         accessTabs.forEach((tab) => {
           tab.classList.toggle("is-active", tab.dataset.accessTarget === nextAccess);
         });
         accessCards.forEach((card) => {
           card.classList.toggle("is-focused", card.dataset.accessCard === nextAccess);
         });
-        queueCopy.textContent = accessContent[nextAccess].queue;
-        nextLabel.textContent = accessContent[nextAccess].nextLabel;
+        queueCopy.textContent = accessContent[nextAccess]?.queue || accessContent.admin.queue;
+        nextLabel.textContent = accessContent[nextAccess]?.nextLabel || accessContent.admin.nextLabel;
 
         if (!silent) {
           syncTime.textContent = "Just now";
-          showToast(accessContent[nextAccess].toast);
+          showToast(accessContent[nextAccess]?.toast || accessContent.admin.toast);
         }
       }
 
@@ -2325,7 +2270,7 @@ ${flagged.map((student) => `- ${student.name}: ${missingDataFor(student).join(";
         tab.addEventListener("click", () => setAccess(tab.dataset.accessTarget));
       });
 
-      accessMode.addEventListener("change", () => setAccess(accessMode.value));
+      if (accessMode) accessMode.addEventListener("change", () => setAccess(accessMode.value));
 
       document.querySelector("#sync-note").addEventListener("click", () => {
         const note = document.querySelector("#team-note");
@@ -2340,7 +2285,7 @@ ${flagged.map((student) => `- ${student.name}: ${missingDataFor(student).join(";
         teacherFeed.prepend(entry);
         note.value = "";
         syncTime.textContent = "Just now";
-        showToast("Note synced across admin, student, and parent access.");
+        showToast("Admin note synced.");
       });
 
       messageForm.addEventListener("submit", syncMessage);
