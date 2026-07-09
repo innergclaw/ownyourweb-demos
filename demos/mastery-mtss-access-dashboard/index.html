@@ -1620,122 +1620,6 @@
             </article>
           </section>
 
-          <section class="message-portal" aria-label="Messaging portal">
-            <aside class="message-sidebar">
-              <div class="panel-head">
-                <div>
-                  <h2>Private Messaging Portal</h2>
-                  <p>Admin/staff coordination only. Student items remain scheduled alerts, not chat.</p>
-                </div>
-              </div>
-
-              <div class="channel-list" aria-label="Messaging channels">
-                <button class="channel-button is-active" type="button">
-                  <span># staff-mtss</span>
-                  <span class="status sync">3</span>
-                </button>
-                <button class="channel-button" type="button">
-                  <span># family-updates</span>
-                  <span class="status watch">2</span>
-                </button>
-                <button class="channel-button" type="button">
-                  <span># student-alerts</span>
-                  <span class="status ontrack">1</span>
-                </button>
-              </div>
-
-              <div class="rule-grid" aria-label="Communication rules">
-                <div class="rule-card">
-                  <strong>Teacher to Teacher</strong>
-                  <span>Private staff coordination for intervention notes, assessment gaps, and meeting prep.</span>
-                </div>
-                <div class="rule-card">
-                  <strong>Teacher to Parent</strong>
-                  <span>Private family updates, questions, schedule confirmations, and support next steps.</span>
-                </div>
-                <div class="rule-card">
-                  <strong>Student Alerts Only</strong>
-                  <span>Students receive scheduled meeting alerts. Teaching conversations happen in person.</span>
-                </div>
-              </div>
-            </aside>
-
-            <article class="message-main">
-              <div class="panel-head">
-                <div>
-                  <h2>Shared Communication Log</h2>
-                  <p>Messages sync to the admin staff record. Student alerts remain one-way reminders.</p>
-                </div>
-                <span class="status sync">Synced</span>
-              </div>
-
-              <div class="message-feed" id="message-feed">
-                <article>
-                  <span class="message-avatar">MR</span>
-                  <div class="message-bubble">
-                    <header>
-                      <strong>Teacher to Teacher - Private</strong>
-                      <span class="status sync">Staff</span>
-                    </header>
-                    <p>Ms. Rivera sent Mr. Hall the updated MAP and Amplify notes before the biweekly review.</p>
-                  </div>
-                </article>
-                <article>
-                  <span class="message-avatar">AF</span>
-                  <div class="message-bubble">
-                    <header>
-                      <strong>Teacher to Parent - Private</strong>
-                      <span class="status watch">Family</span>
-                    </header>
-                    <p>Aaliyah Carter Family received a reading intervention schedule confirmation.</p>
-                  </div>
-                </article>
-                <article>
-                  <span class="message-avatar">SA</span>
-                  <div class="message-bubble">
-                    <header>
-                      <strong>Student Scheduled Alert</strong>
-                      <span class="status ontrack">Alert</span>
-                    </header>
-                    <p>Student alert scheduled: reading goal conference with Ms. Rivera on Thursday at 2:15 PM.</p>
-                  </div>
-                </article>
-              </div>
-
-              <div class="meeting-alert">
-                <strong id="student-alert-title">Student Meeting Alert Preview</strong>
-                <span id="student-alert-copy">A scheduled alert can remind the selected student to attend a teacher or parent teaching meeting. No direct message thread opens for students.</span>
-              </div>
-
-              <form class="message-form" id="message-form">
-                <div class="field">
-                  <label for="message-channel">Message Type</label>
-                  <select id="message-channel">
-                    <option value="teacher-teacher">Teacher to Teacher - Private</option>
-                    <option value="teacher-parent">Teacher to Parent - Private</option>
-                    <option value="parent-teacher">Parent to Teacher/Admin - Private</option>
-                    <option value="student-alert">Student Scheduled Alert - Meeting Only</option>
-                    <option value="blocked-student">Blocked: Direct Student Message</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="message-recipient">Recipient</label>
-                  <select id="message-recipient">
-                    <option>Ms. Rivera - Reading Lead</option>
-                    <option>Mr. Hall - Math Lead</option>
-                    <option>Aaliyah Carter Family</option>
-                    <option>Malik Johnson Family</option>
-                    <option>Selected Student - Alert Only</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="message-body">Message or Alert</label>
-                  <textarea id="message-body" placeholder="Example: Please confirm the Tier 2 reading meeting for Thursday at 2:15 PM."></textarea>
-                </div>
-                <button class="button primary" type="submit">Sync Message</button>
-              </form>
-            </article>
-          </section>
         </div>
       </main>
     </div>
@@ -1880,13 +1764,6 @@
       const accessCards = document.querySelectorAll("[data-access-card]");
       const queueCopy = document.querySelector("#queue-copy");
       const nextLabel = document.querySelector("#next-label");
-      const messageForm = document.querySelector("#message-form");
-      const messageChannel = document.querySelector("#message-channel");
-      const messageRecipient = document.querySelector("#message-recipient");
-      const messageBody = document.querySelector("#message-body");
-      const messageFeed = document.querySelector("#message-feed");
-      const studentAlertTitle = document.querySelector("#student-alert-title");
-      const studentAlertCopy = document.querySelector("#student-alert-copy");
       const toggleControls = document.querySelector("#toggle-controls");
       const agentLog = document.querySelector("#agent-log");
       const agentForm = document.querySelector("#agent-form");
@@ -2024,30 +1901,6 @@
           syncTime.textContent = "Just now";
           showToast(accessContent[nextAccess]?.toast || accessContent.admin.toast);
         }
-      }
-
-      function channelLabel(value) {
-        return {
-          "teacher-teacher": "Teacher to Teacher - Private",
-          "teacher-parent": "Teacher to Parent - Private",
-          "parent-teacher": "Parent to Teacher/Admin - Private",
-          "student-alert": "Student Scheduled Alert",
-          "blocked-student": "Blocked Direct Student Message",
-        }[value];
-      }
-
-      function channelStatus(value) {
-        if (value === "student-alert") return ["ontrack", "Alert"];
-        if (value === "teacher-parent" || value === "parent-teacher") return ["watch", "Family"];
-        return ["sync", "Private"];
-      }
-
-      function recipientInitials(value) {
-        if (value.includes("Family")) return "FA";
-        if (value.includes("Hall")) return "MH";
-        if (value.includes("Rivera")) return "MR";
-        if (value.includes("Student")) return "SA";
-        return "MC";
       }
 
       function normalize(value) {
@@ -2199,51 +2052,6 @@ ${flagged.map((student) => `- ${student.name}: ${missingDataFor(student).join(";
         agentInput.value = "";
       }
 
-      function syncMessage(event) {
-        event.preventDefault();
-
-        const channel = messageChannel.value;
-        const recipient = messageRecipient.value;
-        const body = messageBody.value.trim();
-
-        if (channel === "blocked-student") {
-          showToast("Direct parent-to-student or teacher-to-student messaging is disabled. Schedule an in-person meeting alert instead.");
-          return;
-        }
-
-        if (!body) {
-          showToast("Add a message or meeting alert before syncing.");
-          return;
-        }
-
-        const [statusClassName, statusLabel] = channelStatus(channel);
-        const entry = document.createElement("article");
-        entry.innerHTML = `
-          <span class="message-avatar">${recipientInitials(recipient)}</span>
-          <div class="message-bubble">
-            <header>
-              <strong>${channelLabel(channel)}</strong>
-              <span class="status ${statusClassName}">${statusLabel}</span>
-            </header>
-            <p>${recipient}: ${body}</p>
-          </div>
-        `;
-        messageFeed.prepend(entry);
-
-        const syncEntry = document.createElement("article");
-        syncEntry.innerHTML = `<strong>${channelLabel(channel)} synced</strong><span>${recipient}: ${body}</span>`;
-        teacherFeed.prepend(syncEntry);
-
-        if (channel === "student-alert") {
-          studentAlertTitle.textContent = "Student Meeting Alert Scheduled";
-          studentAlertCopy.textContent = `${recipient}: ${body}. This is a one-way scheduled alert only; no direct student message thread is opened.`;
-        }
-
-        messageBody.value = "";
-        syncTime.textContent = "Just now";
-        showToast("Communication synced across approved access views.");
-      }
-
       function updateMetrics() {
         const subject = document.querySelector("#subject-filter").value;
         const grade = document.querySelector("#grade-filter").value;
@@ -2288,8 +2096,6 @@ ${flagged.map((student) => `- ${student.name}: ${missingDataFor(student).join(";
         showToast("Admin note synced.");
       });
 
-      messageForm.addEventListener("submit", syncMessage);
-
       agentForm.addEventListener("submit", (event) => {
         event.preventDefault();
         runAgentPrompt(agentInput.value);
@@ -2297,22 +2103,6 @@ ${flagged.map((student) => `- ${student.name}: ${missingDataFor(student).join(";
 
       agentPromptButtons.forEach((button) => {
         button.addEventListener("click", () => runAgentPrompt(button.dataset.agentPrompt));
-      });
-
-      messageChannel.addEventListener("change", () => {
-        if (messageChannel.value === "student-alert") {
-          messageRecipient.value = "Selected Student - Alert Only";
-          messageBody.placeholder = "Example: Reminder: attend reading goal meeting with Ms. Rivera Thursday at 2:15 PM.";
-          return;
-        }
-
-        if (messageChannel.value === "blocked-student") {
-          messageRecipient.value = "Selected Student - Alert Only";
-          messageBody.placeholder = "Direct student messaging is blocked. Use Student Scheduled Alert for meeting reminders.";
-          return;
-        }
-
-        messageBody.placeholder = "Example: Please confirm the Tier 2 reading meeting for Thursday at 2:15 PM.";
       });
 
       document.querySelector("#run-review").addEventListener("click", () => {
