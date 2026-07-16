@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2e3cc">
+  <meta name="description" content="Order 24K Catering by Chef Dnia's $30 plate special. Choose steak tips or garlic herb chicken, pick your sides, and select pickup or delivery.">
+  <meta property="og:title" content="24K Catering by Chef Dnia">
+  <meta property="og:description" content="Golden flavor. No shortcuts. Choose your $30 plate and order online.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://innergclaw.github.io/ownyourweb-demos/demos/chef-dnia-24k-catering/assets/og.png">
+  <title>24K Catering by Chef Dnia | $30 Plate Special</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,800&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f2e3cc;
+      --paper: #fff8ed;
+      --ink: #24170f;
+      --brown: #3a2116;
+      --rust: #c34d25;
+      --gold: #f0b92e;
+      --green: #586342;
+      --muted: #74685b;
+      --display: "Archivo Black", Impact, sans-serif;
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "DM Sans", system-ui, sans-serif;
+      --ease-out: cubic-bezier(.23, 1, .32, 1);
+      --ease-in-out: cubic-bezier(.77, 0, .175, 1);
+      --shadow: 0 26px 70px rgba(56, 32, 18, .17), 0 4px 14px rgba(56, 32, 18, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font: 400 16px/1.55 var(--sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-synthesis: none;
+      overflow-x: hidden;
+    }
+    body.modal-open { overflow: hidden; }
+    img { display: block; width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    ::selection { color: var(--ink); background: var(--gold); }
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--paper);
+      background: var(--rust);
+      transform: translateY(0);
+      transition: transform 650ms var(--ease-in-out);
+    }
+    .loader::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      opacity: .18;
+      background: radial-gradient(circle, transparent 32%, rgba(36,23,15,.35) 33% 34%, transparent 35%);
+      background-size: 40px 40px;
+      transform: rotate(-7deg);
+    }
+    body.ready .loader { transform: translateY(-100%); }
+    .loader-inner { position: relative; text-align: center; }
+    .loader-mark { color: var(--gold); font: 400 clamp(5rem, 18vw, 11rem)/.75 var(--serif); letter-spacing: -.08em; }
+    .loader p { margin: 30px 0 0; font: 800 .7rem var(--sans); letter-spacing: .25em; text-transform: uppercase; }
+    .loader-line { width: 180px; height: 4px; margin: 18px auto 0; overflow: hidden; background: rgba(255,255,255,.18); }
+    .loader-line::after { content: ""; display: block; width: 100%; height: 100%; background: var(--gold); transform: translateX(-100%); animation: loader-line 950ms var(--ease-in-out) forwards; }
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+      padding: 0 3.2vw;
+    }
+    .logo { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; }
+    .logo-mark { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; color: var(--gold); background: var(--ink); font: 400 21px var(--serif); letter-spacing: -.05em; box-shadow: inset 0 0 0 2px var(--gold); }
+    .logo-copy { font: 800 10px/1.05 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+    .logo-copy strong { display: block; font: 400 18px/.85 var(--serif); letter-spacing: 0; text-transform: none; }
+    .nav { display: flex; align-items: center; gap: 34px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .nav-link { position: relative; min-height: 44px; display: inline-flex; align-items: center; }
+    .nav-link::after { content: ""; position: absolute; inset: auto 0 7px; height: 2px; background: var(--rust); transform: scaleX(0); transform-origin: right; transition: transform 180ms var(--ease-out); }
+    .nav-cta, .cta, .order-action {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 0 23px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--paper);
+      background: var(--rust);
+      box-shadow: 0 11px 0 var(--ink), 0 20px 35px rgba(36,23,15,.16);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      user-select: none;
+      transition-property: transform, background-color, box-shadow;
+      transition-duration: 160ms;
+      transition-timing-function: var(--ease-out);
+    }
+    .nav-cta { min-height: 44px; padding-inline: 20px; box-shadow: 0 7px 0 var(--ink); }
+    .nav-cta:active, .cta:active, .order-action:active, .plate-select:active, .choice:active, .side-option:active, .fulfill-option:active, .qty-button:active { transform: scale(.96); }
+    .menu-toggle { display: none; width: 48px; height: 48px; padding: 0; border: 0; border-radius: 50%; background: var(--ink); cursor: pointer; }
+    .menu-toggle span { display: block; width: 19px; height: 2px; margin: 5px auto; background: var(--paper); transition: transform 180ms var(--ease-out), opacity 140ms var(--ease-out); }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      padding: 110px 3.2vw 46px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 22% 70%, rgba(240,185,46,.34), transparent 23rem),
+        var(--cream);
+    }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .22; background-image: radial-gradient(rgba(36,23,15,.22) .65px, transparent .65px); background-size: 8px 8px; pointer-events: none; }
+    .hero-headline {
+      position: relative;
+      z-index: 2;
+      max-width: 1500px;
+      margin: 0 auto;
+      color: var(--rust);
+      font: 400 clamp(5rem, 15vw, 14.8rem)/.69 var(--display);
+      letter-spacing: -.085em;
+      text-align: center;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    .hero-headline .line { display: block; overflow: hidden; }
+    .hero-headline .line span { display: block; transform: translateY(105%); }
+    body.ready .hero-headline .line span { animation: hero-up 850ms var(--ease-out) forwards; }
+    body.ready .hero-headline .line:nth-child(2) span { animation-delay: 90ms; }
+    .hero-stage { position: relative; z-index: 3; width: min(760px, 59vw); margin: -5.5vw auto 0; opacity: 0; transform: translateY(38px) scale(.96) rotate(-2deg); filter: blur(7px); }
+    body.ready .hero-stage { animation: hero-plate 1050ms 210ms var(--ease-out) forwards; }
+    .hero-stage::before { content: ""; position: absolute; inset: 14% 10% 7%; z-index: -1; border-radius: 50%; background: rgba(36,23,15,.26); filter: blur(32px); transform: translateY(16%); }
+    .hero-stage img { aspect-ratio: 1.75; object-fit: cover; border-radius: 46% 54% 48% 52% / 52% 43% 57% 48%; outline: 1px solid oklch(0 0 0 / .1); box-shadow: var(--shadow); }
+    .burst { position: absolute; z-index: 5; display: grid; place-items: center; width: 142px; height: 142px; border-radius: 50%; background: var(--gold); color: var(--ink); transform: rotate(9deg); box-shadow: 0 18px 40px rgba(36,23,15,.22); font: 400 16px/1.02 var(--display); text-align: center; text-transform: uppercase; }
+    .burst::after { content: ""; position: absolute; inset: 8px; border: 2px dashed rgba(36,23,15,.42); border-radius: inherit; }
+    .burst-price { top: 28%; right: 6%; }
+    .burst-price strong { display: block; font-size: 37px; letter-spacing: -.05em; }
+    .burst-fresh { bottom: 9%; left: 4%; background: var(--paper); color: var(--rust); transform: rotate(-8deg); }
+    .hero-kicker { position: absolute; top: 20%; left: 5%; z-index: 5; width: 160px; padding: 13px 15px; color: var(--paper); background: var(--ink); font: 400 20px/.9 var(--display); text-align: center; text-transform: uppercase; transform: rotate(-7deg); opacity: 0; }
+    body.ready .hero-kicker { animation: sticker-in 540ms 520ms var(--ease-out) forwards; }
+    .hero-footer { position: absolute; inset: auto 3.2vw 36px; z-index: 6; display: grid; grid-template-columns: 1fr auto 1fr; gap: 30px; align-items: end; }
+    .hero-copy { max-width: 310px; margin: 0; font-weight: 600; line-height: 1.45; }
+    .hero-copy:last-child { justify-self: end; text-align: end; }
+    .hero-copy strong { color: var(--rust); }
+    .scroll-cue { display: grid; place-items: center; gap: 7px; font-size: 9px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .scroll-cue span { display: grid; place-items: center; width: 45px; height: 45px; border: 2px solid var(--ink); border-radius: 50%; }
+
+    .marquee { overflow: hidden; color: var(--paper); background: var(--ink); transform: rotate(-1.2deg) scale(1.02); }
+    .marquee-track { display: flex; width: max-content; padding: 17px 0; animation: marquee 26s linear infinite; }
+    .marquee-track span { padding-inline-end: 24px; font: 400 clamp(1.4rem, 2.3vw, 2.5rem)/1 var(--display); letter-spacing: -.04em; text-transform: uppercase; white-space: nowrap; }
+    .marquee-track i { color: var(--gold); font-style: normal; }
+
+    .menu-section { padding: 130px 4vw 150px; background: var(--paper); }
+    .section-top { display: grid; grid-template-columns: 1.2fr .8fr; gap: 8vw; align-items: end; max-width: 1320px; margin: 0 auto 64px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 20px; color: var(--rust); font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 31px; height: 2px; background: currentColor; }
+    h2 { margin: 0; font: 400 clamp(3.7rem, 8.5vw, 9rem)/.78 var(--display); letter-spacing: -.075em; text-transform: uppercase; text-wrap: balance; }
+    .section-top > p { max-width: 480px; margin: 0 0 5px; color: var(--muted); font-size: 17px; line-height: 1.7; text-wrap: pretty; }
+    .plate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 1320px; margin: 0 auto; }
+    .plate-card { position: relative; overflow: hidden; background: var(--cream); box-shadow: var(--shadow); }
+    .plate-photo { position: relative; height: 430px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 900ms var(--ease-in-out); }
+    .plate-card.in-view .plate-photo { clip-path: inset(0 0 0 0); }
+    .plate-photo img { width: 200%; max-width: none; height: 100%; object-fit: cover; transition: transform 700ms var(--ease-out); outline: 1px solid oklch(0 0 0 / .1); }
+    .steak-card .plate-photo img { object-position: left center; }
+    .chicken-card .plate-photo img { margin-inline-start: -100%; object-position: right center; }
+    .plate-tag { position: absolute; top: 18px; left: 18px; z-index: 2; padding: 9px 13px; border-radius: 999px; color: var(--paper); background: var(--rust); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 8px 22px rgba(36,23,15,.2); }
+    .plate-card:nth-child(2) .plate-tag { color: var(--ink); background: var(--gold); }
+    .plate-body { display: grid; grid-template-columns: 1fr auto; gap: 14px; padding: 34px 36px 38px; }
+    .plate-body h3 { margin: 0; font: 400 clamp(2.8rem, 4.6vw, 5rem)/.86 var(--display); letter-spacing: -.06em; text-transform: uppercase; }
+    .price { font: 400 31px/1 var(--serif); font-variant-numeric: tabular-nums; }
+    .plate-body > p { grid-column: 1 / -1; max-width: 510px; margin: 0; color: var(--muted); line-height: 1.65; }
+    .plate-includes { grid-column: 1 / -1; display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 800; }
+    .plate-includes span { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; color: var(--paper); background: var(--green); }
+    .plate-select { grid-column: 1 / -1; min-height: 56px; display: flex; align-items: center; justify-content: space-between; margin-top: 7px; padding: 0 20px; border: 0; color: var(--paper); background: var(--ink); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: transform 150ms var(--ease-out), background-color 180ms ease; }
+
+    .build-section { position: relative; padding: 130px 4vw; color: var(--paper); background: var(--brown); overflow: hidden; }
+    .build-section::after { content: "24K"; position: absolute; right: -2vw; top: 2%; color: rgba(240,185,46,.07); font: 400 min(31vw, 450px)/1 var(--display); letter-spacing: -.1em; pointer-events: none; }
+    .build-heading { position: relative; z-index: 2; max-width: 1320px; margin: 0 auto 60px; }
+    .build-heading .eyebrow { color: var(--gold); }
+    .build-heading h2 { max-width: 1000px; }
+    .build-layout { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr); gap: 26px; max-width: 1320px; margin: 0 auto; }
+    .builder { color: var(--ink); background: var(--paper); box-shadow: 0 30px 90px rgba(0,0,0,.3); }
+    .builder-step { padding: 30px; box-shadow: inset 0 -1px rgba(36,23,15,.11); }
+    .builder-step:last-child { box-shadow: none; }
+    .step-heading { display: flex; align-items: center; gap: 13px; margin-bottom: 20px; }
+    .step-number { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 auto; border-radius: 50%; color: var(--gold); background: var(--ink); font: 400 14px var(--display); }
+    .step-heading strong, .step-heading small { display: block; }
+    .step-heading strong { font: 400 17px var(--display); letter-spacing: -.02em; text-transform: uppercase; }
+    .step-heading small { margin-top: 2px; color: var(--muted); font-size: 10px; }
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .choice, .fulfill-option { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; min-height: 78px; padding: 14px; border: 0; background: #eadbc6; text-align: start; cursor: pointer; box-shadow: inset 0 0 0 2px transparent; transition: transform 150ms var(--ease-out), box-shadow 180ms ease, background-color 180ms ease; }
+    .choice.selected, .fulfill-option.selected { background: var(--paper); box-shadow: inset 0 0 0 3px var(--rust), 0 9px 24px rgba(195,77,37,.12); }
+    .radio { width: 20px; height: 20px; border: 2px solid rgba(36,23,15,.28); border-radius: 50%; box-shadow: inset 0 0 0 4px #eadbc6; }
+    .selected .radio { border-color: var(--rust); background: var(--rust); box-shadow: inset 0 0 0 4px var(--paper); }
+    .choice strong, .choice small { display: block; }
+    .choice strong { font: 400 14px var(--display); text-transform: uppercase; }
+    .choice small { color: var(--muted); font-size: 9px; }
+    .choice b { font: 400 19px var(--serif); font-variant-numeric: tabular-nums; }
+    .side-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .side-option { min-height: 50px; display: flex; align-items: center; gap: 9px; padding: 8px 11px; border: 0; background: #eadbc6; font-size: 11px; font-weight: 800; text-align: start; cursor: pointer; box-shadow: inset 0 0 0 2px transparent; transition: transform 150ms var(--ease-out), box-shadow 180ms ease, background-color 180ms ease; }
+    .side-option span { display: grid; place-items: center; width: 25px; height: 25px; flex: 0 0 auto; border-radius: 50%; background: var(--paper); }
+    .side-option.selected { background: var(--paper); box-shadow: inset 0 0 0 2px var(--rust); }
+    .side-option.selected span { color: var(--paper); background: var(--rust); }
+    .side-option:disabled { opacity: .5; cursor: not-allowed; }
+    .fulfill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .fulfill-option { grid-template-columns: auto 1fr; min-height: 70px; }
+    .fulfill-icon { grid-row: 1 / 3; display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; color: var(--rust); background: var(--paper); font-size: 18px; }
+    .fulfill-option strong, .fulfill-option small { display: block; }
+    .fulfill-option strong { font: 400 14px var(--display); text-transform: uppercase; }
+    .fulfill-option small { color: var(--muted); font-size: 9px; }
+    .order-summary { position: sticky; top: 20px; align-self: start; padding: 30px; color: var(--ink); background: var(--gold); box-shadow: 0 30px 90px rgba(0,0,0,.3); }
+    .summary-eyebrow { margin: 0 0 24px; font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .summary-title { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 19px; border-bottom: 2px solid rgba(36,23,15,.17); }
+    .summary-title h3 { margin: 0; font: 400 28px/.95 var(--display); letter-spacing: -.04em; text-transform: uppercase; }
+    .summary-title strong { font: 400 25px var(--serif); font-variant-numeric: tabular-nums; }
+    .summary-lines { min-height: 115px; display: grid; align-content: start; gap: 6px; padding: 18px 0; color: rgba(36,23,15,.73); font-size: 11px; }
+    .summary-lines strong { color: var(--ink); }
+    .qty-row { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-top: 2px solid rgba(36,23,15,.17); font-size: 11px; font-weight: 800; }
+    .qty-controls { display: flex; align-items: center; gap: 12px; }
+    .qty-button { width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: var(--paper); cursor: pointer; font-size: 20px; transition: transform 140ms var(--ease-out), background-color 160ms ease; }
+    #quantity { min-width: 15px; text-align: center; font-variant-numeric: tabular-nums; }
+    .total-row { display: flex; justify-content: space-between; align-items: end; padding: 20px 0; border-top: 2px solid rgba(36,23,15,.17); }
+    .total-row span { font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .total-row small { display: block; margin-top: 3px; color: rgba(36,23,15,.62); font-size: 8px; font-weight: 600; text-transform: none; }
+    .total-row strong { font: 400 38px var(--serif); font-variant-numeric: tabular-nums; }
+    .order-action { width: 100%; justify-content: space-between; color: var(--paper); background: var(--ink); box-shadow: 0 10px 0 var(--rust); }
+    .order-action:disabled { opacity: .48; cursor: not-allowed; transform: none; box-shadow: 0 7px 0 rgba(36,23,15,.35); }
+    .summary-note { margin: 17px 0 0; font-size: 8px; text-align: center; }
+
+    .experience { display: grid; grid-template-columns: 1fr 1fr; min-height: 770px; background: var(--gold); }
+    .experience-media { position: relative; overflow: hidden; clip-path: inset(0 100% 0 0); transition: clip-path 950ms var(--ease-in-out); }
+    .experience.in-view .experience-media { clip-path: inset(0 0 0 0); }
+    .experience-media img { width: 100%; height: 100%; object-fit: cover; object-position: left center; outline: 1px solid oklch(0 0 0 / .1); }
+    .experience-media::after { content: "24K"; position: absolute; right: 20px; bottom: -38px; color: var(--gold); font: 400 150px/.8 var(--display); mix-blend-mode: screen; opacity: .62; }
+    .experience-copy { display: flex; flex-direction: column; justify-content: center; padding: 9vw; }
+    .experience-copy .eyebrow { color: var(--ink); }
+    .experience-copy h2 { font-size: clamp(3.7rem, 6.5vw, 7rem); }
+    .experience-copy > p { max-width: 540px; margin: 28px 0; color: rgba(36,23,15,.7); font-size: 17px; line-height: 1.7; }
+    .principles { display: grid; gap: 0; margin: 6px 0 0; padding: 0; list-style: none; }
+    .principles li { display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 18px 0; border-top: 2px solid rgba(36,23,15,.14); }
+    .principles li > span { color: var(--rust); font-size: 20px; }
+    .principles strong { font: 400 17px var(--display); text-transform: uppercase; }
+    .principles p { margin: 2px 0 0; color: rgba(36,23,15,.66); font-size: 11px; }
+
+    .final-cta { position: relative; overflow: hidden; padding: 130px 5vw 145px; color: var(--paper); background: var(--rust); text-align: center; }
+    .final-cta::before { content: ""; position: absolute; inset: 0; opacity: .16; background-image: repeating-linear-gradient(-12deg, transparent 0 20px, rgba(36,23,15,.3) 21px 23px); }
+    .final-cta > * { position: relative; z-index: 1; }
+    .final-cta .eyebrow { justify-content: center; color: var(--gold); }
+    .final-cta h2 { max-width: 1100px; margin: 0 auto 42px; }
+    .final-cta h2 em { display: block; color: var(--gold); font: 400 .63em var(--serif); letter-spacing: -.03em; text-transform: none; }
+    .final-cta .cta { color: var(--ink); background: var(--gold); box-shadow: 0 11px 0 var(--ink); }
+
+    footer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 30px; align-items: center; padding: 42px 4vw 24px; color: var(--paper); background: var(--ink); }
+    footer .logo-mark { color: var(--ink); background: var(--gold); box-shadow: none; }
+    footer p { margin: 0; color: rgba(255,248,237,.55); font: 400 15px var(--serif); }
+    footer nav { display: flex; gap: 24px; justify-self: end; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+    .powered { grid-column: 1 / -1; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.11); color: rgba(255,255,255,.42); font-size: 9px; letter-spacing: .08em; text-align: center; }
+    .powered strong { color: var(--gold); letter-spacing: .16em; }
+
+    .cart-pill { position: fixed; right: 18px; bottom: 18px; z-index: 40; min-height: 54px; display: flex; align-items: center; gap: 12px; padding: 0 18px; border: 0; border-radius: 999px; color: var(--paper); background: var(--ink); box-shadow: 0 18px 50px rgba(36,23,15,.28); font-size: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(14px) scale(.96); transition: opacity 180ms var(--ease-out), transform 220ms var(--ease-out); }
+    .cart-pill.visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+    .cart-count { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: var(--ink); background: var(--gold); font-variant-numeric: tabular-nums; }
+
+    .modal-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; background: rgba(36,23,15,.78); backdrop-filter: blur(9px); opacity: 0; pointer-events: none; transition: opacity 180ms var(--ease-out); }
+    .modal-backdrop.open { opacity: 1; pointer-events: auto; }
+    .order-modal { position: relative; width: min(590px, 100%); max-height: calc(100svh - 30px); overflow-y: auto; padding: 42px; background: var(--paper); box-shadow: 0 40px 100px rgba(0,0,0,.42); opacity: 0; transform: translateY(18px) scale(.96); transform-origin: center; transition: opacity 180ms var(--ease-out), transform 240ms var(--ease-out); }
+    .open .order-modal { opacity: 1; transform: translateY(0) scale(1); }
+    .modal-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; font-size: 28px; transition: transform 150ms var(--ease-out); }
+    .modal-close:active { transform: scale(.96); }
+    .order-modal h2 { margin-bottom: 13px; font-size: clamp(2.7rem, 7vw, 5rem); }
+    .modal-order { margin: 0 0 24px; padding-bottom: 19px; border-bottom: 1px solid rgba(36,23,15,.15); color: var(--muted); font-size: 12px; }
+    .order-form { display: grid; gap: 14px; }
+    .order-form label { display: grid; gap: 6px; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .order-form input, .order-form textarea { width: 100%; min-height: 52px; padding: 13px 14px; border: 0; border-radius: 0; outline: none; color: var(--ink); background: #eadbc6; font-size: 16px; text-transform: none; box-shadow: inset 0 0 0 2px transparent; transition: box-shadow 160ms ease; }
+    .order-form textarea { min-height: 90px; resize: vertical; }
+    .order-form input:focus, .order-form textarea:focus { box-shadow: inset 0 0 0 2px var(--rust); }
+    .form-note { margin: 2px 0 0; color: var(--muted); font-size: 9px; text-align: center; }
+    .success { display: none; padding: 20px 0 8px; text-align: center; }
+    .success.active { display: block; }
+    .success-mark { display: grid; place-items: center; width: 70px; height: 70px; margin: 0 auto 28px; border-radius: 50%; color: var(--ink); background: var(--gold); box-shadow: 0 0 0 11px rgba(240,185,46,.16); font-size: 30px; }
+    .success p { max-width: 450px; margin: 0 auto 26px; color: var(--muted); }
+    .order-modal.confirmed .modal-order, .order-modal.confirmed .order-form, .order-modal.confirmed > .eyebrow, .order-modal.confirmed > h2 { display: none; }
+    .order-modal.confirmed .success { display: block; }
+
+    .reveal { opacity: 0; transform: translateY(28px); filter: blur(5px); transition: opacity 620ms var(--ease-out), transform 720ms var(--ease-out), filter 620ms var(--ease-out); }
+    .reveal.in-view { opacity: 1; transform: translateY(0); filter: blur(0); }
+    .reveal-delay { transition-delay: 70ms; }
+
+    @keyframes loader-line { to { transform: translateX(0); } }
+    @keyframes hero-up { to { transform: translateY(0); } }
+    @keyframes hero-plate { to { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); filter: blur(0); } }
+    @keyframes sticker-in { from { opacity: 0; transform: rotate(-7deg) translateY(18px) scale(.9); } to { opacity: 1; transform: rotate(-7deg) translateY(0) scale(1); } }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    @media (hover: hover) and (pointer: fine) {
+      .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+      .nav-cta:hover, .cta:hover, .order-action:not(:disabled):hover { background: var(--green); transform: translateY(-2px); box-shadow: 0 13px 0 var(--ink), 0 22px 42px rgba(36,23,15,.2); }
+      .plate-card:hover .plate-photo img { transform: scale(1.045); }
+      .plate-select:hover { background: var(--rust); }
+      .choice:hover, .side-option:not(:disabled):hover, .fulfill-option:hover { background: #e3d0b6; }
+      .qty-button:hover { background: #f8ead6; }
+      .modal-close:hover { transform: rotate(6deg); }
+    }
+
+    @media (max-width: 900px) {
+      .site-header { min-height: 76px; padding-inline: 18px; }
+      .logo-mark { width: 52px; height: 52px; }
+      .menu-toggle { display: block; position: relative; z-index: 2; }
+      .nav { position: absolute; top: 68px; left: 14px; right: 14px; display: grid; gap: 0; padding: 16px; background: var(--paper); box-shadow: var(--shadow); opacity: 0; visibility: hidden; transform: translateY(-10px) scale(.97); transform-origin: top right; transition: opacity 170ms var(--ease-out), transform 220ms var(--ease-out), visibility 0s linear 220ms; }
+      .nav.open { opacity: 1; visibility: visible; transform: translateY(0) scale(1); transition: opacity 170ms var(--ease-out), transform 220ms var(--ease-out), visibility 0s linear 0s; }
+      .nav-link { border-bottom: 1px solid rgba(36,23,15,.11); }
+      .nav-cta { margin-top: 12px; }
+      .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+      .hero { min-height: 920px; padding-top: 130px; }
+      .hero-headline { font-size: clamp(5.4rem, 23vw, 10rem); }
+      .hero-stage { width: 92vw; margin-top: 5vw; }
+      .hero-stage img { aspect-ratio: 1.25; }
+      .hero-kicker { top: 37%; left: 4%; }
+      .burst { width: 112px; height: 112px; font-size: 13px; }
+      .burst-price { top: 44%; right: 3%; }
+      .burst-price strong { font-size: 29px; }
+      .burst-fresh { bottom: 25%; left: 3%; }
+      .hero-footer { grid-template-columns: 1fr 1fr; }
+      .hero-copy { font-size: 13px; }
+      .scroll-cue { display: none; }
+      .section-top { grid-template-columns: 1fr; gap: 24px; }
+      .plate-grid { grid-template-columns: 1fr; }
+      .build-layout { grid-template-columns: 1fr; }
+      .order-summary { position: relative; top: auto; }
+      .experience { grid-template-columns: 1fr; }
+      .experience-media { min-height: 620px; }
+      .experience-copy { padding: 90px 24px; }
+      footer { grid-template-columns: 1fr auto; }
+      footer p { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .logo-copy { display: none; }
+      .hero { min-height: 840px; padding-inline: 15px; }
+      .hero-headline { font-size: clamp(4.6rem, 24vw, 7.5rem); }
+      .hero-stage { width: 106vw; margin-inline-start: -3vw; }
+      .hero-stage img { border-radius: 44% 56% 47% 53% / 52% 43% 57% 48%; }
+      .hero-kicker { top: 34%; width: 125px; font-size: 15px; }
+      .burst { width: 96px; height: 96px; font-size: 11px; }
+      .burst-price { top: 43%; }
+      .burst-price strong { font-size: 24px; }
+      .burst-fresh { bottom: 27%; }
+      .hero-footer { inset-inline: 18px; bottom: 26px; gap: 15px; }
+      .hero-copy { font-size: 11px; }
+      .menu-section, .build-section { padding: 92px 15px 105px; }
+      .section-top { margin-bottom: 40px; }
+      h2 { font-size: clamp(3.5rem, 18vw, 5.5rem); }
+      .plate-photo { height: 290px; }
+      .plate-body { padding: 28px 21px 28px; }
+      .plate-body h3 { font-size: 2.85rem; }
+      .build-heading { margin-bottom: 40px; }
+      .builder-step { padding: 25px 17px; }
+      .choices, .fulfill-grid { grid-template-columns: 1fr; }
+      .side-grid { grid-template-columns: 1fr 1fr; }
+      .order-summary { padding: 25px 20px; }
+      .experience-media { min-height: 520px; }
+      .experience-media img { object-position: 28% center; }
+      .final-cta { padding: 95px 18px 110px; }
+      .final-cta h2 { font-size: clamp(3.8rem, 18vw, 6rem); }
+      footer { grid-template-columns: 1fr; text-align: center; }
+      footer .logo { justify-content: center; }
+      footer nav { justify-self: center; }
+      .cart-pill { right: 12px; bottom: 12px; }
+      .order-modal { padding: 42px 21px 28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .loader { display: none; }
+      .hero-headline .line span, .hero-stage, .hero-kicker, .reveal { opacity: 1; filter: none; transform: none; animation: none !important; transition: opacity 160ms ease !important; }
+      .plate-photo, .experience-media { clip-path: none; transition: none; }
+      .marquee-track { animation: none; }
+      .plate-photo img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-mark">24K</div>
+      <p>Plating something golden</p>
+      <div class="loader-line"></div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="24K Catering home">
+      <span class="logo-mark">24K</span>
+      <span class="logo-copy"><strong>Catering</strong>by Chef Dnia</span>
+    </a>
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      <a class="nav-link" href="#menu">Menu</a>
+      <a class="nav-link" href="#story">Our standard</a>
+      <a class="nav-link" href="#build">Pickup + delivery</a>
+      <a class="nav-cta" href="#build">Order a plate <span>↘</span></a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <h1 class="hero-headline"><span class="line"><span>Golden</span></span><span class="line"><span>Plates</span></span></h1>
+      <div class="hero-stage">
+        <img src="assets/chef-dnia-plates.png" alt="Steak tips and garlic herb chicken dinner platters with homemade sides">
+      </div>
+      <div class="hero-kicker">Smothered<br>fresh</div>
+      <div class="burst burst-price"><span><strong>$30</strong>plate special</span></div>
+      <div class="burst burst-fresh"><span>Made fresh<br>in small<br>batches</span></div>
+      <div class="hero-footer">
+        <p class="hero-copy">Tender entrées, <strong>real sides,</strong> and the kind of flavor that makes the plate disappear.</p>
+        <a class="scroll-cue" href="#menu"><span>↓</span>See the menu</a>
+        <p class="hero-copy">Choose steak tips or garlic herb chicken. Pickup and local delivery available.</p>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">
+      <span>Steak tips <i>✦</i> Garlic herb chicken <i>✦</i> Candied yams <i>✦</i> Honey garlic rolls <i>✦</i> Pickup + delivery <i>✦</i>&nbsp;</span>
+      <span>Steak tips <i>✦</i> Garlic herb chicken <i>✦</i> Candied yams <i>✦</i> Honey garlic rolls <i>✦</i> Pickup + delivery <i>✦</i>&nbsp;</span>
+    </div></div>
+
+    <section class="menu-section" id="menu">
+      <div class="section-top reveal">
+        <div><p class="eyebrow">Choose your favorite</p><h2>Two plates.<br>Zero misses.</h2></div>
+        <p>Every plate comes over rice with a honey garlic Hawaiian roll. Pick your entrée, choose your sides, and let Chef Dnia handle the rest.</p>
+      </div>
+      <div class="plate-grid">
+        <article class="plate-card steak-card reveal">
+          <div class="plate-photo"><img src="assets/chef-dnia-plates.png" alt="Steak tips smothered in savory gravy over rice"><span class="plate-tag">Most popular</span></div>
+          <div class="plate-body"><h3>Steak tips<br>& gravy</h3><strong class="price">$30</strong><p>Tender steak tips smothered in savory brown gravy and served over fluffy rice.</p><div class="plate-includes"><span>✓</span>Choose any two homemade sides</div><button class="plate-select" type="button" data-pick-plate="steak">Make this my plate <span>→</span></button></div>
+        </article>
+        <article class="plate-card chicken-card reveal reveal-delay">
+          <div class="plate-photo"><img src="assets/chef-dnia-plates.png" alt="Garlic herb chicken with candied yams and broccolini"><span class="plate-tag">Chef's pick</span></div>
+          <div class="plate-body"><h3>Garlic herb<br>chicken</h3><strong class="price">$30</strong><p>Golden garlic herb chicken over rice with sweet candied yams and your choice of greens.</p><div class="plate-includes"><span>✓</span>Yams included — choose your green</div><button class="plate-select" type="button" data-pick-plate="chicken">Make this my plate <span>→</span></button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="build-section" id="build">
+      <div class="build-heading reveal"><p class="eyebrow">Build your order</p><h2>Make the plate yours.</h2></div>
+      <div class="build-layout">
+        <div class="builder reveal">
+          <section class="builder-step">
+            <div class="step-heading"><span class="step-number">1</span><div><strong>Choose your entrée</strong><small>One entrée per order</small></div></div>
+            <div class="choices">
+              <button class="choice" type="button" data-plate="steak"><span class="radio"></span><span><strong>Steak tips & gravy</strong><small>Over rice · choose 2 sides</small></span><b>$30</b></button>
+              <button class="choice" type="button" data-plate="chicken"><span class="radio"></span><span><strong>Garlic herb chicken</strong><small>Over rice · yams + 1 green</small></span><b>$30</b></button>
+            </div>
+          </section>
+          <section class="builder-step">
+            <div class="step-heading"><span class="step-number">2</span><div><strong id="side-heading">Choose your sides</strong><small id="side-status">Select a plate first</small></div></div>
+            <div class="side-grid" id="side-options"></div>
+          </section>
+          <section class="builder-step">
+            <div class="step-heading"><span class="step-number">3</span><div><strong>How are you getting it?</strong><small>Delivery fee may apply</small></div></div>
+            <div class="fulfill-grid">
+              <button class="fulfill-option selected" type="button" data-fulfillment="Pickup"><span class="fulfill-icon">⌖</span><span><strong>Pickup</strong><small>Location sent after confirmation</small></span></button>
+              <button class="fulfill-option" type="button" data-fulfillment="Delivery"><span class="fulfill-icon">↗</span><span><strong>Delivery</strong><small>Fee based on address</small></span></button>
+            </div>
+          </section>
+        </div>
+
+        <aside class="order-summary reveal reveal-delay" aria-live="polite">
+          <p class="summary-eyebrow">Your plate</p>
+          <div class="summary-title"><h3 id="summary-plate">Choose your plate</h3><strong id="summary-price">$30</strong></div>
+          <div class="summary-lines" id="summary-lines"><span>Your delicious order will appear here.</span></div>
+          <div class="qty-row"><span>Quantity</span><div class="qty-controls"><button class="qty-button" type="button" id="qty-down" aria-label="Decrease quantity">−</button><strong id="quantity">1</strong><button class="qty-button" type="button" id="qty-up" aria-label="Increase quantity">+</button></div></div>
+          <div class="total-row"><span>Total<small id="fulfillment-note">Pickup selected</small></span><strong id="order-total">$30</strong></div>
+          <button class="order-action" type="button" id="review-order" disabled><span id="order-button-label">Choose a plate</span><span>→</span></button>
+          <p class="summary-note">✓ No payment taken until your order is confirmed</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="experience reveal" id="story">
+      <div class="experience-media"><img src="assets/chef-dnia-plates.png" alt="Fresh 24K Catering platters prepared by Chef Dnia"></div>
+      <div class="experience-copy"><p class="eyebrow">The 24K standard</p><h2>Comfort food with main-character energy.</h2><p>This isn't assembly-line food. Chef Dnia makes every plate in small batches, seasons every layer, and packs it ready to enjoy.</p><ul class="principles"><li><span>✦</span><div><strong>Made fresh</strong><p>Small batches protect the flavor and quality.</p></div></li><li><span>✦</span><div><strong>Generous portions</strong><p>A full entrée, rice, sides, and a honey garlic roll.</p></div></li><li><span>✦</span><div><strong>Built around your day</strong><p>Choose convenient pickup or local delivery.</p></div></li></ul></div>
+    </section>
+
+    <section class="final-cta">
+      <p class="eyebrow">Limited plates available</p>
+      <h2>Claim your plate.<em>Before somebody else does.</em></h2>
+      <a class="cta" href="#build">Start my order <span>↑</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#top"><span class="logo-mark">24K</span><span class="logo-copy"><strong>Catering</strong>by Chef Dnia</span></a>
+    <p>Fresh plates. Golden flavor. Made with care.</p>
+    <nav aria-label="Footer navigation"><a href="#menu">Menu</a><a href="#story">Our standard</a><a href="#build">Order</a></nav>
+    <div class="powered">Website experience by <strong>OWNYOURWEB</strong></div>
+  </footer>
+
+  <button class="cart-pill" type="button" id="cart-pill"><span class="cart-count" id="cart-count">1</span><span>Review plate · <b id="cart-total">$30</b></span></button>
+
+  <div class="modal-backdrop" id="order-modal" role="presentation">
+    <section class="order-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" aria-label="Close order form">×</button>
+      <p class="eyebrow">Almost yours</p>
+      <h2 id="modal-title">Where should Chef send your confirmation?</h2>
+      <p class="modal-order" id="modal-order"></p>
+      <form class="order-form" id="order-form">
+        <label>Full name<input type="text" name="name" autocomplete="name" required placeholder="Your name"></label>
+        <label>Mobile number<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required placeholder="(215) 555-0123"></label>
+        <label id="address-label" hidden>Delivery address<input type="text" name="address" autocomplete="street-address" placeholder="Street address"></label>
+        <label>Anything Chef should know?<textarea name="notes" placeholder="Allergies or order notes (optional)"></textarea></label>
+        <button class="order-action" type="submit"><span id="submit-label">Place order request · $30</span><span>→</span></button>
+        <p class="form-note">Chef Dnia will confirm availability, timing, and payment details by text.</p>
+      </form>
+      <div class="success"><div class="success-mark">✓</div><p class="eyebrow">Order request ready</p><h2>You're on Chef Dnia's list.</h2><p>You'll receive a text with availability, timing, and payment details.</p><button class="cta" type="button" id="done-button">Back to the menu</button></div>
+    </section>
+  </div>
+
+  <script>
+    const state = { plate: null, sides: [], quantity: 1, fulfillment: "Pickup" };
+    const steakSides = ["Baked Mac & Cheese", "Green Beans", "Broccolini", "Corn Salsa", "Candied Yams"];
+    const chickenSides = ["Green Beans", "Broccolini"];
+    const plateNames = { steak: "Steak Tips & Gravy", chicken: "Garlic Herb Chicken" };
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+    window.addEventListener("load", () => {
+      window.setTimeout(() => document.body.classList.add("ready"), 850);
+      window.setTimeout(() => $(".loader")?.remove(), 1600);
+    });
+
+    const menuToggle = $(".menu-toggle");
+    const nav = $(".nav");
+    menuToggle.addEventListener("click", () => {
+      const open = menuToggle.getAttribute("aria-expanded") !== "true";
+      menuToggle.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("open", open);
+    });
+    $$(".nav a").forEach((link) => link.addEventListener("click", () => {
+      menuToggle.setAttribute("aria-expanded", "false");
+      nav.classList.remove("open");
+    }));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .13, rootMargin: "0px 0px -7%" });
+    $$(".reveal, .plate-card").forEach((element) => observer.observe(element));
+
+    function setPlate(plate, scroll = false) {
+      state.plate = plate;
+      state.sides = [];
+      render();
+      if (scroll) $("#build").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function isReady() {
+      return state.plate === "steak" ? state.sides.length === 2 : state.plate === "chicken" ? state.sides.length === 1 : false;
+    }
+
+    function orderSides() {
+      return state.plate === "chicken" ? ["Candied Yams", ...state.sides] : state.sides;
+    }
+
+    function toggleSide(side) {
+      if (!state.plate) return;
+      if (state.plate === "chicken") state.sides = [side];
+      else if (state.sides.includes(side)) state.sides = state.sides.filter((item) => item !== side);
+      else if (state.sides.length < 2) state.sides = [...state.sides, side];
+      render();
+    }
+
+    function renderSides() {
+      const container = $("#side-options");
+      const options = state.plate === "chicken" ? chickenSides : steakSides;
+      container.innerHTML = options.map((side) => `<button class="side-option${state.sides.includes(side) ? " selected" : ""}" type="button" data-side="${side}" ${state.plate ? "" : "disabled"}><span>${state.sides.includes(side) ? "✓" : "+"}</span>${side}</button>`).join("");
+      $$('[data-side]', container).forEach((button) => button.addEventListener("click", () => toggleSide(button.dataset.side)));
+    }
+
+    function render() {
+      const ready = isReady();
+      const total = state.quantity * 30;
+      $$("[data-plate]").forEach((button) => button.classList.toggle("selected", button.dataset.plate === state.plate));
+      $$("[data-fulfillment]").forEach((button) => button.classList.toggle("selected", button.dataset.fulfillment === state.fulfillment));
+      $("#side-heading").textContent = state.plate === "chicken" ? "Choose your green" : "Choose your sides";
+      $("#side-status").textContent = state.plate === "steak" ? `${state.sides.length} of 2 selected` : state.plate === "chicken" ? `${state.sides.length} of 1 selected · yams included` : "Select a plate first";
+      $("#summary-plate").textContent = state.plate ? plateNames[state.plate] : "Choose your plate";
+      $("#summary-price").textContent = `$${total}`;
+      $("#quantity").textContent = state.quantity;
+      $("#order-total").textContent = `$${total}`;
+      $("#cart-total").textContent = `$${total}`;
+      $("#cart-count").textContent = state.quantity;
+      $("#fulfillment-note").textContent = state.fulfillment === "Delivery" ? "Delivery quoted separately" : "Pickup selected";
+      $("#summary-lines").innerHTML = state.plate ? `<strong>Over rice + honey garlic roll</strong>${orderSides().map((side) => `<span>+ ${side}</span>`).join("")}<span>· ${state.fulfillment}</span>` : "<span>Your delicious order will appear here.</span>";
+      const orderButton = $("#review-order");
+      orderButton.disabled = !ready;
+      $("#order-button-label").textContent = ready ? "Continue to order" : state.plate ? "Finish choosing sides" : "Choose a plate";
+      $("#cart-pill").classList.toggle("visible", ready);
+      renderSides();
+    }
+
+    $$("[data-pick-plate]").forEach((button) => button.addEventListener("click", () => setPlate(button.dataset.pickPlate, true)));
+    $$("[data-plate]").forEach((button) => button.addEventListener("click", () => setPlate(button.dataset.plate)));
+    $$("[data-fulfillment]").forEach((button) => button.addEventListener("click", () => { state.fulfillment = button.dataset.fulfillment; render(); }));
+    $("#qty-down").addEventListener("click", () => { state.quantity = Math.max(1, state.quantity - 1); render(); });
+    $("#qty-up").addEventListener("click", () => { state.quantity = Math.min(10, state.quantity + 1); render(); });
+
+    const modal = $("#order-modal");
+    const modalPanel = $(".order-modal");
+    const addressLabel = $("#address-label");
+    function openModal() {
+      if (!isReady()) return;
+      const total = state.quantity * 30;
+      modalPanel.classList.remove("confirmed");
+      $("#order-form").reset();
+      $("#modal-order").textContent = `${state.quantity}× ${plateNames[state.plate]} · ${orderSides().join(" + ")} · ${state.fulfillment} · $${total}`;
+      $("#submit-label").textContent = `Place order request · $${total}`;
+      addressLabel.hidden = state.fulfillment !== "Delivery";
+      $("input[name='address']").required = state.fulfillment === "Delivery";
+      modal.classList.add("open");
+      document.body.classList.add("modal-open");
+      window.setTimeout(() => $("input[name='name']").focus(), 180);
+    }
+    function closeModal() {
+      modal.classList.remove("open");
+      document.body.classList.remove("modal-open");
+    }
+    $("#review-order").addEventListener("click", openModal);
+    $("#cart-pill").addEventListener("click", openModal);
+    $(".modal-close").addEventListener("click", closeModal);
+    $("#done-button").addEventListener("click", closeModal);
+    modal.addEventListener("mousedown", (event) => { if (event.target === modal) closeModal(); });
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+    $("#order-form").addEventListener("submit", (event) => { event.preventDefault(); modalPanel.classList.add("confirmed"); });
+
+    render();
+  </script>
+</body>
+</html>
