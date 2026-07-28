@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0b0b">
-  <title>Little Ballers Basketball League | Ages 4–6</title>
-  <meta name="description" content="A fair, organized youth basketball league for children ages 4–6. Register for Saturday games at St. Benedict Church in Philadelphia.">
+  <title>Sign Up | Little Ballers Basketball League</title>
+  <meta name="description" content="Sign up your child for Little Ballers, a fair and organized Saturday basketball league for children ages 4–6 in Philadelphia.">
   <style>
     :root {
       color-scheme: dark;
@@ -192,6 +192,11 @@
 
     .button:active {
       transform: scale(.96);
+    }
+
+    .button:disabled {
+      cursor: not-allowed;
+      opacity: .72;
     }
 
     .hero {
@@ -1444,7 +1449,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#league-details">League details</a>
         <a href="#questions">Parent FAQ</a>
-        <a class="button" href="#registration">Register a player <span aria-hidden="true">↗</span></a>
+        <a class="button" href="#registration">Sign up a child <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -1453,12 +1458,12 @@
     <section class="hero">
       <div class="shell hero-grid">
         <div>
-          <div class="kicker">Philadelphia youth basketball · It’s back</div>
-          <h1>Big league structure. <span class="accent">Little baller energy.</span></h1>
-          <p class="hero-copy">A welcoming full-court basketball league where children ages 4–6 learn the game, join a balanced team, and get a real opportunity to play every Saturday.</p>
+          <div class="kicker">Signups open · Philadelphia · Ages 4–6</div>
+          <h1>Sign up your child. <span class="accent">Let them play.</span></h1>
+          <p class="hero-copy">Give your child a welcoming place to learn basketball, join a balanced team, and play every Saturday. Complete the signup form today to get your little baller on the list.</p>
           <div class="hero-actions">
-            <a class="button" href="#registration">Start registration <span aria-hidden="true">→</span></a>
-            <a class="button secondary" href="#league-details">View league details</a>
+            <a class="button" href="#registration">Sign up a child now <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#league-details">See league details</a>
           </div>
           <ul class="quick-facts" aria-label="League quick facts">
             <li><strong>Ages 4–6</strong><span>Player division</span></li>
@@ -1472,8 +1477,8 @@
           <div class="scoreboard">
             <div>
               <small>Registration status</small>
-              <strong>Now open</strong>
-              <span>Spots are filling</span>
+              <strong>Signups open</strong>
+              <span>Complete the form today</span>
             </div>
             <div class="age">
               <span>Ages</span>
@@ -1489,8 +1494,8 @@
 
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
-        <span>Every child gets a chance</span><span>Saturday basketball</span><span>Balanced draft teams</span><span>Clear parent communication</span>
-        <span>Every child gets a chance</span><span>Saturday basketball</span><span>Balanced draft teams</span><span>Clear parent communication</span>
+        <span>Sign up your little baller</span><span>Ages 4–6</span><span>Saturday basketball</span><span>One quick parent form</span>
+        <span>Sign up your little baller</span><span>Ages 4–6</span><span>Saturday basketball</span><span>One quick parent form</span>
       </div>
     </div>
 
@@ -1524,15 +1529,15 @@
                 <dd>Full-court draft league · Ages 4–6</dd>
               </div>
             </dl>
-            <a class="button" href="#registration">Claim a player spot</a>
+            <a class="button" href="#registration">Sign up your child</a>
           </article>
 
           <article class="process-card reveal" aria-label="Registration process">
             <div class="process-step">
               <span class="num">01</span>
               <div>
-                <h3>Complete the family form</h3>
-                <p>Share parent contact information and one player profile at a time so every registration stays accurate.</p>
+                <h3>Sign up through the form</h3>
+                <p>Complete one parent and player profile at a time so each child’s signup stays accurate and organized.</p>
               </div>
             </div>
             <div class="process-step">
@@ -1565,15 +1570,15 @@
       <div class="shell registration-layout">
         <div class="registration-copy reveal">
           <div class="section-number">02 / Player registration</div>
-          <h2>Let’s get your little baller on the list.</h2>
-          <p>Complete one form per child. Required details are grouped into four short steps so the league receives a clean, complete registration.</p>
+          <h2>Sign up your child in four quick steps.</h2>
+          <p>Complete one form per child. The signup collects the parent, player, availability, and consent details needed to organize the league properly.</p>
           <div class="fee-stamp">$65 per player · All payment forms accepted</div>
         </div>
 
         <div class="form-card reveal">
           <div class="form-top">
             <div class="form-top-row">
-              <strong>Player registration</strong>
+              <strong>Sign up your child</strong>
               <span class="step-count" id="step-count">Step 1 of 4</span>
             </div>
             <div class="progress-track" aria-hidden="true">
@@ -1697,7 +1702,7 @@
             <section class="form-step" data-step="4">
               <fieldset>
                 <legend>Review and consent</legend>
-                <p class="step-intro">Please confirm these final details before preparing your registration email.</p>
+                <p class="step-intro">Please confirm these final details before completing the demo signup.</p>
                 <div class="consent-list">
                   <label class="consent">
                     <input type="checkbox" name="accurate" required>
@@ -1722,9 +1727,9 @@
             <div class="form-actions">
               <button class="button back-button" type="button" id="back-button" hidden>Back</button>
               <button class="button" type="button" id="next-button">Continue <span aria-hidden="true">→</span></button>
-              <button class="button" type="submit" id="submit-button" hidden>Prepare registration <span aria-hidden="true">↗</span></button>
+              <button class="button" type="submit" id="submit-button" hidden>Complete demo signup <span aria-hidden="true">✓</span></button>
             </div>
-            <p class="demo-note">Demo workflow: submitting opens a prepared email to the league. Connect a secure form service and payment processor before public launch.</p>
+            <p class="demo-note"><strong>Interactive demo only:</strong> information entered here is not stored or sent. A secure database, form backend, admin roster, confirmations, and payment processor will be connected if the website is purchased.</p>
           </form>
         </div>
       </div>
@@ -1764,8 +1769,8 @@
     <section class="closing">
       <span class="basketball" aria-hidden="true"></span>
       <div class="shell">
-        <h2>Give them a team, a routine, and a reason to love the game.</h2>
-        <a class="button" href="#registration">Register your child today</a>
+        <h2>Ready to sign up your little baller?</h2>
+        <a class="button" href="#registration">Sign up your child today</a>
       </div>
       <span class="basketball" aria-hidden="true"></span>
     </section>
@@ -1777,15 +1782,15 @@
         <span class="brand-mark">LB</span>
         <span>Little Ballers Basketball League</span>
       </div>
-      <p>Questions? Email <a href="mailto:littleballersleague26@gmail.com">littleballersleague26@gmail.com</a><br>Philadelphia, Pennsylvania · Ages 4–6</p>
+      <p>Questions? Email <a href="mailto:littleballersleague26@gmail.com">littleballersleague26@gmail.com</a><br>Philadelphia, Pennsylvania · Ages 4–6<br><small>Demo website · Live submission backend available after purchase.</small></p>
     </div>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite">
     <span class="toast-icon" aria-hidden="true">✓</span>
     <div>
-      <strong>Registration email prepared</strong>
-      <p>Your email app should open next. Review the details and press send.</p>
+      <strong>Demo signup completed</strong>
+      <p>No information was stored or sent. This previews the parent signup experience.</p>
     </div>
     <button type="button" id="close-toast" aria-label="Close notification">×</button>
   </div>
@@ -1838,41 +1843,15 @@
       event.preventDefault();
       if (!validateStep()) return;
 
-      const data = new FormData(form);
-      const get = (key) => data.get(key) || "Not provided";
-      const subject = `Little Ballers Registration — ${get("playerName")}`;
-      const body = [
-        "LITTLE BALLERS PLAYER REGISTRATION",
-        "",
-        "PARENT / GUARDIAN",
-        `Name: ${get("guardianName")}`,
-        `Email: ${get("guardianEmail")}`,
-        `Phone: ${get("guardianPhone")}`,
-        `Preferred contact: ${get("contactMethod")}`,
-        "",
-        "PLAYER",
-        `Name: ${get("playerName")}`,
-        `Age: ${get("playerAge")}`,
-        `Shirt size: ${get("shirtSize")}`,
-        `Experience: ${get("experience")}`,
-        `Coach notes: ${get("playerNotes")}`,
-        "",
-        "LEAGUE READINESS",
-        `Saturday availability: ${get("availability")}`,
-        `Preferred payment: ${get("payment")}`,
-        `Emergency contact: ${get("emergencyName")}`,
-        `Emergency phone: ${get("emergencyPhone")}`,
-        "",
-        `Electronic signature: ${get("signature")}`,
-        `Submitted: ${new Date().toLocaleString()}`,
-        "",
-        "Please confirm this player's spot and send payment instructions."
-      ].join("\n");
-
       toast.classList.add("visible");
+      submitButton.disabled = true;
+      submitButton.textContent = "Demo signup complete ✓";
+
       window.setTimeout(() => {
-        window.location.href = `mailto:littleballersleague26@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      }, 280);
+        toast.classList.remove("visible");
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Complete demo signup <span aria-hidden="true">✓</span>';
+      }, 4200);
     });
 
     document.querySelector("#close-toast").addEventListener("click", () => {
