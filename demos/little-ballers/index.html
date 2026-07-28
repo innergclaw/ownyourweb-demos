@@ -234,9 +234,10 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
-      gap: clamp(44px, 7vw, 92px);
+      grid-template-columns: minmax(0, 900px);
       align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .kicker {
@@ -274,7 +275,7 @@
 
     h1 {
       max-width: 760px;
-      margin-bottom: 24px;
+      margin: 0 auto 24px;
       color: var(--white);
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
       font-size: clamp(4.4rem, 10.6vw, 9.2rem);
@@ -345,122 +346,6 @@
       font-weight: 850;
       letter-spacing: .1em;
       text-transform: uppercase;
-    }
-
-    .court-card {
-      position: relative;
-      min-height: 560px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 28px;
-      padding: 24px;
-      background:
-        linear-gradient(160deg, rgba(255, 255, 255, .08), transparent 38%),
-        linear-gradient(145deg, #21150f, #0d0d0d 68%);
-      box-shadow: var(--shadow);
-      transform: rotate(1.5deg);
-    }
-
-    .court-card::before {
-      position: absolute;
-      inset: 20px;
-      border: 2px solid rgba(255, 255, 255, .52);
-      content: "";
-      opacity: .7;
-    }
-
-    .court-card::after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 150px;
-      aspect-ratio: 1;
-      border: 2px solid rgba(255, 255, 255, .52);
-      border-radius: 50%;
-      content: "";
-      opacity: .7;
-      transform: translate(-50%, -50%);
-    }
-
-    .scoreboard {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: center;
-      border: 1px solid rgba(255, 113, 56, .48);
-      padding: 18px;
-      background: rgba(0, 0, 0, .84);
-      border-radius: 16px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
-    }
-
-    .scoreboard small,
-    .scoreboard span {
-      display: block;
-      color: var(--muted);
-      font-size: .66rem;
-      font-weight: 850;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .scoreboard strong {
-      display: block;
-      margin-top: 3px;
-      color: var(--orange);
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 1.48rem;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .scoreboard .age {
-      min-width: 94px;
-      padding: 10px 12px;
-      color: var(--ink);
-      background: var(--orange);
-      text-align: center;
-      border-radius: 12px;
-    }
-
-    .scoreboard .age strong {
-      margin: 0;
-      color: var(--ink);
-      font-size: 2rem;
-      letter-spacing: -.08em;
-    }
-
-    .player-marker {
-      position: absolute;
-      z-index: 3;
-      width: 74px;
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      border: 3px solid var(--paper);
-      border-radius: 50%;
-      color: var(--paper);
-      background: var(--orange-dark);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .42);
-      font-size: 1.24rem;
-      font-weight: 950;
-    }
-
-    .player-one {
-      top: 42%;
-      left: 14%;
-    }
-
-    .player-two {
-      top: 68%;
-      left: 42%;
-    }
-
-    .player-three {
-      top: 36%;
-      right: 13%;
     }
 
     .basketball {
@@ -1236,10 +1121,6 @@
         grid-template-columns: 1fr;
       }
 
-      .court-card {
-        min-height: 500px;
-      }
-
       .registration-copy {
         position: static;
       }
@@ -1313,36 +1194,6 @@
         padding: 0 12px 12px 0;
         border-right: 0;
         border-bottom: 1px solid var(--line);
-      }
-
-      .court-card {
-        min-height: 440px;
-        padding: 16px;
-      }
-
-      .court-card::before {
-        inset: 12px;
-      }
-
-      .scoreboard {
-        gap: 10px;
-        padding: 14px;
-      }
-
-      .scoreboard strong {
-        font-size: 1rem;
-      }
-
-      .scoreboard .age {
-        min-width: 76px;
-      }
-
-      .scoreboard .age strong {
-        font-size: 1.55rem;
-      }
-
-      .player-marker {
-        width: 58px;
       }
 
       section {
@@ -1473,22 +1324,6 @@
           </ul>
         </div>
 
-        <div class="court-card" aria-label="Basketball court graphic">
-          <div class="scoreboard">
-            <div>
-              <small>Registration status</small>
-              <strong>Signups open</strong>
-              <span>Complete the form today</span>
-            </div>
-            <div class="age">
-              <span>Ages</span>
-              <strong>4–6</strong>
-            </div>
-          </div>
-          <span class="player-marker player-one" aria-hidden="true">01</span>
-          <span class="player-marker player-two" aria-hidden="true">02</span>
-          <span class="player-marker player-three" aria-hidden="true">03</span>
-        </div>
       </div>
     </section>
 
