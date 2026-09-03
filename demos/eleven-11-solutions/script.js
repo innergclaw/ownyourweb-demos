@@ -1,5 +1,6 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const reveals = document.querySelectorAll('.reveal');
+document.documentElement.classList.add('motion-ready');
 if (reducedMotion) reveals.forEach((item) => item.classList.add('is-visible'));
 else {
   const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
