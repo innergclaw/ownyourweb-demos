@@ -1,11 +1,11 @@
 :root {
-  --bg: #0c0d0f;
-  --panel: #14161a;
-  --ink: #f6f4ef;
-  --muted: #92949a;
-  --line: rgba(246, 244, 239, 0.18);
-  --lime: #d8f56a;
-  --blue: #89a9ff;
+  --bg: oklch(0.09 0 0);
+  --panel: oklch(0.14 0 0);
+  --panel-alt: oklch(0.17 0 0);
+  --ink: oklch(0.97 0 0);
+  --muted: oklch(0.67 0 0);
+  --line: oklch(0.97 0 0 / 0.16);
+  --accent: oklch(0.92 0 0);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -18,18 +18,7 @@ body {
   font-family: "DM Sans", sans-serif;
 }
 
-.grain {
-  position: fixed;
-  z-index: 4;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,.12) 0 1px, transparent 1px),
-    radial-gradient(circle at 75% 65%, rgba(255,255,255,.08) 0 1px, transparent 1px);
-  background-size: 7px 7px, 11px 11px;
-  mix-blend-mode: soft-light;
-}
+.grain { display: none; }
 
 .page-shell {
   position: relative;
@@ -57,34 +46,6 @@ body {
   text-align: center;
 }
 
-.hero-orbit {
-  position: absolute;
-  width: min(730px, 85vw);
-  height: min(730px, 85vw);
-  border: 1px solid rgba(216, 245, 106, .17);
-  border-radius: 50%;
-  animation: spin 25s linear infinite;
-}
-
-.hero-orbit::before,
-.hero-orbit::after {
-  content: "";
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--lime);
-  box-shadow: 0 0 24px var(--lime);
-}
-
-.hero-orbit::before { top: 11%; left: 16%; }
-.hero-orbit::after {
-  right: 9%;
-  bottom: 18%;
-  background: var(--blue);
-  box-shadow: 0 0 24px var(--blue);
-}
-
 .hero-copy {
   position: relative;
   z-index: 1;
@@ -97,11 +58,10 @@ body {
   height: 150px;
   margin-bottom: 33px;
   overflow: hidden;
-  border: 1px solid rgba(246, 244, 239, .34);
+  border: 1px solid oklch(0.97 0 0 / .34);
   border-radius: 50%;
-  background: #000;
-  box-shadow: 0 0 0 9px rgba(246,244,239,.04), 0 20px 70px rgba(0,0,0,.4);
-  animation: float 4s ease-in-out infinite;
+  background: oklch(0 0 0);
+  box-shadow: 0 0 0 8px oklch(0.97 0 0 / .035), 0 20px 55px oklch(0 0 0 / .48);
 }
 
 .logo-frame img {
@@ -113,7 +73,7 @@ body {
 
 .eyebrow {
   margin: 0 0 18px;
-  color: var(--lime);
+  color: var(--accent);
   font-size: .62rem;
   font-weight: 700;
   letter-spacing: .19em;
@@ -135,7 +95,7 @@ h3 {
 }
 
 .hero h1 span,
-h2 span { color: var(--lime); }
+h2 span { color: var(--ink); }
 
 .hero-intro {
   max-width: 430px;
@@ -149,7 +109,7 @@ h2 span { color: var(--lime); }
 .card-link,
 .founder-copy a {
   padding-bottom: 8px;
-  border-bottom: 1px solid var(--lime);
+  border-bottom: 1px solid var(--accent);
   color: var(--ink);
   font-size: .65rem;
   font-weight: 700;
@@ -161,7 +121,7 @@ h2 span { color: var(--lime); }
 
 .scroll-link:hover,
 .card-link:hover,
-.founder-copy a:hover { color: var(--lime); }
+.founder-copy a:hover { color: var(--muted); }
 
 .businesses {
   padding: 120px 0 145px;
@@ -200,13 +160,13 @@ h2 span { color: var(--lime); }
   transition: transform .35s var(--ease), background .35s, box-shadow .35s;
 }
 
-.business-card:nth-child(2) { background: #15171e; }
-.business-card:nth-child(3) { background: #151a14; }
-.business-card:nth-child(4) { background: #191616; }
+.business-card:nth-child(2),
+.business-card:nth-child(4) { background: var(--panel-alt); }
+.business-card:nth-child(3) { background: var(--panel); }
 .business-card:hover {
-  transform: translateY(-8px);
-  background: #1d2025;
-  box-shadow: 0 25px 60px rgba(0,0,0,.3);
+  transform: translateY(-5px);
+  background: oklch(0.2 0 0);
+  box-shadow: 0 24px 55px oklch(0 0 0 / .34);
 }
 
 .card-number {
@@ -271,17 +231,10 @@ h2 span { color: var(--lime); }
 .motion-ready .business-card:nth-child(3) { transition-delay: 160ms; }
 .motion-ready .business-card:nth-child(4) { transition-delay: 240ms; }
 
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-11px); }
-}
-
 @media (max-width: 700px) {
   .page-shell { width: min(100% - 30px, 1120px); }
   .topbar { font-size: .5rem; }
   .hero { min-height: calc(100svh - 70px); padding: 65px 0 100px; }
-  .hero-orbit { width: 120vw; height: 120vw; }
   .logo-frame { width: 122px; height: 122px; }
   .hero h1 { font-size: clamp(4rem, 18vw, 7rem); }
   .hero-intro { font-size: .9rem; }
@@ -299,8 +252,6 @@ h2 span { color: var(--lime); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-orbit,
-  .logo-frame { animation: none; }
   .motion-ready .reveal {
     opacity: 1;
     transform: none;
