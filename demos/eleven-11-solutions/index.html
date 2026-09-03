@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles-v3.css">
+  <link rel="stylesheet" href="./styles-v4.css">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -27,15 +27,33 @@
     <section class="businesses" id="businesses" aria-labelledby="business-title">
       <div class="section-heading reveal"><p class="eyebrow">Choose a direction</p><h2 id="business-title">Find what<br><span>fits your world.</span></h2></div>
       <div class="business-grid">
-        <a class="business-card reveal" href="https://www.instagram.com/eleven11_solutions/" target="_blank" rel="noreferrer"><span class="card-number">01</span><div><h3>Eleven:11<br>Solutions</h3><p>Business ideas, resources, and support for the next move.</p></div><span class="card-link">Visit Instagram</span></a>
-        <a class="business-card reveal" href="https://www.instagram.com/eleven11_rentals_/" target="_blank" rel="noreferrer"><span class="card-number">02</span><div><h3>Eleven:11<br>Rentals</h3><p>Find the right ride for the plan, the trip, or the moment.</p></div><span class="card-link">Visit Instagram</span></a>
-        <a class="business-card reveal" href="https://www.instagram.com/eleven11.frenchies/" target="_blank" rel="noreferrer"><span class="card-number">03</span><div><h3>Eleven:11<br>Frenchies</h3><p>Small companions with big personality, raised with care.</p></div><span class="card-link">Visit Instagram</span></a>
-        <a class="business-card reveal" href="https://www.instagram.com/hoagie_lounge/" target="_blank" rel="noreferrer"><span class="card-number">04</span><div><h3>Hoagie<br>Lounge</h3><p>Good food, a relaxed room, and a reason to pull up.</p></div><span class="card-link">Visit Instagram</span></a>
+        <article class="business-card reveal" data-direction="left"><span class="card-number">01</span><div><h3>Eleven:11<br>Solutions</h3><p>Business ideas, resources, and support for the next move.</p></div><div class="card-actions"><a class="card-link" href="https://www.instagram.com/eleven11_solutions/" target="_blank" rel="noreferrer">Visit Instagram</a><button class="text-button" type="button" data-business="Eleven:11 Solutions">Text Me Now</button></div></article>
+        <article class="business-card reveal" data-direction="right"><span class="card-number">02</span><div><h3>Eleven:11<br>Rentals</h3><p>Find the right ride for the plan, the trip, or the moment.</p></div><div class="card-actions"><a class="card-link" href="https://www.instagram.com/eleven11_rentals_/" target="_blank" rel="noreferrer">Visit Instagram</a><button class="text-button" type="button" data-business="Eleven:11 Rentals">Text Me Now</button></div></article>
+        <article class="business-card reveal" data-direction="left"><span class="card-number">03</span><div><h3>Eleven:11<br>Frenchies</h3><p>Small companions with big personality, raised with care.</p></div><div class="card-actions"><a class="card-link" href="https://www.instagram.com/eleven11.frenchies/" target="_blank" rel="noreferrer">Visit Instagram</a><button class="text-button" type="button" data-business="Eleven:11 Frenchies">Text Me Now</button></div></article>
+        <article class="business-card reveal" data-direction="right"><span class="card-number">04</span><div><h3>Hoagie<br>Lounge</h3><p>Good food, a relaxed room, and a reason to pull up.</p></div><div class="card-actions"><a class="card-link" href="https://www.instagram.com/hoagie_lounge/" target="_blank" rel="noreferrer">Visit Instagram</a><button class="text-button" type="button" data-business="Hoagie Lounge">Text Me Now</button></div></article>
       </div>
     </section>
     <section class="founder reveal" aria-labelledby="founder-title"><div><p class="eyebrow">The person behind the work</p><h2 id="founder-title">Built with<br><span>intention.</span></h2></div><div class="founder-copy"><p>Ravey XOXO is an entrepreneur building businesses that make room for movement, connection, and a better way forward.</p><a href="https://www.instagram.com/raveyxoxo__/" target="_blank" rel="noreferrer">Follow the founder</a></div></section>
     <footer class="footer"><span>ELEVEN:11 SOLUTIONS</span><span>RAVEY XOXO</span><span>Philadelphia</span></footer>
   </main>
-  <script src="./script.js" defer></script>
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-title">
+    <div class="dialog-topline"><span>Direct inquiry</span><button class="dialog-close" type="button" aria-label="Close contact form">Close</button></div>
+    <div class="dialog-heading">
+      <p class="eyebrow" id="selected-business">Eleven:11 Solutions</p>
+      <h2 id="contact-title">Text Raven.</h2>
+      <p>Share the basics. Your text app will open with the message ready to send.</p>
+    </div>
+    <form class="contact-form" id="contact-form">
+      <input type="hidden" id="business" name="business">
+      <div class="field-row">
+        <label>First name<input id="first-name" name="firstName" type="text" autocomplete="given-name" required maxlength="40"></label>
+        <label>Last name<input id="last-name" name="lastName" type="text" autocomplete="family-name" required maxlength="40"></label>
+      </div>
+      <label>Email<input id="email" name="email" type="email" autocomplete="email" required maxlength="120"></label>
+      <label>Quick message<textarea id="message" name="message" rows="3" required maxlength="220" placeholder="What do you need help with?"></textarea><span class="field-note">Keep it to one or two sentences.</span></label>
+      <button class="submit-button" type="submit">Open Text Message</button>
+    </form>
+  </dialog>
+  <script src="./script-v2.js" defer></script>
 </body>
 </html>
