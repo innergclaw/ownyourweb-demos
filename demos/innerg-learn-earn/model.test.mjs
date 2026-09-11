@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {initialState,loadState,balance,streak,saveAnswer,submitProof,review,requestReward,reviewReward} from './model.mjs';
+const answer='The same money buys fewer groceries when the prices rise over time.';
+function completed(){const s=initialState();saveAnswer(s,'inflation',answer);submitProof(s,'inflation',1);review(s,'inflation',true);return s;}
+test('starts with no fictional points or completed missions',()=>{const s=initialState();assert.equal(balance(s),0);assert.equal(streak(s),0);assert.deepEqual(s.records,{});});
+test('short answers and wrong proof do not earn points',()=>{const s=initialState();saveAnswer(s,'inflation','short');assert.equal(submitProof(s,'inflation',1),false);saveAnswer(s,'inflation',answer);assert.equal(submitProof(s,'inflation',0),false);assert.equal(balance(s),0);});
+test('parent review is required and approval cannot be doubled',()=>{const s=initialState();saveAnswer(s,'inflation',answer);assert.equal(submitProof(s,'inflation',1),true);assert.equal(balance(s),0);assert.equal(review(s,'inflation',true),true);assert.equal(balance(s),50);assert.equal(review(s,'inflation',true),false);assert.equal(submitProof(s,'inflation',1),false);assert.equal(saveAnswer(s,'inflation','overwrite'),false);assert.equal(balance(s),50);});
+test('revision returns student to editable answer',()=>{const s=initialState();saveAnswer(s,'inflation',answer);submitProof(s,'inflation',1);review(s,'inflation',false);assert.equal(s.records.inflation.status,'revision');assert.equal(balance(s),0);assert.equal(saveAnswer(s,'inflation',answer+' For example, a basket.'),true);assert.equal(submitProof(s,'inflation',1),true);});
+test('reward request reserves points, cannot double spend, decline returns them once',()=>{const s=completed();assert.equal(requestReward(s,'creative'),false);assert.equal(requestReward(s,'pick'),true);assert.equal(balance(s),0);assert.equal(requestReward(s,'pick'),false);const id=s.requests[0].id;assert.equal(reviewReward(s,id,false),true);assert.equal(balance(s),50);assert.equal(reviewReward(s,id,false),false);assert.equal(balance(s),50);});
+test('reward approval does not deduct twice',()=>{const s=completed();requestReward(s,'pick');assert.equal(reviewReward(s,s.requests[0].id,true),true);assert.equal(balance(s),0);assert.equal(reviewReward(s,s.requests[0].id,true),false);});
+test('saved state survives reload and malformed storage resets safely',()=>{const s=completed();assert.deepEqual(loadState(JSON.stringify(s)),s);assert.equal(balance(loadState('broken')),0);assert.equal(balance(loadState('{"version":1,"records":null}')),0);});
+test('one reviewed day is one streak day',()=>{const s=completed();assert.equal(streak(s),1);});
