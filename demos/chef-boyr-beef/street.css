@@ -1,0 +1,53 @@
+/* Street-poster layer. Menu data and SMS routing remain in menu.mjs. */
+:root{--cream:#f3eee3;--paper:#fffaf0;--ink:#171715;--muted:#645f56;--pepper:#ae291e;--gold:#f2c24b;--line:#c9c1b1;--display:Impact,'Arial Narrow','Helvetica Neue',Arial,sans-serif}
+body{background-image:radial-gradient(#1919190b .7px,transparent .7px);background-size:5px 5px}
+header{border-bottom:2px solid var(--ink)}
+.wordmark,footer strong{font-family:var(--display);font-weight:400;letter-spacing:.01em;font-size:28px}
+.wordmark span{font-size:10px;letter-spacing:.12em}
+.demo-bar{background:var(--ink);font-size:11px}.demo-bar span{color:#ded9ce}
+.hero{padding-block:56px 64px;gap:48px;grid-template-columns:1.12fr 1fr}
+h1,h2,.dish h3{font-family:var(--display);font-weight:400;letter-spacing:.005em;text-transform:uppercase}
+.hero h1{font-size:clamp(72px,8.7vw,120px);line-height:1.02;text-wrap:initial}
+.hero h1>span{display:block;animation:poster-in .65s var(--ease) both}
+.hero h1>span:nth-child(2){color:var(--pepper);animation-delay:.1s}
+.hero h1 em{display:block;color:var(--ink);font:700 clamp(22px,2.4vw,32px)/1.3 Arial,sans-serif;letter-spacing:-.04em;text-transform:none;margin-top:18px;animation:poster-in .65s .2s var(--ease) both}
+.hero .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.hero .intro{animation:poster-in .65s .3s var(--ease) both;color:var(--ink)}
+.hero .button{animation:poster-in .65s .4s var(--ease) both}
+.hero-note{font-size:12px}
+.button{border-radius:2px;font-size:14px;box-shadow:4px 4px 0 var(--ink);border:1px solid var(--ink);transition:transform .18s var(--ease),box-shadow .18s,background-color .18s}
+.button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.button:active{transform:scale(.96);box-shadow:1px 1px 0 var(--ink)}
+.chef-stage{border-radius:3px;padding:20px 20px 24px;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--ink);transform:rotate(2deg);animation:poster-logo .8s var(--ease) both}
+.chef-stage::before{content:'';position:absolute;width:112px;height:28px;top:-15px;left:calc(50% - 56px);background:var(--gold);transform:rotate(-6deg);z-index:1;border:1px solid #17171525}
+.logo-window{border-radius:2px;outline:1px solid #0000001a}
+.signature{font:400 22px/1.2 var(--display);text-transform:uppercase;color:var(--ink);letter-spacing:.02em;margin-top:20px;text-align:center}
+.stamp{right:-12px;bottom:78px;width:112px;height:112px;transform:rotate(-10deg);outline-style:solid;box-shadow:3px 3px 0 var(--ink)}
+.stamp strong{font:400 22px var(--display);text-transform:uppercase}.stamp span{font-size:10px;text-transform:uppercase}
+.street-strip{overflow:hidden;background:var(--pepper);color:var(--paper);border-block:2px solid var(--ink);padding:16px 0}
+.street-strip span{display:block;width:max-content;max-width:none;white-space:nowrap;font:400 clamp(24px,3.3vw,44px)/1.1 var(--display);text-transform:uppercase;letter-spacing:.035em;animation:strip-in 1s var(--ease) both}
+.order-steps{background:var(--ink);color:var(--paper);border:0}.order-steps b{color:var(--gold)}
+.order-steps span{font-size:13px}
+.section-heading h2{font-size:52px}.section-heading .eyebrow{font-size:12px}
+.menu-label{background:var(--gold);color:var(--ink);border:1px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transform:rotate(4deg);font-size:12px}
+.section-copy{font-size:14px}.filters button{border-radius:2px;font-size:12px;border-color:var(--ink)}
+.dish{border-bottom:2px solid var(--ink);animation:none;transition:background-color .2s,transform .2s}
+.dish:hover{background:#e7dfcf;transform:translateX(3px)}
+.dish h3{font-size:28px;line-height:1.15}.dish p,.dish-number{font-size:12px}
+.quantity{border-radius:3px;border-color:var(--ink)}.quantity button{border-radius:1px;transition:transform .15s,background-color .15s}
+.quantity button:active{transform:scale(.96)}
+.ticket{border:2px solid var(--ink);border-top:8px solid var(--pepper);box-shadow:7px 7px 0 #17171520}
+.ticket h2{font-size:40px}.ticket-top{font-size:10px}.ticket-caption,.fine{font-size:12px}
+.ticket-bottom{font:400 25px/1.5 var(--display)}.ticket-bottom span{font:12px Arial,sans-serif}
+.details-intro h2{font-size:52px}.details-intro>p.fine{font-size:12px}.details-intro>p:not(.eyebrow){font-size:16px}
+label,summary{font-size:14px}.service-choice small{font-size:11px}.optional{font-size:12px}
+input,textarea,.service-choice label{border-radius:2px}.questions h2{font-size:44px}
+.mobile-cart{border-radius:3px;border-color:var(--paper)}
+dialog{border:2px solid var(--ink);border-radius:3px}dialog[open]{animation:review-in .25s var(--ease)}
+::selection{background:var(--gold);color:var(--ink)}
+@keyframes poster-in{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes poster-logo{from{opacity:0;transform:translateY(30px) rotate(7deg)}to{opacity:1;transform:translateY(0) rotate(2deg)}}
+@keyframes strip-in{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(20px)}}
+@keyframes review-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-block:32px 48px;gap:40px}.hero h1{font-size:clamp(64px,18vw,100px)}.hero .eyebrow{font-size:11px}.chef-stage{width:min(330px,calc(100% - 12px));padding:16px}.hero-note{font-size:11px}.stamp{right:-8px;bottom:68px;width:96px;height:96px}.stamp strong{font-size:20px}.stamp span{font-size:9px}.section-heading h2{font-size:40px}.section-heading .eyebrow{font-size:10px}.dish h3{font-size:24px}.dish{grid-template-columns:16px 1fr auto;gap:10px}.dish:hover{transform:none}.quantity button{width:40px}.signature{font-size:19px}.order-steps span{font-size:12px}.details-intro h2{font-size:44px}.ticket{box-shadow:5px 5px 0 #17171520}.street-strip span{font-size:28px}.wordmark{font-size:28px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.street-strip span{transform:translateX(20px)}html{scroll-behavior:auto}}
