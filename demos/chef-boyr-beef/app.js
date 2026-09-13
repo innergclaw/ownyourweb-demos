@@ -16,6 +16,3 @@ $('#copy-text').onclick=async()=>{try{await navigator.clipboard.writeText(messag
 $('#close-review').onclick=$('#edit-order').onclick=()=>dialog.close();
 $('#details-link').addEventListener('click',()=>{if(!items(cart).length)toast('Choose your plates first, then fill out your details.');});
 form.elements.address.disabled=true;form.hidden=false;renderMenu();renderCart();
-
-const marqueeButton=document.querySelector('.marquee-toggle');
-marqueeButton.addEventListener('click',()=>{const paused=marqueeButton.getAttribute('aria-pressed')!=='true';marqueeButton.setAttribute('aria-pressed',String(paused));document.querySelector('.street-strip').classList.toggle('is-paused',paused);marqueeButton.textContent=paused?'Resume motion':'Pause motion';});

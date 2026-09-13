@@ -25,14 +25,10 @@ h1,h2,.dish h3{font-family:var(--display);font-weight:400;letter-spacing:.005em;
 .stamp{right:-12px;bottom:78px;width:112px;height:112px;transform:rotate(-10deg);outline-style:solid;box-shadow:3px 3px 0 var(--ink)}
 .stamp strong{font:400 22px var(--display);text-transform:uppercase}.stamp span{font-size:10px;text-transform:uppercase}
 .street-strip{overflow:hidden;background:var(--pepper);color:var(--paper);border-block:2px solid var(--ink);padding:16px 0}
-.street-strip{position:relative;padding-bottom:60px}
 .marquee-track{display:flex;width:max-content;animation:marquee-scroll 24s linear infinite}
 .street-strip .marquee-track span{display:block;flex-shrink:0;min-width:100vw;padding-inline:20px;white-space:nowrap;font:400 clamp(24px,3.3vw,44px)/1.1 var(--display);text-transform:uppercase;letter-spacing:.035em;animation:none;transform:none}
-.marquee-toggle{position:absolute;right:20px;bottom:8px;min-height:44px;padding:8px 14px;border:1px solid currentColor;background:var(--ink);color:var(--paper);font:12px Arial,sans-serif;cursor:pointer}
-.marquee-toggle:focus-visible{outline-color:var(--paper)}
-.street-strip.is-paused .marquee-track{animation-play-state:paused}
 @keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.street-strip{padding:16px 20px}.marquee-track{display:block;width:auto;animation:none!important;transform:none!important}.street-strip .marquee-track span{white-space:normal;min-width:0;padding:0;transform:none!important}.marquee-track span[aria-hidden],.marquee-toggle{display:none}}
+@media(prefers-reduced-motion:reduce){.street-strip{padding:16px 20px}.marquee-track{display:block;width:auto;animation:none!important;transform:none!important}.street-strip .marquee-track span{white-space:normal;min-width:0;padding:0;transform:none!important}.marquee-track span[aria-hidden]{display:none}}
 .order-steps{background:var(--ink);color:var(--paper);border:0}.order-steps b{color:var(--gold)}
 .order-steps span{font-size:13px}
 .section-heading h2{font-size:52px}.section-heading .eyebrow{font-size:12px}
