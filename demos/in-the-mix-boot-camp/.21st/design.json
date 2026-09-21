@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "project": {
+    "name": "in-the-mix-boot-camp",
+    "productType": "event registration landing page",
+    "stack": ["HTML", "CSS", "JavaScript"]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [
+      "assets"
+    ],
+    "instructions": [
+      "PRODUCT.md"
+    ]
+  },
+  "design": {
+    "colorMode": "dark",
+    "colors": {
+      "ink": "#050506",
+      "cream": "#fff6e7",
+      "gold": "#e7b75e",
+      "magenta": "#ef248f",
+      "blue": "#476dff"
+    },
+    "typography": {
+      "display": "Bebas Neue",
+      "editorial": "Cormorant Garamond",
+      "body": "DM Sans"
+    },
+    "spacing": {"section": "clamp(90px, 12vw, 160px)"},
+    "radius": {"containers": "0", "controls": "0"},
+    "shadows": {"poster": "26px 28px 80px rgba(0,0,0,.6)"},
+    "motion": {"signature": "single hero light sweep and poster settle"},
+    "density": "editorial"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": ["Use supplied logo and flyer", "Keep the signup journey short", "Support keyboard and reduced motion"],
+    "avoid": ["Invented pricing", "Invented testimonials", "Generic card grids", "Decorative glass effects"]
+  },
+  "decisions": [
+    {
+      "date": "2026-09-20",
+      "decision": "Use the Midnight service rail direction with real event artwork and a local demo signup form."
+    }
+  ],
+  "evidence": [
+    {
+      "fact": "project.instructions",
+      "source": "PRODUCT.md"
+    }
+  ],
+  "generatedAt": "2026-09-21T03:20:31.482Z"
+}
