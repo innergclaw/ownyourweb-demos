@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "project": {
+    "name": "michael-byrd",
+    "productType": "Campaign website demo",
+    "stack": ["HTML", "CSS", "JavaScript", "GitHub Pages"]
+  },
+  "sources": {
+    "tokens": ["philly-theme.css"],
+    "components": ["index.html"],
+    "assets": [],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "blue": "#0061C2",
+      "green": "#69BE28",
+      "yellow": "#FFEE8C"
+    },
+    "typography": {},
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "unknown"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": ["Keep campaign copy and review notices unchanged", "Use the exact user-supplied colors", "Keep forms and payments inactive pending campaign approval"],
+    "avoid": ["Team logos or implied sports affiliation", "New campaign claims"]
+  },
+  "decisions": [
+    {
+      "date": "2026-09-21",
+      "choice": "Replace red with yellow and use exact blue, green, and yellow values supplied by the user. Keep dark text on yellow and green for contrast."
+    }
+  ],
+  "evidence": ["Existing campaign demo theme in philly-theme.css", "User-provided hex values"],
+  "generatedAt": "2026-09-21T21:32:41.030Z"
+}
