@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "project": {
+    "name": "need-a-hand",
+    "productType": "Philadelphia home-help service request page",
+    "stack": ["HTML", "CSS", "JavaScript"]
+  },
+  "sources": {
+    "tokens": ["styles.css :root"],
+    "components": [],
+    "assets": ["assets/need-a-hand-flyer.jpg"],
+    "instructions": [
+      "PRODUCT.md"
+    ]
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {"navy": "#102b4b", "yellow": "#f6be4b", "paper": "#f5f3ee"},
+    "typography": {"display": "Barlow Condensed", "body": "Manrope"},
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "comfortable"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": ["Preserve flyer branding", "Show all requested form fields", "Explain that users must send the prepared text"],
+    "avoid": ["Fake submission success", "Invented pricing or availability", "Emoji icons"]
+  },
+  "decisions": ["One-page service and request flow", "Native SMS deep link with visible review and copy fallback"],
+  "evidence": [
+    {
+      "fact": "project.instructions",
+      "source": "PRODUCT.md"
+    }
+  ],
+  "generatedAt": "2026-09-21T22:00:05.833Z"
+}

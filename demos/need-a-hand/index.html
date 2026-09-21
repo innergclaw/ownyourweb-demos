@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b4b">
+  <meta name="description" content="Need a hand around the house? Request lifting, storage, furniture setup, and light household help in Philadelphia.">
+  <title>Need a Hand | Philadelphia home help</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/need-a-hand-flyer.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="styles.css?v=1">
+  <script type="module" src="script.js?v=1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Need a Hand, back to top"><span class="brand-mark" aria-hidden="true">N<span>H</span></span><span>Need a Hand<small>Philadelphia home help</small></span></a>
+    <a class="header-link" href="#request">Request help</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-title">Need a hand <em>around the house?</em></h1>
+          <p>Lifting, storage runs, furniture setup, and light household tasks. Tell me what needs doing and when you need help.</p>
+          <div class="hero-actions"><a class="button button-yellow" href="#request">Tell me what you need</a><span>Philadelphia area</span></div>
+        </div>
+        <figure class="flyer"><img src="assets/need-a-hand-flyer.jpg" width="1024" height="1280" alt="Need a Hand service flyer with household help and lifting services" decoding="async"><figcaption>From the original service flyer</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="services section-wrap" id="services" aria-labelledby="services-title">
+      <div class="section-heading"><h2 id="services-title">The kind of help you can ask for.</h2><p>Every job is reviewed before a time is confirmed.</p></div>
+      <ul class="service-list">
+        <li><span>Lifting &amp; carrying</span><p>Get help moving items through the house.</p></li>
+        <li><span>Storage &amp; closets</span><p>Bring items out of basements, closets, and storage.</p></li>
+        <li><span>Furniture setup</span><p>Help with setup and light household tasks.</p></li>
+        <li><span>An extra hand</span><p>Support for elders, busy parents, and families.</p></li>
+      </ul>
+    </section>
+
+    <section class="request-section" id="request" aria-labelledby="request-title">
+      <div class="request-inner section-wrap">
+        <div class="request-intro"><h2 id="request-title">Tell me about the job.</h2><p>Fill this out once. The page will prepare a text to <a href="sms:+12674730397">267-473-0397</a> with the details in order.</p><p class="quiet-note">You will review the text and tap Send in your messaging app. Your time is not booked until you get a reply.</p></div>
+        <div class="form-panel">
+          <form id="help-form" novalidate>
+            <div class="form-grid">
+              <label for="first-name">First name <span>Required</span><input id="first-name" name="firstName" type="text" autocomplete="given-name" maxlength="60" required placeholder="Your first name"></label>
+              <label for="phone">Phone number <span>Required</span><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" required placeholder="267 555 0123"></label>
+              <label for="area">Area of Philadelphia <span>Required</span><input id="area" name="area" type="text" autocomplete="address-level2" maxlength="80" required placeholder="Your neighborhood or area"></label>
+              <label for="day-time">Preferred day &amp; time <span>Required</span><input id="day-time" name="dayTime" type="datetime-local" required></label>
+            </div>
+            <label for="service">Service request <span>Required</span><textarea id="service" name="service" rows="4" maxlength="280" required placeholder="What do you need help moving, setting up, or handling?"></textarea></label>
+            <div class="choice-grid">
+              <fieldset><legend>Indoor or outside job? (required)</legend><label class="choice"><input type="radio" name="location" value="Indoor" required> Indoor</label><label class="choice"><input type="radio" name="location" value="Outside"> Outside</label></fieldset>
+              <fieldset><legend>Tools available? (required)</legend><label class="choice"><input type="radio" name="tools" value="Yes" required> Yes</label><label class="choice"><input type="radio" name="tools" value="No"> No</label></fieldset>
+            </div>
+            <p id="form-error" class="form-error" role="alert" hidden></p>
+            <button class="button button-navy" type="submit">Review my text request</button>
+            <p class="form-note">Nothing is sent or stored by this page.</p>
+          </form>
+
+          <section id="review" class="review" aria-labelledby="review-title" hidden>
+            <h3 id="review-title" tabindex="-1">Your text is ready.</h3>
+            <p>Check the details. Then open Messages and tap Send.</p>
+            <textarea id="message-preview" readonly rows="11" aria-label="Prepared service request text"></textarea>
+            <div class="review-actions"><a id="sms-link" class="button button-navy" href="sms:+12674730397">Open Messages</a><button type="button" id="copy-button" class="button button-outline">Copy request</button></div>
+            <p id="copy-status" class="copy-status" role="status" aria-live="polite">If your message app does not fill in the text, copy the request and paste it there.</p>
+            <button type="button" id="edit-button" class="edit-button">Edit details</button>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="section-wrap footer-inner"><span>Need a Hand <small>Philadelphia home help</small></span><a href="sms:+12674730397">Text 267-473-0397</a><p>Requests are subject to confirmation. No payment is taken on this page.</p></div></footer>
+</body>
+</html>
