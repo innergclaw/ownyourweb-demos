@@ -6,6 +6,7 @@ import { normalizePhone, requestText, smsLink, OWNER_PHONE } from './sms.mjs';
 const html = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
 const script = readFileSync(new URL('./script.js', import.meta.url), 'utf8');
 const textFill = readFileSync(new URL('./text-fill.js', import.meta.url), 'utf8');
+const imageReveal = readFileSync(new URL('./reveal-image.js', import.meta.url), 'utf8');
 
 const example = { firstName: 'Jordan', phone: '267 555 0123', area: 'Germantown', service: 'Move two boxes from storage', dayTime: '2026-10-12T14:30', location: 'Indoor', tools: 'No' };
 
@@ -51,4 +52,12 @@ test('hero has scroll fill hooks with reduced-motion support', () => {
   assert.match(textFill, /IntersectionObserver/);
   assert.match(textFill, /prefers-reduced-motion/);
   assert.match(textFill, /screenReaderText/);
+});
+
+test('closing image reveals on view with a no-script visible fallback', () => {
+  assert.match(html, /reveal-image\.js\?v=4/);
+  assert.match(imageReveal, /IntersectionObserver/);
+  assert.match(imageReveal, /prefers-reduced-motion/);
+  assert.match(imageReveal, /reveal-pending/);
+  assert.doesNotMatch(html, /class="[^"]*reveal-pending/);
 });

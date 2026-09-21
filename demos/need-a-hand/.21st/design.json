@@ -20,7 +20,7 @@
     "spacing": {},
     "radius": {},
     "shadows": {},
-    "motion": {"heroTextFill": "Scroll-driven character color sweep; no new runtime dependency; reduced-motion shows final colors"},
+    "motion": {"heroTextFill": "Scroll-driven character color sweep; no new runtime dependency; reduced-motion shows final colors", "closingImage": "One-time viewport reveal using IntersectionObserver; visible without JavaScript or under reduced motion"},
     "density": "comfortable"
   },
   "components": {
@@ -32,7 +32,7 @@
     "must": ["Keep the replacement image at the bottom", "Show all requested form fields", "Explain that users must send the prepared text"],
     "avoid": ["Fake submission success", "Invented pricing or availability", "Emoji icons"]
   },
-  "decisions": ["One-page service and request flow", "Native SMS deep link with visible review and copy fallback", "Replacement image sits after the form", "Hourly pricing is described without an invented rate until the owner supplies one", "Opening headline and intro use a reversible scroll-driven character fill adapted to the static site"],
+  "decisions": ["One-page service and request flow", "Native SMS deep link with visible review and copy fallback", "Replacement image sits after the form", "Hourly pricing is described without an invented rate until the owner supplies one", "Opening headline and intro use a reversible scroll-driven character fill adapted to the static site", "Closing image reveals once on viewport entry"],
   "evidence": [
     {
       "fact": "project.instructions",

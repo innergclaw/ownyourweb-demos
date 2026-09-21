@@ -28,3 +28,6 @@ footer{background:var(--navy-deep);color:var(--white)}.footer-inner{display:flex
 .text-fill-active .hero-copy>p .text-fill-character{color:#b8cad9;--filled-color:#e1e9ef}
 .text-fill-active .text-fill-character.is-filled{color:var(--filled-color)}
 @media(prefers-reduced-motion:reduce){.text-fill-active .text-fill-character{color:var(--filled-color)!important;transition:none}}
+.closing-image img.reveal-pending{opacity:.04;transform:translateY(32px) scale(.975);clip-path:inset(7% 0 7% 0 round 8px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1),clip-path .85s cubic-bezier(.16,1,.3,1)}
+.closing-image img.reveal-pending.is-visible{opacity:1;transform:none;clip-path:inset(0 0 0 0 round 0)}
+@media(prefers-reduced-motion:reduce){.closing-image img.reveal-pending{opacity:1;transform:none;clip-path:none;transition:none}}

@@ -14,6 +14,8 @@ FIRST VIEWPORT: A compact brand bar sits over a text-led navy hero. The offer an
 
 MOTION: The headline and first service sentence start in readable, muted navy-tinted text. As the page scrolls, their characters fill toward white and gold. The effect reverses when scrolling up, stays inside the hero, and uses final colors under reduced motion. No library or page-height spacer is needed.
 
+CLOSING REVEAL: The replacement image appears once when it enters the viewport. Its photo uncovers with a short vertical move and soft crop. The image remains visible without JavaScript and under reduced motion.
+
 FORM: Code-led, brand-pinned direction. Concept seed `4482a9e3` was run when this demo began; the user's supplied imagery overrides its assigned visual world. The action reveals the prepared message, not a false submission confirmation.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
