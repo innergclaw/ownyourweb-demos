@@ -43,3 +43,4 @@ Generated from project sources at 2026-09-21T22:00:05.833Z.
 - A prepared SMS has a visible review and copy fallback.
 - The replacement image's helper portrait, navy service list, and gold marks guide the page.
 - Show the hourly pricing structure without inventing a dollar rate.
+- Fill the opening headline and intro characters on scroll; show final colors under reduced motion.

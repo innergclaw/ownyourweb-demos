@@ -5,6 +5,7 @@ import { normalizePhone, requestText, smsLink, OWNER_PHONE } from './sms.mjs';
 
 const html = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
 const script = readFileSync(new URL('./script.js', import.meta.url), 'utf8');
+const textFill = readFileSync(new URL('./text-fill.js', import.meta.url), 'utf8');
 
 const example = { firstName: 'Jordan', phone: '267 555 0123', area: 'Germantown', service: 'Move two boxes from storage', dayTime: '2026-10-12T14:30', location: 'Indoor', tools: 'No' };
 
@@ -42,4 +43,12 @@ test('replacement image closes the page and old flyer is not rendered', () => {
 test('hourly pricing does not invent a rate', () => {
   assert.match(html, /Help by the hour\./);
   assert.doesNotMatch(html, /\$\d+/);
+});
+
+test('hero has scroll fill hooks with reduced-motion support', () => {
+  assert.equal((html.match(/data-text-fill/g) ?? []).length, 2);
+  assert.match(html, /text-fill\.js\?v=3/);
+  assert.match(textFill, /IntersectionObserver/);
+  assert.match(textFill, /prefers-reduced-motion/);
+  assert.match(textFill, /screenReaderText/);
 });
