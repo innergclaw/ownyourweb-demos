@@ -8,7 +8,7 @@
   "sources": {
     "tokens": ["styles.css :root"],
     "components": [],
-    "assets": ["assets/need-a-hand-flyer.jpg"],
+    "assets": ["assets/need-a-hand-home-help.jpg"],
     "instructions": [
       "PRODUCT.md"
     ]
@@ -29,10 +29,10 @@
     "patterns": []
   },
   "constraints": {
-    "must": ["Preserve flyer branding", "Show all requested form fields", "Explain that users must send the prepared text"],
+    "must": ["Keep the replacement image at the bottom", "Show all requested form fields", "Explain that users must send the prepared text"],
     "avoid": ["Fake submission success", "Invented pricing or availability", "Emoji icons"]
   },
-  "decisions": ["One-page service and request flow", "Native SMS deep link with visible review and copy fallback"],
+  "decisions": ["One-page service and request flow", "Native SMS deep link with visible review and copy fallback", "Replacement image sits after the form", "Hourly pricing is described without an invented rate until the owner supplies one"],
   "evidence": [
     {
       "fact": "project.instructions",

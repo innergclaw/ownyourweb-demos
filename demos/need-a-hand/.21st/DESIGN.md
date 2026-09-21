@@ -15,7 +15,7 @@ Generated from project sources at 2026-09-21T22:00:05.833Z.
 
 - Tokens: `styles.css` `:root`
 - Components: None detected
-- Assets: user-supplied Need a Hand flyer at `assets/need-a-hand-flyer.jpg`
+- Assets: user-supplied replacement image at `assets/need-a-hand-home-help.jpg`
 - Instructions: PRODUCT.md
 
 ## Components
@@ -29,7 +29,7 @@ Generated from project sources at 2026-09-21T22:00:05.833Z.
 
 ### Must
 
-- Preserve flyer branding and exact request fields.
+- Keep the replacement image at the bottom and preserve the exact request fields.
 - Explain that the visitor must tap Send in their message app.
 
 ### Avoid
@@ -41,4 +41,5 @@ Generated from project sources at 2026-09-21T22:00:05.833Z.
 
 - A one-page offer leads into a short request form.
 - A prepared SMS has a visible review and copy fallback.
-- The flyer's household image, script notes, condensed navy headline, small yellow marks, and navy footer guide the page.
+- The replacement image's helper portrait, navy service list, and gold marks guide the page.
+- Show the hourly pricing structure without inventing a dollar rate.

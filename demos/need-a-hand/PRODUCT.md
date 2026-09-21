@@ -26,18 +26,19 @@ The visitor enters a first name, phone number, Philadelphia area, service reques
 
 - The page is static and does not transmit or store form data.
 - The messaging app must be available on the visitor's device. The visitor must tap Send there.
-- The owner has not supplied prices, availability, service limits, a business address, or a booking system. Do not invent them.
+- The owner requested hourly pricing but has not yet supplied the rate or minimum hours. Do not invent either value.
+- Availability, service limits, a business address, and a booking system have not been supplied.
 - Phone number supplied by the user: 267-473-0397.
 
 ## Brand Commitments
 
-- Use the supplied flyer as the factual and visual reference.
+- Use the new supplied home-help image at the bottom of the page. Do not show the original flyer.
 - Working name from the flyer: Need a Hand. This remains open to correction by the user.
 - Keep the flyer’s navy, white, and yellow cues, household imagery, and direct tone.
 
 ## Evidence on Hand
 
-- User-supplied flyer: `assets/need-a-hand-flyer.jpg`.
+- User-supplied replacement image: `assets/need-a-hand-home-help.jpg`.
 - Listed help: lifting and carrying, moving items from basements, closets, and storage, furniture setup, light household help, and support for elders, busy parents, and families.
 - The flyer mentions flexible scheduling but provides no posted hours.
 

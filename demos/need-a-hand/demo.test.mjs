@@ -31,3 +31,15 @@ test('local anchors exist', () => {
   const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
   for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(target), target);
 });
+
+test('replacement image closes the page and old flyer is not rendered', () => {
+  assert.match(html, /class="closing-image section-wrap"/);
+  assert.match(html, /assets\/need-a-hand-home-help\.jpg/);
+  assert.doesNotMatch(html, /need-a-hand-flyer\.jpg/);
+  assert.ok(html.indexOf('class="closing-image section-wrap"') > html.indexOf('id="request"'));
+});
+
+test('hourly pricing does not invent a rate', () => {
+  assert.match(html, /Help by the hour\./);
+  assert.doesNotMatch(html, /\$\d+/);
+});
