@@ -1,6 +1,6 @@
 # Need a Hand page brief
 
-Mode: Persuade. Audience: Philadelphia residents who need light household help. Action: prepare and send a detailed service-request text to 267-473-0397. The replacement image is the visual reference and sits at the bottom. The owner requested hourly pricing but has not supplied a rate or minimum hours.
+Mode: Persuade. Audience: Philadelphia residents who need light household help. Action: prepare and send a detailed service-request text to 267-473-0397. The replacement image is the visual reference and sits at the bottom. Show the owner's supplied prices: 1 hr $40, 2 hrs $70, 3 hrs $100, and 4 hrs or half day $125.
 
 ## Direction contract
 

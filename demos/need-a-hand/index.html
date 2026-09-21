@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/need-a-hand-mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
   <script type="module" src="text-fill.js?v=3"></script>
   <script type="module" src="reveal-image.js?v=4"></script>
   <script type="module" src="script.js?v=2"></script>
@@ -44,11 +44,20 @@
     </section>
 
     <section class="pricing section-wrap" id="pricing" aria-labelledby="pricing-title">
-      <div>
-        <h2 id="pricing-title">Help by the hour.</h2>
-        <p>Tell me what you need done. I’ll confirm the hourly rate and expected time before we book the job.</p>
+      <div class="pricing-intro">
+        <h2 id="pricing-title">HANDY HELPER PRICING</h2>
+        <p>Choose the time that fits the job. Send the details below and I’ll confirm the request.</p>
+        <a class="button button-navy" href="#request">Ask about your job</a>
       </div>
-      <a class="button button-navy" href="#request">Ask about your job</a>
+      <div class="pricing-details">
+        <dl class="price-list">
+          <div class="price-row"><dt>1 hr</dt><dd>$40</dd></div>
+          <div class="price-row"><dt>2 hrs</dt><dd>$70</dd></div>
+          <div class="price-row"><dt>3 hrs</dt><dd>$100</dd></div>
+          <div class="price-row"><dt>4 hrs or half day</dt><dd>$125</dd></div>
+        </dl>
+        <p class="pricing-more"><strong>need more time?</strong><br>custom half-day + recurring help available.</p>
+      </div>
     </section>
 
     <section class="request-section" id="request" aria-labelledby="request-title">
@@ -90,6 +99,6 @@
     </section>
   </main>
 
-  <footer><div class="section-wrap footer-inner"><span>Need a Hand <small>Philadelphia home help</small></span><a href="sms:+12674730397">Text 267-473-0397</a><p>Requests are subject to confirmation. No payment is taken on this page.</p></div></footer>
+  <footer><div class="section-wrap footer-inner"><span>Need a Hand <small>Philadelphia home help</small></span><a href="sms:+12674730397">Text 267-473-0397</a><p>Requests are subject to confirmation. No payment is taken on this page.</p><p class="service-limit">light household assistance only. specialized electrical, plumbing, HVAC, or licensed contractor work not included.</p></div></footer>
 </body>
 </html>

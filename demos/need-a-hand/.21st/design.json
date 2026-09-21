@@ -30,9 +30,9 @@
   },
   "constraints": {
     "must": ["Keep the replacement image at the bottom", "Show all requested form fields", "Explain that users must send the prepared text"],
-    "avoid": ["Fake submission success", "Invented pricing or availability", "Emoji icons"]
+    "avoid": ["Fake submission success", "Invented additional pricing or availability", "Emoji icons"]
   },
-  "decisions": ["One-page service and request flow", "Native SMS deep link with visible review and copy fallback", "Replacement image sits after the form", "Hourly pricing is described without an invented rate until the owner supplies one", "Opening headline and intro use a reversible scroll-driven character fill adapted to the static site", "Closing image reveals once on viewport entry"],
+  "decisions": ["One-page service and request flow", "Native SMS deep link with visible review and copy fallback", "Replacement image sits after the form", "Four supplied hourly prices are shown in a compact rate list", "Opening headline and intro use a reversible scroll-driven character fill adapted to the static site", "Closing image reveals once on viewport entry"],
   "evidence": [
     {
       "fact": "project.instructions",

@@ -26,8 +26,9 @@ The visitor enters a first name, phone number, Philadelphia area, service reques
 
 - The page is static and does not transmit or store form data.
 - The messaging app must be available on the visitor's device. The visitor must tap Send there.
-- The owner requested hourly pricing but has not yet supplied the rate or minimum hours. Do not invent either value.
-- Availability, service limits, a business address, and a booking system have not been supplied.
+- The owner supplied four prices: 1 hr $40, 2 hrs $70, 3 hrs $100, and 4 hrs or half day $125. Custom half-day and recurring help are available by request; no other rate is supplied.
+- Light household assistance only. Specialized electrical, plumbing, HVAC, and licensed contractor work are excluded.
+- Availability, a business address, and a booking system have not been supplied.
 - Phone number supplied by the user: 267-473-0397.
 
 ## Brand Commitments

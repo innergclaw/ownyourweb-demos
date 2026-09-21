@@ -34,7 +34,7 @@ Generated from project sources at 2026-09-21T22:00:05.833Z.
 
 ### Avoid
 
-- Do not invent pricing, availability, or a booking confirmation.
+- Do not invent additional pricing, availability, or a booking confirmation.
 - Do not use emoji icons.
 
 ## Decisions
@@ -42,6 +42,6 @@ Generated from project sources at 2026-09-21T22:00:05.833Z.
 - A one-page offer leads into a short request form.
 - A prepared SMS has a visible review and copy fallback.
 - The replacement image's helper portrait, navy service list, and gold marks guide the page.
-- Show the hourly pricing structure without inventing a dollar rate.
+- Show the four owner-supplied prices in one compact rate list.
 - Fill the opening headline and intro characters on scroll; show final colors under reduced motion.
 - Reveal the bottom image once when it enters view; keep it visible without JavaScript.

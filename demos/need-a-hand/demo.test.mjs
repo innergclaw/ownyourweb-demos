@@ -41,9 +41,13 @@ test('replacement image closes the page and old flyer is not rendered', () => {
   assert.ok(html.indexOf('class="closing-image section-wrap"') > html.indexOf('id="request"'));
 });
 
-test('hourly pricing does not invent a rate', () => {
-  assert.match(html, /Help by the hour\./);
-  assert.doesNotMatch(html, /\$\d+/);
+test('supplied pricing and service limit appear exactly', () => {
+  assert.match(html, /HANDY HELPER PRICING/);
+  for (const [time, price] of [['1 hr', '$40'], ['2 hrs', '$70'], ['3 hrs', '$100'], ['4 hrs or half day', '$125']]) {
+    assert.ok(html.includes(`<dt>${time}</dt><dd>${price}</dd>`));
+  }
+  assert.match(html, /need more time\?<\/strong><br>custom half-day \+ recurring help available\./);
+  assert.match(html, /light household assistance only\. specialized electrical, plumbing, HVAC, or licensed contractor work not included\./);
 });
 
 test('hero has scroll fill hooks with reduced-motion support', () => {

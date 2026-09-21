@@ -2,7 +2,7 @@
 
 The replacement 1024×1280 image sets the visual direction. Its left side shows a helper with household supplies. Its right side lists the services in navy with gold accents. The site keeps its navy, white, and yellow family.
 
-The first screen states the service. The next section explains the types of help. An hourly pricing section follows, but it cannot show a number until the owner supplies the rate and minimum hours. The form collects the requested details and shows the exact text for review before opening Messages. The replacement image sits at the bottom, above the footer. The page does not report a booking or claim automatic delivery.
+The first screen states the service. The next section explains the types of help. A simple rate list shows the owner's four supplied prices, followed by a note about custom half-day and recurring help. The form collects the requested details and shows the exact text for review before opening Messages. The replacement image sits at the bottom, above the footer. The footer states the light-household service limit. The page does not report a booking or claim automatic delivery.
 
 The page uses Barlow Condensed for headings and Manrope for body text. Its text-led hero is one column at desktop and mobile sizes. The opening headline and intro text fill one character at a time as the visitor scrolls. The sweep follows scroll in both directions, stays readable before it fills, and shows the final colors when the visitor requests reduced motion. The closing image reveals once when it enters the screen. It remains visible without JavaScript and under reduced motion. Button hover remains quiet.
 
