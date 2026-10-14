@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Nine Puppies | Cute Puppies for Loving Homes</title>
+    <meta
+      name="description"
+      content="A playful demo puppy boutique website for Cloud Nine Puppies, featuring available puppies, care packages, reviews, and adoption FAQs."
+    />
+    <link rel="preconnect" href="https://images.pexels.com" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="top-strip">
+      <span class="mini-paw" aria-hidden="true"></span>
+      New cuddle arrivals every Friday
+      <span class="mini-bone" aria-hidden="true"></span>
+      Puppy play visits available this weekend
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Cloud Nine Puppies home">
+        <span class="brand-mark"><i data-lucide="paw-print"></i></span>
+        <span>
+          <strong>Cloud Nine</strong>
+          <small>Puppies</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <i data-lucide="menu"></i>
+      </button>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#puppies">Puppies</a>
+        <a href="#promise">Our Promise</a>
+        <a href="#pricing">Puppy Packages</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="header-cta" href="#visit">
+        <i data-lucide="calendar-heart"></i>
+        Book a Visit
+      </a>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="floating-shape shape-one" aria-hidden="true"></div>
+        <div class="floating-shape shape-two" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <i data-lucide="sparkles"></i>
+            Boutique puppy matches
+          </p>
+          <h1>Meet the puppy who makes your whole house softer.</h1>
+          <p>
+            Cloud Nine Puppies is a cheerful demo puppy boutique for families looking for
+            healthy, socialized, wildly adorable companions raised with careful daily love.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#puppies">
+              See Available Puppies
+              <i data-lucide="arrow-right"></i>
+            </a>
+            <a class="secondary-btn" href="#promise">
+              <i data-lucide="shield-check"></i>
+              Health Promise
+            </a>
+          </div>
+          <div class="hero-stats" aria-label="Cloud Nine Puppies highlights">
+            <span><strong>24/7</strong> newborn care</span>
+            <span><strong>3</strong> vet checks</span>
+            <span><strong>98%</strong> tail-wag rating</span>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-label="Featured puppy">
+          <img
+            src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1100"
+            alt="Two fluffy puppies sitting side by side"
+          />
+          <div class="pup-badge">
+            <i data-lucide="heart"></i>
+            This week: two tiny besties
+          </div>
+          <div class="hero-card">
+            <span class="card-icon"><i data-lucide="bone"></i></span>
+            <div>
+              <strong>Included with every puppy</strong>
+              <p>Starter food, comfort blanket, toy, records, and family match support.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="location-card" id="visit">
+        <div>
+          <p class="eyebrow">Cloud Nine Puppies</p>
+          <h2>Dreamy demo boutique in Pawberry Lane</h2>
+          <p>123 Lavender Leash Ave, Pawberry, PA 19000</p>
+        </div>
+        <div class="contact-grid">
+          <span><i data-lucide="phone"></i> (555) 814-PUPS</span>
+          <span><i data-lucide="mail"></i> hello@cloudninepuppies.demo</span>
+          <span><i data-lucide="clock"></i> Open today 9:00 AM - 6:00 PM</span>
+        </div>
+        <a class="primary-btn compact" href="#contact">Reserve a Cuddle Time</a>
+      </section>
+
+      <section class="balanced-day">
+        <div class="section-copy">
+          <p class="eyebrow"><i data-lucide="party-popper"></i> Happy puppy starts</p>
+          <h2>A sweet, balanced first chapter</h2>
+          <p>
+            Our puppies enjoy gentle play, early socialization, rest, snuggles, soft sounds,
+            grooming introductions, and tiny confidence-building games before they meet you.
+          </p>
+        </div>
+        <div class="day-grid">
+          <article>
+            <i data-lucide="activity"></i>
+            <h3>Play</h3>
+            <p>Supervised toy time, tiny tunnels, and puppy-safe exploration.</p>
+          </article>
+          <article>
+            <i data-lucide="moon"></i>
+            <h3>Rest</h3>
+            <p>Cozy nap rhythms that help puppies stay calm and content.</p>
+          </article>
+          <article>
+            <i data-lucide="graduation-cap"></i>
+            <h3>Learn</h3>
+            <p>Gentle name games, crate comfort, and early potty routines.</p>
+          </article>
+          <article>
+            <i data-lucide="heart-handshake"></i>
+            <h3>Love</h3>
+            <p>Daily handling, brushing, belly rubs, and patient human attention.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="puppies" id="puppies">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow"><i data-lucide="dog"></i> Available puppies</p>
+            <h2>Tiny paws looking for forever sofas</h2>
+          </div>
+          <a class="text-link" href="#contact">Ask about upcoming litters <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <div class="puppy-grid">
+          <article class="puppy-card">
+            <img
+              src="https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Small tan puppy looking up"
+            />
+            <div class="puppy-info">
+              <span class="pill">Mini Goldendoodle</span>
+              <h3>Waffles</h3>
+              <p>Curly, goofy, and already convinced socks are treasure.</p>
+              <div class="puppy-meta">
+                <span><i data-lucide="cake"></i> 9 weeks</span>
+                <span><i data-lucide="badge-check"></i> Vet checked</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="puppy-card featured">
+            <img
+              src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Happy puppy wearing a red collar"
+            />
+            <div class="puppy-info">
+              <span class="pill">Cavapoo</span>
+              <h3>Juniper</h3>
+              <p>Soft ears, bright eyes, and a premium lap-warming certification.</p>
+              <div class="puppy-meta">
+                <span><i data-lucide="cake"></i> 10 weeks</span>
+                <span><i data-lucide="sparkle"></i> Ready now</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="puppy-card">
+            <img
+              src="https://images.pexels.com/photos/5255204/pexels-photo-5255204.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Fluffy puppy sitting indoors"
+            />
+            <div class="puppy-info">
+              <span class="pill">Toy Poodle</span>
+              <h3>Mochi</h3>
+              <p>Tiny, clever, and very serious about squeaky toys.</p>
+              <div class="puppy-meta">
+                <span><i data-lucide="cake"></i> 11 weeks</span>
+                <span><i data-lucide="badge-check"></i> Microchipped</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="promise" id="promise">
+        <div class="promise-image">
+          <img
+            src="https://images.pexels.com/photos/7210749/pexels-photo-7210749.jpeg?auto=compress&cs=tinysrgb&w=1100"
+            alt="Person cuddling a small puppy"
+          />
+          <span class="paw-sticker"><i data-lucide="paw-print"></i></span>
+        </div>
+        <div class="promise-copy">
+          <p class="eyebrow"><i data-lucide="shield-check"></i> Our puppy promise</p>
+          <h2>Healthy, loved, and matched with care</h2>
+          <p>
+            Every puppy leaves with clear records, age-appropriate vaccinations, deworming,
+            microchip details, a starter care kit, and friendly support after pickup day.
+          </p>
+          <div class="promise-list">
+            <span><i data-lucide="stethoscope"></i> Licensed vet checks</span>
+            <span><i data-lucide="house-heart"></i> Family temperament matching</span>
+            <span><i data-lucide="file-heart"></i> Health and care records</span>
+            <span><i data-lucide="gift"></i> Go-home puppy bundle</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="section-copy centered">
+          <p class="eyebrow"><i data-lucide="star"></i> Why families visit us</p>
+          <h2>More than cute faces, though we brought plenty</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <i data-lucide="paw-print"></i>
+            <h3>Puppy social hour</h3>
+            <p>Small, supervised playgroups help each puppy build confidence and manners.</p>
+          </article>
+          <article>
+            <i data-lucide="syringe"></i>
+            <h3>Care calendar</h3>
+            <p>Simple handoff notes keep food, vaccines, grooming, and routines easy to follow.</p>
+          </article>
+          <article>
+            <i data-lucide="sofa"></i>
+            <h3>Home-ready habits</h3>
+            <p>Puppies practice crate comfort, gentle handling, and everyday household sounds.</p>
+          </article>
+          <article>
+            <i data-lucide="message-circle-heart"></i>
+            <h3>Aftercare support</h3>
+            <p>Questions after pickup day are welcome, from first-night jitters to food swaps.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="pricing" id="pricing">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow"><i data-lucide="package"></i> Puppy packages</p>
+            <h2>Pick your level of tail-wag preparation</h2>
+          </div>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Snuggle Starter</h3>
+            <p class="price">$1,250+</p>
+            <p>For families who have supplies ready and want the essentials.</p>
+            <ul>
+              <li>Health records</li>
+              <li>Starter food</li>
+              <li>Favorite toy</li>
+              <li>Comfort blanket</li>
+            </ul>
+          </article>
+          <article class="price-card popular">
+            <span class="popular-label">Most cuddled</span>
+            <h3>Cloud Nine Kit</h3>
+            <p class="price">$1,550+</p>
+            <p>Our full go-home bundle for an easier first week.</p>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>Microchip registration help</li>
+              <li>Leash, collar, and bowl set</li>
+              <li>30-day text support</li>
+            </ul>
+          </article>
+          <article class="price-card">
+            <h3>First Month Bestie</h3>
+            <p class="price">$1,850+</p>
+            <p>Extra guidance for new puppy parents who want more support.</p>
+            <ul>
+              <li>Everything in Cloud Nine Kit</li>
+              <li>Virtual trainer intro</li>
+              <li>Grooming starter brush</li>
+              <li>First-month routine plan</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="reviews" id="reviews">
+        <div class="section-copy centered">
+          <p class="eyebrow"><i data-lucide="messages-square"></i> Happy families</p>
+          <h2>Reviews from the demo puppy parent club</h2>
+        </div>
+        <div class="review-grid">
+          <article>
+            <div class="stars">★★★★★</div>
+            <p>“We came for one cuddle visit and left with our perfect little shadow. The whole process felt kind and organized.”</p>
+            <strong>Maya R.</strong>
+          </article>
+          <article>
+            <div class="stars">★★★★★</div>
+            <p>“Our puppy arrived with records, food, a blanket that smelled familiar, and the sweetest little personality.”</p>
+            <strong>Jordan P.</strong>
+          </article>
+          <article>
+            <div class="stars">★★★★★</div>
+            <p>“The purple puppy room alone deserves five stars. Our kids still talk about meeting every tiny floof.”</p>
+            <strong>Tessa L.</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq" id="faq">
+        <div class="section-copy">
+          <p class="eyebrow"><i data-lucide="circle-help"></i> Puppy questions</p>
+          <h2>FAQs before you meet your new best friend</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Can we meet puppies before reserving?</summary>
+            <p>Yes. Demo cuddle visits can be scheduled for families who want to meet available puppies and talk through lifestyle fit.</p>
+          </details>
+          <details>
+            <summary>What comes with each puppy?</summary>
+            <p>Each puppy includes vet records, starter food, a toy, comfort blanket, care notes, and package-specific add-ons.</p>
+          </details>
+          <details>
+            <summary>How do you help us choose the right puppy?</summary>
+            <p>We ask about your home, routine, children, other pets, activity level, and grooming comfort to suggest the best personality match.</p>
+          </details>
+          <details>
+            <summary>Is this a real puppy store?</summary>
+            <p>No. This is a demo website concept with made-up brand details, sample pricing, and fictional availability.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div>
+          <p class="eyebrow"><i data-lucide="send"></i> Start here</p>
+          <h2>Save a cuddle visit</h2>
+          <p>Tell us which puppy caught your eye and when you want to stop by.</p>
+        </div>
+        <form class="contact-form">
+          <label>
+            <span>Name</span>
+            <input type="text" placeholder="Your name" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" placeholder="you@example.com" />
+          </label>
+          <label>
+            <span>Puppy interest</span>
+            <select>
+              <option>Waffles</option>
+              <option>Juniper</option>
+              <option>Mochi</option>
+              <option>Upcoming litter</option>
+            </select>
+          </label>
+          <button class="primary-btn" type="button">
+            Send Demo Request
+            <i data-lucide="heart"></i>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="brand-mark"><i data-lucide="paw-print"></i></span>
+        <div>
+          <strong>Cloud Nine Puppies</strong>
+          <p>Demo puppy boutique for extra-cute web design.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#puppies">Puppies</a>
+        <a href="#promise">Care Promise</a>
+        <a href="#pricing">Packages</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="copyright">© 2026 Cloud Nine Puppies Demo. Made with paws, bows, and baby-blue daydreams.</p>
+    </footer>
+  </body>
+</html>
