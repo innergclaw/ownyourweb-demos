@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11120f">
+  <meta name="description" content="GOAT client project portal for logo progress and file delivery.">
+  <title>GOAT | Client workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=1">
+  <script type="module" src="script.js?v=1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+
+  <main>
+    <section class="access-screen" id="access-screen" aria-labelledby="access-title">
+      <div class="proof-word" aria-hidden="true"><span>G</span><span>O</span><span>A</span><span>T</span></div>
+      <header class="access-header">
+        <span class="studio-mark">OWNYOURWEB</span>
+        <span class="project-index">CLIENT PROJECT / 001</span>
+      </header>
+      <div class="access-copy">
+        <h1 id="access-title">Welcome, Anisa.</h1>
+        <p>Enter your project code to check the text-logo progress and view files when they are ready.</p>
+      </div>
+      <form class="access-form" id="access-form" novalidate>
+        <label for="access-code">Project access code</label>
+        <div class="code-row">
+          <input id="access-code" name="accessCode" type="password" autocomplete="one-time-code" spellcheck="false" required aria-describedby="access-note access-error" placeholder="Enter code">
+          <button type="submit">Open workspace</button>
+        </div>
+        <p id="access-error" class="access-error" role="alert" hidden>That code does not match this workspace. Check the code and try again.</p>
+        <p id="access-note" class="access-note">This demo code limits casual access. It is not secure account authentication.</p>
+      </form>
+    </section>
+
+    <section class="workspace" id="workspace" aria-label="GOAT client workspace" hidden>
+      <aside class="rail">
+        <a class="rail-brand" href="#dashboard" aria-label="GOAT dashboard"><span>G</span><b>GOAT</b></a>
+        <nav aria-label="Workspace navigation">
+          <button class="nav-button active" type="button" data-view="dashboard" aria-current="page"><span>01</span> Dashboard</button>
+          <button class="nav-button" type="button" data-view="files"><span>02</span> Files <b>0</b></button>
+        </nav>
+        <div class="client-card"><span>AN</span><div><b>Anisa</b><small>GOAT client</small></div></div>
+        <button class="logout" id="logout" type="button">Lock workspace</button>
+      </aside>
+
+      <div class="workspace-main">
+        <header class="topbar">
+          <div><p>GOAT / TEXT LOGO</p><h2 id="view-title">Project dashboard</h2></div>
+          <span class="status"><i></i> In progress</span>
+        </header>
+
+        <section class="view active" id="dashboard" data-panel="dashboard" aria-labelledby="dashboard-title">
+          <div class="masthead">
+            <h1 id="dashboard-title">GOAT</h1>
+            <div class="masthead-meta"><span>TEXT LOGO</span><span>CLIENT: ANISA</span><span>STATUS: EXPLORATION</span></div>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="progress-panel" aria-labelledby="progress-title">
+              <div class="section-head"><h3 id="progress-title">Text-logo exploration</h3><strong>01 / 03</strong></div>
+              <div class="progress-line" aria-label="Project is in stage one of three"><span></span></div>
+              <ol class="stage-list">
+                <li class="current"><span>01</span><div><b>Direction and wordmark studies</b><p>Current stage. Letterform, spacing, and overall character are being explored.</p></div><em>NOW</em></li>
+                <li><span>02</span><div><b>Client review and refinement</b><p>Your selected direction will move into focused revisions.</p></div><em>NEXT</em></li>
+                <li><span>03</span><div><b>Final logo package</b><p>Approved files will be prepared for download in the Files area.</p></div><em>LATER</em></li>
+              </ol>
+            </section>
+
+            <aside class="project-notes" aria-labelledby="notes-title">
+              <h3 id="notes-title">Your workspace is ready.</h3>
+              <p>The first GOAT concepts will appear here when they are ready for review. No design files have been posted yet.</p>
+              <button type="button" class="text-link" data-go-files>Check files <span>0</span></button>
+            </aside>
+          </div>
+
+          <section class="activity" aria-labelledby="activity-title">
+            <div class="section-head"><h3 id="activity-title">Latest update</h3></div>
+            <div class="activity-row"><time>NOW</time><span></span><div><b>Client workspace created</b><p>The GOAT text-logo project is set up and ready for work updates.</p></div></div>
+          </section>
+        </section>
+
+        <section class="view" id="files" data-panel="files" aria-labelledby="files-title" hidden>
+          <header class="files-head"><div><h1 id="files-title">GOAT files</h1><p>Review files and final downloads will appear here as the project moves forward.</p></div><span>0 FILES</span></header>
+          <div class="folder-strip" aria-label="File categories">
+            <button type="button" class="active">All files <span>0</span></button>
+            <button type="button">Concepts <span>0</span></button>
+            <button type="button">Review <span>0</span></button>
+            <button type="button">Final package <span>0</span></button>
+          </div>
+          <div class="empty-files">
+            <div class="empty-mark" aria-hidden="true"><span>G</span><span>0</span></div>
+            <h2>Your files will show up here.</h2>
+            <p>The first review file will be added after the initial text-logo direction is ready.</p>
+            <button type="button" class="outline-button" data-go-dashboard>Return to project progress</button>
+          </div>
+        </section>
+
+        <footer class="workspace-footer"><span>GOAT CLIENT WORKSPACE</span><span>BUILT BY OWNYOURWEB</span></footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "name": "GOAT client portal",
+  "northStar": "The Type Proof Ledger",
+  "tokens": {
+    "colors": {
+      "progressGreen": "#b7f23a",
+      "ink": "#11120f",
+      "paper": "#f3f1eb",
+      "warmWhite": "#fbfaf6",
+      "mutedInk": "#686a63",
+      "rule": "#cccdc5",
+      "danger": "#a13228"
+    },
+    "typography": {
+      "display": "Archivo Black, Impact, sans-serif",
+      "body": "Manrope, Arial, sans-serif",
+      "label": "IBM Plex Mono, monospace"
+    },
+    "shape": {"radius": "0"},
+    "motion": {"entry": "0.8s cubic-bezier(.16,1,.3,1)", "view": "0.45s cubic-bezier(.16,1,.3,1)"}
+  },
+  "decisions": [
+    "Large GOAT letterforms function as working material, not a finished logo claim.",
+    "Progress green marks active states only.",
+    "The portal remains flat and square with one-pixel rules and no shadows.",
+    "Mobile navigation retains Dashboard, Files, and Lock in one top strip.",
+    "The file library starts at zero and never invents deliverables."
+  ],
+  "conceptSeed": "e35ce5f0"
+}

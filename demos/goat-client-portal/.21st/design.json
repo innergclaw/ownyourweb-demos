@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "project": {
+    "name": "GOAT client portal",
+    "productType": "client project progress dashboard",
+    "stack": ["HTML", "CSS", "JavaScript"]
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {"paper": "#f3f1eb", "ink": "#11120f", "progress": "#b7f23a"},
+    "typography": {"display": "Archivo Black", "body": "Manrope", "data": "IBM Plex Mono"},
+    "density": "compact",
+    "motion": "Letter-spacing transition on successful access; reduced-motion fallback"
+  },
+  "constraints": {
+    "must": ["Show Anisa and GOAT", "Show project progress", "Show an honest empty file dashboard", "Use temporary code GOAT-ANISA"],
+    "avoid": ["Claims of secure authentication", "Invented logo files", "Invented approval dates", "Generic card-heavy admin layout"]
+  },
+  "decisions": ["Typesetter proof ledger visual world", "Neutral black and warm-white base until the GOAT identity is approved", "Green only marks active progress", "Dashboard and Files are the only launch views"]
+}
