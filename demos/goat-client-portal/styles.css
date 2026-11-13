@@ -29,3 +29,43 @@
 .proof-word{color:#66685f;opacity:1}
 .code-row button{color:var(--ink)}
 .access-note,.access-error{font-size:.8rem}
+.label,
+.access-header,
+.access-form label,
+.nav-button>span,
+.nav-button>b,
+.client-card>span,
+.client-card small,
+.logout,
+.topbar p,
+.status,
+.masthead-meta,
+.stage-list li>span,
+.stage-list em,
+.text-link span,
+.activity-row time,
+.files-head>span,
+.folder-strip span,
+.workspace-footer{font-size:.7rem}
+@media(max-width:560px){
+  .access-screen{padding-top:max(22px,env(safe-area-inset-top));padding-right:max(20px,env(safe-area-inset-right));padding-bottom:max(28px,env(safe-area-inset-bottom));padding-left:max(20px,env(safe-area-inset-left))}
+  .workspace{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+  .rail{position:fixed;inset:auto 0 0 0;height:calc(66px + env(safe-area-inset-bottom));padding:8px max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));border-top:1px solid #3a3b36}
+  .rail-brand{flex:0 0 44px;height:44px;padding:0;border:0}
+  .rail-brand>span{width:44px;height:44px}
+  .rail nav{display:grid;flex:1;grid-template-columns:1fr 1fr;gap:4px;margin:0 8px}
+  .nav-button{display:flex;min-height:44px;justify-content:center;gap:8px;padding:0 10px;text-align:center}
+  .logout{display:grid;min-width:44px;height:44px;min-height:44px;place-items:center;margin:0;padding:0;font-size:0}
+  .logout::after{font-size:.7rem}
+  .topbar{top:0;min-height:64px;padding-top:max(12px,env(safe-area-inset-top));padding-right:max(18px,env(safe-area-inset-right));padding-left:max(18px,env(safe-area-inset-left))}
+  .view{padding-right:max(18px,env(safe-area-inset-right));padding-left:max(18px,env(safe-area-inset-left))}
+  .stage-list li,.activity-row{width:100%}
+  .stage-list p,.activity-row p{font-size:.9rem;line-height:1.55}
+  .text-link,.outline-button{min-height:48px}
+  .workspace-footer{padding-right:max(18px,env(safe-area-inset-right));padding-left:max(18px,env(safe-area-inset-left))}
+}
+@media(max-width:360px){
+  .rail nav{margin-inline:4px}
+  .nav-button{padding-inline:7px;font-size:.7rem}
+  .masthead h1{font-size:24vw}
+}
