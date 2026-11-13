@@ -37,6 +37,13 @@ test("dashboard and files views have working controls", () => {
   assert.match(script, /function showView/);
 });
 
+test("confirmed payment and next step stay exact", () => {
+  assert.match(html, /\$75 payment confirmed/);
+  assert.match(html, /Discovery call with Anisa/);
+  assert.match(html, /discuss the vibe, visual direction, and what she wants the logo to communicate/);
+  assert.match(html, /STATUS: DISCOVERY CALL NEXT/);
+});
+
 test("responsive and reduced motion styles are present", () => {
   assert.match(css, /\[hidden\]\{display:none!important\}/);
   assert.match(css, /@media\(max-width:560px\)/);

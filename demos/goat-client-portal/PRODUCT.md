@@ -32,7 +32,8 @@ Anisa opens a private-feeling shared link, enters a temporary code, reviews the 
 - GitHub Pages is static. The access screen discourages casual viewing but does not provide secure authentication.
 - The demo does not upload, store, or deliver private files.
 - The file area must state that no files are ready instead of showing invented deliverables.
-- The project is a text-logo project. The final logo, colors, and broader brand direction are still in progress.
+- The project is a text-logo project. Anisa paid $75. The next step is a client discovery call to understand the desired vibe, direction, and expectations.
+- The final logo, colors, and broader brand direction are still in progress.
 
 ## Brand Commitments
 
@@ -43,7 +44,7 @@ Anisa opens a private-feeling shared link, enters a temporary code, reviews the 
 
 ## Evidence on Hand
 
-No logo concepts, approved colors, downloadable files, timeline, payment status, or client contact details were supplied. Do not fabricate them.
+Confirmed payment: $75. No logo concepts, approved colors, downloadable files, timeline, call date, or client contact details were supplied. Do not fabricate them.
 
 ## Product Principles
 
