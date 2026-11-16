@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "demos/goat-client-portal/index.html"
+        ],
+        "createdAt": "2026-11-16T17:57:07.266Z",
+        "reason": "Agent: rendered access screen has 34px horizontal padding and progress panel has 42px right padding"
+      }
+    ]
+  }
+}

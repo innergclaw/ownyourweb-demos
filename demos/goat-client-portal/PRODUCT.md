@@ -34,20 +34,20 @@ Anisa opens a private-feeling shared link, enters a temporary code, reviews the 
 - The file area must state that no files are ready instead of showing invented deliverables.
 - The project is a merch wordmark for GOAT. Anisa paid $75 and completed the discovery call.
 - The logo must work on shirts, merch, and a future clothing line.
-- The confirmed direction is green with Philadelphia influence and cute, bubbly lettering.
-- Anisa will send three font references. Concept work starts after they arrive.
+- The discovery call recorded a working direction of green, Philadelphia influence, and cute, bubbly lettering. This is not final approval.
+- Anisa will send reference images. Concept work starts after they arrive.
 - The final wordmark and exact colors are still in progress.
 
 ## Brand Commitments
 
 - Client name: Anisa.
 - Business name: GOAT.
-- Preserve the confirmed green, Philadelphia-influenced, bubbly direction without treating references as the final design.
+- Treat green, Philadelphia influence, and bubbly lettering as working notes until Anisa sends reference images and approves a direction.
 - The interface must feel professional and client-ready, not like a generic admin template.
 
 ## Evidence on Hand
 
-Confirmed payment: $75. Discovery call completed on November 16, 2026. Confirmed use: merch, shirts, and a future clothing line. Confirmed direction: green, Philadelphia influence, and cute bubbly lettering. No font references, logo concepts, exact colors, downloadable files, timeline, or client contact details were supplied. Do not fabricate them.
+Confirmed payment: $75. Discovery call completed on November 16, 2026. Intended use: merch, shirts, and a future clothing line. Working notes: green, Philadelphia influence, and cute bubbly lettering. No reference images, approved direction, logo concepts, exact colors, downloadable files, timeline, or client contact details were supplied. Do not fabricate them.
 
 ## Product Principles
 

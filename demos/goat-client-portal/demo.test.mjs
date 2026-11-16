@@ -37,14 +37,15 @@ test("dashboard and files views have working controls", () => {
   assert.match(script, /function showView/);
 });
 
-test("confirmed payment and creative direction stay exact", () => {
+test("confirmed payment and discovery status stay exact", () => {
   assert.match(html, /Payment confirmed/);
   assert.match(html, /\$75 received/);
   assert.match(html, /Discovery call complete/);
   assert.match(html, /Green with Philadelphia influence/);
-  assert.match(html, /Cute, bubbly GOAT lettering/);
-  assert.match(html, /Three font references from Anisa/);
-  assert.match(html, /STATUS: FONT REFERENCES NEXT/);
+  assert.match(html, /Cute, bubbly lettering/);
+  assert.match(html, /Reference images from Anisa/);
+  assert.match(html, /final direction is not approved yet/i);
+  assert.match(html, /STATUS: REFERENCE IMAGES NEXT/);
   assert.match(html, /02 \/ 04 COMPLETE/);
 });
 

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
   <script type="module" src="script.js?v=1"></script>
 </head>
 <body>
@@ -50,44 +50,44 @@
 
       <div class="workspace-main">
         <header class="topbar">
-          <div><p>GOAT / TEXT LOGO</p><h2 id="view-title">Project dashboard</h2></div>
+          <div><p>GOAT / TEXT LOGO</p><p class="view-name" id="view-title">Project dashboard</p></div>
           <span class="status"><i></i> In progress</span>
         </header>
 
         <section class="view active" id="dashboard" data-panel="dashboard" aria-labelledby="dashboard-title">
           <div class="masthead">
             <h1 id="dashboard-title">GOAT</h1>
-            <div class="masthead-meta"><span>MERCH WORDMARK</span><span>CLIENT: ANISA</span><span>STATUS: FONT REFERENCES NEXT</span></div>
+            <div class="masthead-meta"><span>MERCH WORDMARK</span><span>CLIENT: ANISA</span><span>STATUS: REFERENCE IMAGES NEXT</span></div>
           </div>
 
           <div class="dashboard-grid">
             <section class="progress-panel" aria-labelledby="progress-title">
-              <div class="section-head"><h3 id="progress-title">Creative direction</h3><strong>02 / 04 COMPLETE</strong></div>
+              <div class="section-head"><h2 id="progress-title">Discovery notes</h2><strong>02 / 04 COMPLETE</strong></div>
               <div class="progress-line half" aria-label="Two of four project stages are complete"><span></span></div>
               <ol class="stage-list">
                 <li class="complete"><span>01</span><div><b>Payment confirmed</b><p>$75 received. The GOAT text-logo project is active.</p></div><em>DONE</em></li>
-                <li class="complete"><span>02</span><div><b>Discovery call complete</b><p>The merch use, green color direction, Philly influence, and bubbly lettering style are confirmed.</p></div><em>DONE</em></li>
-                <li class="current"><span>03</span><div><b>Font references and wordmark studies</b><p>Anisa will send three bubbly font references. Initial GOAT concepts begin after they arrive.</p></div><em>WAITING</em></li>
+                <li class="complete"><span>02</span><div><b>Discovery call complete</b><p>Working notes cover merch use, green, Philadelphia influence, and bubbly lettering. The final direction is not approved yet.</p></div><em>DONE</em></li>
+                <li class="current"><span>03</span><div><b>Reference images and wordmark studies</b><p>Anisa will send reference images. Initial GOAT concepts begin after they arrive.</p></div><em>WAITING</em></li>
                 <li><span>04</span><div><b>Review, refinement, and final files</b><p>The selected direction will be refined for shirts, merch, and future clothing use.</p></div><em>LATER</em></li>
               </ol>
             </section>
 
             <aside class="project-notes" aria-labelledby="notes-title">
-              <h3 id="notes-title">Creative direction confirmed.</h3>
-              <ul class="brief-list" aria-label="Confirmed creative direction">
+              <h2 id="notes-title">Discovery notes recorded.</h2>
+              <ul class="brief-list" aria-label="Working notes from the discovery call">
                 <li><span>USE</span><b>Merch and future clothing line</b></li>
                 <li><span>COLOR</span><b>Green with Philadelphia influence</b></li>
-                <li><span>TYPE</span><b>Cute, bubbly GOAT lettering</b></li>
-                <li><span>NEXT</span><b>Three font references from Anisa</b></li>
+                <li><span>TYPE</span><b>Cute, bubbly lettering</b></li>
+                <li><span>NEXT</span><b>Reference images from Anisa</b></li>
               </ul>
               <button type="button" class="text-link" data-go-files>Check files <span>0</span></button>
             </aside>
           </div>
 
           <section class="activity" aria-labelledby="activity-title">
-            <div class="section-head"><h3 id="activity-title">Latest update</h3></div>
+            <div class="section-head"><h2 id="activity-title">Latest update</h2></div>
             <div class="activity-row"><time>NOV 16</time><span></span><div><b>Discovery call completed</b><p>Anisa confirmed the logo is for merch and a future clothing line.</p></div></div>
-            <div class="activity-row"><time>NEXT</time><span></span><div><b>Waiting on three font references</b><p>Anisa will send three examples that show the bubbly lettering style she likes.</p></div></div>
+            <div class="activity-row"><time>NEXT</time><span></span><div><b>Waiting on reference images</b><p>Anisa will send visual examples before GOAT concept work begins.</p></div></div>
           </section>
         </section>
 
@@ -102,7 +102,7 @@
           <div class="empty-files">
             <div class="empty-mark" aria-hidden="true"><span>G</span><span>0</span></div>
             <h2>Your files will show up here.</h2>
-              <p>No design files have been posted yet. The first review file will be added after Anisa sends three font references and the initial GOAT concepts are ready.</p>
+              <p>No design files have been posted yet. The first review file will be added after Anisa sends her reference images and the initial GOAT concepts are ready.</p>
             <button type="button" class="outline-button" data-go-dashboard>Return to project progress</button>
           </div>
         </section>
