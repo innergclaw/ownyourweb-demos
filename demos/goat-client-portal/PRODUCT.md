@@ -32,19 +32,22 @@ Anisa opens a private-feeling shared link, enters a temporary code, reviews the 
 - GitHub Pages is static. The access screen discourages casual viewing but does not provide secure authentication.
 - The demo does not upload, store, or deliver private files.
 - The file area must state that no files are ready instead of showing invented deliverables.
-- The project is a text-logo project. Anisa paid $75. The next step is a client discovery call to understand the desired vibe, direction, and expectations.
-- The final logo, colors, and broader brand direction are still in progress.
+- The project is a merch wordmark for GOAT. Anisa paid $75 and completed the discovery call.
+- The logo must work on shirts, merch, and a future clothing line.
+- The confirmed direction is green with Philadelphia influence and cute, bubbly lettering.
+- Anisa will send three font references. Concept work starts after they arrive.
+- The final wordmark and exact colors are still in progress.
 
 ## Brand Commitments
 
 - Client name: Anisa.
 - Business name: GOAT.
-- Keep the working visual identity neutral until the logo direction is approved.
+- Preserve the confirmed green, Philadelphia-influenced, bubbly direction without treating references as the final design.
 - The interface must feel professional and client-ready, not like a generic admin template.
 
 ## Evidence on Hand
 
-Confirmed payment: $75. No logo concepts, approved colors, downloadable files, timeline, call date, or client contact details were supplied. Do not fabricate them.
+Confirmed payment: $75. Discovery call completed on November 16, 2026. Confirmed use: merch, shirts, and a future clothing line. Confirmed direction: green, Philadelphia influence, and cute bubbly lettering. No font references, logo concepts, exact colors, downloadable files, timeline, or client contact details were supplied. Do not fabricate them.
 
 ## Product Principles
 
