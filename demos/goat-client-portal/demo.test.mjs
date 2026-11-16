@@ -22,10 +22,20 @@ test("temporary code opens only this demo workspace", () => {
   assert.match(html, /not secure account authentication/i);
 });
 
-test("empty files state is honest", () => {
-  assert.match(html, /3 FILES/);
-  assert.match(html, /No logo concepts posted yet\./);
-  assert.doesNotMatch(html, /\.pdf|\.png|\.svg|download=/i);
+test("concept files state is honest", () => {
+  assert.match(html, /6 FILES/);
+  assert.match(html, /First concept batch/);
+  assert.doesNotMatch(html, /download=/i);
+});
+
+test("three original concept studies are posted", () => {
+  assert.match(html, /assets\/concepts\/concept-a-deep-green\.png/);
+  assert.match(html, /assets\/concepts\/concept-b-lime-puff\.png/);
+  assert.match(html, /assets\/concepts\/concept-c-glossy-green\.png/);
+  assert.match(html, /CONCEPT A/);
+  assert.match(html, /CONCEPT B/);
+  assert.match(html, /CONCEPT C/);
+  assert.match(html, /direction studies, not final production files/i);
 });
 
 test("client reference images are present and labeled", () => {
@@ -52,7 +62,7 @@ test("confirmed payment and discovery status stay exact", () => {
   assert.match(html, /Cute, bubbly lettering/);
   assert.match(html, /Three references received/);
   assert.match(html, /Super Bubbly, Casual, and Babel Gamee/);
-  assert.match(html, /STATUS: CONCEPT STUDIES NEXT/);
+  assert.match(html, /STATUS: CONCEPT REVIEW/);
   assert.match(html, /02 \/ 04 COMPLETE/);
 });
 

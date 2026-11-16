@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
   <script type="module" src="script.js?v=1"></script>
 </head>
 <body>
@@ -42,7 +42,7 @@
         <a class="rail-brand" href="#dashboard" aria-label="GOAT dashboard"><span>G</span><b>GOAT</b></a>
         <nav aria-label="Workspace navigation">
           <button class="nav-button active" type="button" data-view="dashboard" aria-current="page"><span>01</span> Dashboard</button>
-          <button class="nav-button" type="button" data-view="files"><span>02</span> Files <b>3</b></button>
+          <button class="nav-button" type="button" data-view="files"><span>02</span> Files <b>6</b></button>
         </nav>
         <div class="client-card"><span>AN</span><div><b>Anisa</b><small>GOAT client</small></div></div>
         <button class="logout" id="logout" type="button">Lock workspace</button>
@@ -57,7 +57,7 @@
         <section class="view active" id="dashboard" data-panel="dashboard" aria-labelledby="dashboard-title">
           <div class="masthead">
             <h1 id="dashboard-title">GOAT</h1>
-            <div class="masthead-meta"><span>MERCH WORDMARK</span><span>CLIENT: ANISA</span><span>STATUS: CONCEPT STUDIES NEXT</span></div>
+            <div class="masthead-meta"><span>MERCH WORDMARK</span><span>CLIENT: ANISA</span><span>STATUS: CONCEPT REVIEW</span></div>
           </div>
 
           <div class="dashboard-grid">
@@ -67,7 +67,7 @@
               <ol class="stage-list">
                 <li class="complete"><span>01</span><div><b>Payment confirmed</b><p>$75 received. The GOAT text-logo project is active.</p></div><em>DONE</em></li>
                 <li class="complete"><span>02</span><div><b>Discovery call complete</b><p>Working notes cover merch use, green, Philadelphia influence, and bubbly lettering. The final direction is not approved yet.</p></div><em>DONE</em></li>
-                <li class="current"><span>03</span><div><b>References received. Concept studies next.</b><p>Super Bubbly, Casual, and Babel Gamee now guide the round, playful lettering direction.</p></div><em>ACTIVE</em></li>
+                <li class="current"><span>03</span><div><b>First concept batch ready.</b><p>Three original GOAT wordmarks test deep green, bright lime, and glossy green treatments.</p></div><em>REVIEW</em></li>
                 <li><span>04</span><div><b>Review, refinement, and final files</b><p>The selected direction will be refined for shirts, merch, and future clothing use.</p></div><em>LATER</em></li>
               </ol>
             </section>
@@ -78,9 +78,9 @@
                 <li><span>USE</span><b>Merch and future clothing line</b></li>
                 <li><span>COLOR</span><b>Green with Philadelphia influence</b></li>
                 <li><span>TYPE</span><b>Cute, bubbly lettering</b></li>
-                <li><span>NEXT</span><b>Initial GOAT concept studies</b></li>
+                <li><span>NEXT</span><b>Choose one direction to refine</b></li>
               </ul>
-              <button type="button" class="text-link" data-go-files>View references <span>3</span></button>
+              <button type="button" class="text-link" data-go-files>Review concepts <span>3</span></button>
             </aside>
           </div>
 
@@ -88,20 +88,38 @@
             <div class="section-head"><h2 id="activity-title">Latest update</h2></div>
             <div class="activity-row"><time>NOV 16</time><span></span><div><b>Discovery call completed</b><p>Anisa confirmed the logo is for merch and a future clothing line.</p></div></div>
             <div class="activity-row"><time>NOV 16</time><span></span><div><b>Three references received</b><p>Super Bubbly, Casual, and Babel Gamee were added to the project files.</p></div></div>
-            <div class="activity-row"><time>NEXT</time><span></span><div><b>GOAT concept studies</b><p>The references will guide original lettering made for merch and future clothing use.</p></div></div>
+            <div class="activity-row"><time>NOV 16</time><span></span><div><b>First concept batch posted</b><p>Three green GOAT wordmarks are ready for Anisa to compare.</p></div></div>
           </section>
         </section>
 
         <section class="view" id="files" data-panel="files" aria-labelledby="files-title" hidden>
-          <header class="files-head"><div><h1 id="files-title">GOAT files</h1><p>Three reference images are on file. They guide the lettering direction and are not final logo concepts.</p></div><span>3 FILES</span></header>
+          <header class="files-head"><div><h1 id="files-title">GOAT files</h1><p>Three original concept studies are ready for review. The selected direction will be redrawn and prepared for production.</p></div><span>6 FILES</span></header>
           <div class="folder-strip" aria-label="File categories">
-            <button type="button" class="active">All files <span>3</span></button>
+            <button type="button" class="active">All files <span>6</span></button>
             <button type="button">References <span>3</span></button>
-            <button type="button">Concepts <span>0</span></button>
+            <button type="button">Concepts <span>3</span></button>
             <button type="button">Review <span>0</span></button>
             <button type="button">Final package <span>0</span></button>
           </div>
           <div class="reference-library">
+            <section class="concept-library" aria-labelledby="concepts-title">
+              <div class="concept-heading"><div><h2 id="concepts-title">First concept batch</h2><p>Compare the shape, color, and attitude. These are direction studies, not final production files.</p></div><span>SELECT ONE TO REFINE</span></div>
+              <div class="concept-grid">
+                <figure class="concept-card">
+                  <a href="assets/concepts/concept-a-deep-green.png" target="_blank" rel="noopener"><img src="assets/concepts/concept-a-deep-green.png" width="2172" height="724" alt="GOAT concept A in deep green with cream and black outlines"></a>
+                  <figcaption><div><span>CONCEPT A</span><b>Deep green classic</b><small>Balanced, clean, and flexible across shirts, labels, and future brand use.</small></div><a href="assets/concepts/concept-a-deep-green.png" target="_blank" rel="noopener">Open concept</a></figcaption>
+                </figure>
+                <figure class="concept-card">
+                  <a href="assets/concepts/concept-b-lime-puff.png" target="_blank" rel="noopener"><img src="assets/concepts/concept-b-lime-puff.png" width="2172" height="724" alt="GOAT concept B in bright lime green with dark green and black depth"></a>
+                  <figcaption><div><span>CONCEPT B</span><b>Lime street puff</b><small>The boldest option. Bright color and heavier depth give it strong streetwear energy.</small></div><a href="assets/concepts/concept-b-lime-puff.png" target="_blank" rel="noopener">Open concept</a></figcaption>
+                </figure>
+                <figure class="concept-card">
+                  <a href="assets/concepts/concept-c-glossy-green.png" target="_blank" rel="noopener"><img src="assets/concepts/concept-c-glossy-green.png" width="2172" height="724" alt="GOAT concept C in forest green with lime edges and cream highlights"></a>
+                  <figcaption><div><span>CONCEPT C</span><b>Glossy fashion green</b><small>A polished treatment with more movement, contrast, and fashion-label character.</small></div><a href="assets/concepts/concept-c-glossy-green.png" target="_blank" rel="noopener">Open concept</a></figcaption>
+                </figure>
+              </div>
+            </section>
+            <div class="reference-heading"><h2>Client references</h2><p>These screenshots guided the rounded lettering direction. They are not production assets.</p></div>
             <div class="reference-grid">
               <figure class="reference-card">
                 <a href="assets/references/super-bubbly.jpg" target="_blank" rel="noopener"><img src="assets/references/super-bubbly.jpg" width="1280" height="536" loading="lazy" alt="Super Bubbly font reference selected by Anisa"></a>
@@ -117,7 +135,7 @@
               </figure>
             </div>
             <aside class="license-note"><b>Production note</b><p>These images are style references. Font licensing must be confirmed before any typeface is used on products for sale.</p></aside>
-            <div class="files-next"><h2>No logo concepts posted yet.</h2><p>The references are received. Initial GOAT lettering studies are the next project step.</p></div>
+            <div class="files-next"><h2>Choose the strongest starting point.</h2><p>Anisa can select A, B, or C and note what she wants to keep or change. The chosen direction will move into refinement.</p></div>
             <button type="button" class="outline-button" data-go-dashboard>Return to project progress</button>
           </div>
         </section>
