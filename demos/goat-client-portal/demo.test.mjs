@@ -23,10 +23,17 @@ test("temporary code opens only this demo workspace", () => {
 });
 
 test("empty files state is honest", () => {
-  assert.match(html, /0 FILES/);
-  assert.match(html, /Your files will show up here\./);
-  assert.match(html, /No design files have been posted yet/);
+  assert.match(html, /3 FILES/);
+  assert.match(html, /No logo concepts posted yet\./);
   assert.doesNotMatch(html, /\.pdf|\.png|\.svg|download=/i);
+});
+
+test("client reference images are present and labeled", () => {
+  assert.match(html, /assets\/references\/super-bubbly\.jpg/);
+  assert.match(html, /assets\/references\/casual\.jpg/);
+  assert.match(html, /assets\/references\/babel-gamee\.jpg/);
+  assert.match(html, /Personal Use Free/);
+  assert.match(html, /commercial license is required for sold merchandise/i);
 });
 
 test("dashboard and files views have working controls", () => {
@@ -43,9 +50,9 @@ test("confirmed payment and discovery status stay exact", () => {
   assert.match(html, /Discovery call complete/);
   assert.match(html, /Green with Philadelphia influence/);
   assert.match(html, /Cute, bubbly lettering/);
-  assert.match(html, /Reference images from Anisa/);
-  assert.match(html, /final direction is not approved yet/i);
-  assert.match(html, /STATUS: REFERENCE IMAGES NEXT/);
+  assert.match(html, /Three references received/);
+  assert.match(html, /Super Bubbly, Casual, and Babel Gamee/);
+  assert.match(html, /STATUS: CONCEPT STUDIES NEXT/);
   assert.match(html, /02 \/ 04 COMPLETE/);
 });
 

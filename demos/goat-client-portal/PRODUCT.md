@@ -35,7 +35,7 @@ Anisa opens a private-feeling shared link, enters a temporary code, reviews the 
 - The project is a merch wordmark for GOAT. Anisa paid $75 and completed the discovery call.
 - The logo must work on shirts, merch, and a future clothing line.
 - The discovery call recorded a working direction of green, Philadelphia influence, and cute, bubbly lettering. This is not final approval.
-- Anisa will send reference images. Concept work starts after they arrive.
+- Anisa supplied three reference images: Super Bubbly, Casual, and Babel Gamee. Concept work is the next step.
 - The final wordmark and exact colors are still in progress.
 
 ## Brand Commitments
@@ -47,7 +47,7 @@ Anisa opens a private-feeling shared link, enters a temporary code, reviews the 
 
 ## Evidence on Hand
 
-Confirmed payment: $75. Discovery call completed on November 16, 2026. Intended use: merch, shirts, and a future clothing line. Working notes: green, Philadelphia influence, and cute bubbly lettering. No reference images, approved direction, logo concepts, exact colors, downloadable files, timeline, or client contact details were supplied. Do not fabricate them.
+Confirmed payment: $75. Discovery call completed on November 16, 2026. Intended use: merch, shirts, and a future clothing line. Working notes: green, Philadelphia influence, and cute bubbly lettering. Reference images received: Super Bubbly, Casual, and Babel Gamee. The screenshots label Casual and Babel Gamee as Personal Use Free, so their commercial rights are not established. Super Bubbly is labeled 100% Free, but its commercial rights still need source confirmation. No approved direction, logo concepts, exact colors, downloadable logo files, timeline, or client contact details were supplied. Do not fabricate them.
 
 ## Product Principles
 
