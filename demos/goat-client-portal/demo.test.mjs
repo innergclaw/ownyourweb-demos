@@ -23,8 +23,8 @@ test("temporary code opens only this demo workspace", () => {
 });
 
 test("concept files state is honest", () => {
-  assert.match(html, /6 FILES/);
-  assert.match(html, /First concept batch/);
+  assert.match(html, /9 FILES/);
+  assert.match(html, /Concept B variations/);
   assert.doesNotMatch(html, /download=/i);
 });
 
@@ -35,7 +35,18 @@ test("three original concept studies are posted", () => {
   assert.match(html, /CONCEPT A/);
   assert.match(html, /CONCEPT B/);
   assert.match(html, /CONCEPT C/);
-  assert.match(html, /direction studies, not final production files/i);
+  assert.match(html, /remain on file for project history/i);
+});
+
+test("selected concept B has three white treatment variations", () => {
+  assert.match(html, /Concept B selected/);
+  assert.match(html, /assets\/concepts\/concept-b1-white-border\.png/);
+  assert.match(html, /assets\/concepts\/concept-b2-bold-white-border\.png/);
+  assert.match(html, /assets\/concepts\/concept-b3-white-badge\.png/);
+  assert.match(html, /VARIATION B1/);
+  assert.match(html, /VARIATION B2/);
+  assert.match(html, /VARIATION B3/);
+  assert.match(html, /Choose B1, B2, or B3/);
 });
 
 test("client reference images are present and labeled", () => {
@@ -62,7 +73,7 @@ test("confirmed payment and discovery status stay exact", () => {
   assert.match(html, /Cute, bubbly lettering/);
   assert.match(html, /Three references received/);
   assert.match(html, /Super Bubbly, Casual, and Babel Gamee/);
-  assert.match(html, /STATUS: CONCEPT REVIEW/);
+  assert.match(html, /STATUS: B VARIATION REVIEW/);
   assert.match(html, /02 \/ 04 COMPLETE/);
 });
 
