@@ -23,9 +23,19 @@ test("temporary code opens only this demo workspace", () => {
 });
 
 test("concept files state is honest", () => {
-  assert.match(html, /9 FILES/);
-  assert.match(html, /Concept B variations/);
+  assert.match(html, /12 FILES/);
+  assert.match(html, /Street lettering variations/);
   assert.doesNotMatch(html, /download=/i);
+});
+
+test("street lettering round changes the actual letter forms", () => {
+  assert.match(html, /assets\/concepts\/concept-b4-rising-street\.png/);
+  assert.match(html, /assets\/concepts\/concept-b5-sharp-street\.png/);
+  assert.match(html, /assets\/concepts\/concept-b6-handstyle\.png/);
+  assert.match(html, /VARIATION B4/);
+  assert.match(html, /VARIATION B5/);
+  assert.match(html, /VARIATION B6/);
+  assert.match(html, /Choose B4, B5, or B6/);
 });
 
 test("three original concept studies are posted", () => {
@@ -46,7 +56,7 @@ test("selected concept B has three white treatment variations", () => {
   assert.match(html, /VARIATION B1/);
   assert.match(html, /VARIATION B2/);
   assert.match(html, /VARIATION B3/);
-  assert.match(html, /Choose B1, B2, or B3/);
+  assert.match(html, /Border variations/);
 });
 
 test("client reference images are present and labeled", () => {
@@ -73,7 +83,7 @@ test("confirmed payment and discovery status stay exact", () => {
   assert.match(html, /Cute, bubbly lettering/);
   assert.match(html, /Three references received/);
   assert.match(html, /Super Bubbly, Casual, and Babel Gamee/);
-  assert.match(html, /STATUS: B VARIATION REVIEW/);
+  assert.match(html, /STATUS: STREET LETTERING REVIEW/);
   assert.match(html, /02 \/ 04 COMPLETE/);
 });
 

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
   <script type="module" src="script.js?v=1"></script>
 </head>
 <body>
@@ -42,7 +42,7 @@
         <a class="rail-brand" href="#dashboard" aria-label="GOAT dashboard"><span>G</span><b>GOAT</b></a>
         <nav aria-label="Workspace navigation">
           <button class="nav-button active" type="button" data-view="dashboard" aria-current="page"><span>01</span> Dashboard</button>
-          <button class="nav-button" type="button" data-view="files"><span>02</span> Files <b>9</b></button>
+          <button class="nav-button" type="button" data-view="files"><span>02</span> Files <b>12</b></button>
         </nav>
         <div class="client-card"><span>AN</span><div><b>Anisa</b><small>GOAT client</small></div></div>
         <button class="logout" id="logout" type="button">Lock workspace</button>
@@ -57,7 +57,7 @@
         <section class="view active" id="dashboard" data-panel="dashboard" aria-labelledby="dashboard-title">
           <div class="masthead">
             <h1 id="dashboard-title">GOAT</h1>
-            <div class="masthead-meta"><span>MERCH WORDMARK</span><span>CLIENT: ANISA</span><span>STATUS: B VARIATION REVIEW</span></div>
+            <div class="masthead-meta"><span>MERCH WORDMARK</span><span>CLIENT: ANISA</span><span>STATUS: STREET LETTERING REVIEW</span></div>
           </div>
 
           <div class="dashboard-grid">
@@ -67,7 +67,7 @@
               <ol class="stage-list">
                 <li class="complete"><span>01</span><div><b>Payment confirmed</b><p>$75 received. The GOAT text-logo project is active.</p></div><em>DONE</em></li>
                 <li class="complete"><span>02</span><div><b>Discovery call complete</b><p>Working notes cover merch use, green, Philadelphia influence, and bubbly lettering. The final direction is not approved yet.</p></div><em>DONE</em></li>
-                <li class="current"><span>03</span><div><b>Concept B selected. Variations ready.</b><p>Three white-border treatments now test how the lime wordmark will pop across different shirt colors.</p></div><em>REVIEW</em></li>
+                <li class="current"><span>03</span><div><b>Street lettering round ready.</b><p>Three new directions change the letter shapes, stance, and rhythm while keeping Concept B's colors.</p></div><em>REVIEW</em></li>
                 <li><span>04</span><div><b>Review, refinement, and final files</b><p>The selected direction will be refined for shirts, merch, and future clothing use.</p></div><em>LATER</em></li>
               </ol>
             </section>
@@ -78,9 +78,9 @@
                 <li><span>USE</span><b>Merch and future clothing line</b></li>
                 <li><span>COLOR</span><b>Green with Philadelphia influence</b></li>
                 <li><span>TYPE</span><b>Cute, bubbly lettering</b></li>
-                <li><span>NEXT</span><b>Choose the final white treatment</b></li>
+                <li><span>NEXT</span><b>Choose B4, B5, or B6</b></li>
               </ul>
-              <button type="button" class="text-link" data-go-files>Review B variations <span>3</span></button>
+              <button type="button" class="text-link" data-go-files>Review street lettering <span>3</span></button>
             </aside>
           </div>
 
@@ -90,21 +90,39 @@
             <div class="activity-row"><time>NOV 16</time><span></span><div><b>Three references received</b><p>Super Bubbly, Casual, and Babel Gamee were added to the project files.</p></div></div>
             <div class="activity-row"><time>NOV 16</time><span></span><div><b>First concept batch posted</b><p>Three green GOAT wordmarks are ready for Anisa to compare.</p></div></div>
             <div class="activity-row"><time>NOV 24</time><span></span><div><b>Concept B selected</b><p>Three white-border variations were added for the final direction review.</p></div></div>
+            <div class="activity-row"><time>NOV 24</time><span></span><div><b>Street lettering round added</b><p>Three new versions change the lettering with more movement, sharper cuts, and hand-drawn rhythm.</p></div></div>
           </section>
         </section>
 
         <section class="view" id="files" data-panel="files" aria-labelledby="files-title" hidden>
-          <header class="files-head"><div><h1 id="files-title">GOAT files</h1><p>Concept B is selected. Three white-border variations are ready for the next review.</p></div><span>9 FILES</span></header>
+          <header class="files-head"><div><h1 id="files-title">GOAT files</h1><p>Concept B remains the base. Three more street-artistic lettering directions are ready for review.</p></div><span>12 FILES</span></header>
           <div class="folder-strip" aria-label="File categories">
-            <button type="button" class="active">All files <span>9</span></button>
+            <button type="button" class="active">All files <span>12</span></button>
             <button type="button">References <span>3</span></button>
             <button type="button">Concepts <span>3</span></button>
-            <button type="button">Review <span>3</span></button>
+            <button type="button">Review <span>6</span></button>
             <button type="button">Final package <span>0</span></button>
           </div>
           <div class="reference-library">
+            <section class="concept-library review-round" aria-labelledby="street-variations-title">
+              <div class="concept-heading"><div><h2 id="street-variations-title">Street lettering variations</h2><p>These versions change the actual GOAT letter shapes while preserving the lime, forest, black, and white color system.</p></div><span>ROUND THREE</span></div>
+              <div class="concept-grid">
+                <figure class="concept-card selected-variation">
+                  <a href="assets/concepts/concept-b4-rising-street.png" target="_blank" rel="noopener"><img src="assets/concepts/concept-b4-rising-street.png" width="1774" height="887" alt="GOAT variation B4 with a rising street-style baseline and motion strokes"></a>
+                  <figcaption><div><span>VARIATION B4</span><b>Rising street</b><small>A tilted upward stance, cut-in accents, and motion strokes create a more active streetwear mark.</small></div><a href="assets/concepts/concept-b4-rising-street.png" target="_blank" rel="noopener">Open variation</a></figcaption>
+                </figure>
+                <figure class="concept-card selected-variation">
+                  <a href="assets/concepts/concept-b5-sharp-street.png" target="_blank" rel="noopener"><img src="assets/concepts/concept-b5-sharp-street.png" width="2172" height="724" alt="GOAT variation B5 with compressed wide letters and sharp street-style cuts"></a>
+                  <figcaption><div><span>VARIATION B5</span><b>Sharp street</b><small>Wider letters, angular cuts, and a forward stance make this the strongest and most aggressive option.</small></div><a href="assets/concepts/concept-b5-sharp-street.png" target="_blank" rel="noopener">Open variation</a></figcaption>
+                </figure>
+                <figure class="concept-card selected-variation">
+                  <a href="assets/concepts/concept-b6-handstyle.png" target="_blank" rel="noopener"><img src="assets/concepts/concept-b6-handstyle.png" width="1774" height="887" alt="GOAT variation B6 with hand-drawn bubble lettering and a sweeping underline"></a>
+                  <figcaption><div><span>VARIATION B6</span><b>Handstyle flow</b><small>Uneven letter heights and the integrated underline give this version the most hand-drawn personality.</small></div><a href="assets/concepts/concept-b6-handstyle.png" target="_blank" rel="noopener">Open variation</a></figcaption>
+                </figure>
+              </div>
+            </section>
             <section class="concept-library review-round" aria-labelledby="variations-title">
-              <div class="concept-heading"><div><h2 id="variations-title">Concept B variations</h2><p>The lime wordmark stays consistent. Only the white contrast treatment changes.</p></div><span>ROUND TWO</span></div>
+              <div class="concept-heading"><div><h2 id="variations-title">Border variations</h2><p>These earlier versions keep the original lettering and only change the white contrast treatment.</p></div><span>ROUND TWO</span></div>
               <div class="concept-grid">
                 <figure class="concept-card selected-variation">
                   <a href="assets/concepts/concept-b1-white-border.png" target="_blank" rel="noopener"><img src="assets/concepts/concept-b1-white-border.png" width="2172" height="724" alt="Concept B variation one with a clean white outer border"></a>
@@ -153,7 +171,7 @@
               </figure>
             </div>
             <aside class="license-note"><b>Production note</b><p>These images are style references. Font licensing must be confirmed before any typeface is used on products for sale.</p></aside>
-            <div class="files-next"><h2>Choose B1, B2, or B3.</h2><p>The selected white treatment will become the final production direction for the GOAT wordmark.</p></div>
+            <div class="files-next"><h2>Choose B4, B5, or B6.</h2><p>The selected street-lettering direction will move into final refinement and production preparation.</p></div>
             <button type="button" class="outline-button" data-go-dashboard>Return to project progress</button>
           </div>
         </section>
