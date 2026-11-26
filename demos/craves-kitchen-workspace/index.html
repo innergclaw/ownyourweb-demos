@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#11120f">
+  <title>Craves Kitchen | Client workspace</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./workspace.mjs"></script>
+</head>
+<body>
+  <main id="access" class="access">
+    <header class="access-header">OWNYOURWEB</header>
+    <div class="opening">
+      <h1>Craves Kitchen</h1>
+      <p class="tagline">Your Cravings Are Calling.. Say YESSS</p>
+    </div>
+    <form id="access-form" novalidate>
+      <label for="code">Workspace code</label>
+      <div class="code-row">
+        <input id="code" type="password" required autocomplete="off" spellcheck="false" aria-describedby="access-note">
+        <button class="primary" type="submit">Open workspace</button>
+      </div>
+      <p id="code-error" role="alert" hidden></p>
+      <p id="access-note">The code limits casual viewing. It does not protect private files.</p>
+    </form>
+    <noscript><p>Enable JavaScript to open the workspace.</p></noscript>
+  </main>
+
+  <div id="workspace" hidden>
+    <aside class="rail">
+      <span class="monogram" aria-hidden="true">CK</span>
+      <nav aria-label="Workspace">
+        <button type="button" data-view="dashboard" aria-current="page">Dashboard</button>
+        <button type="button" data-view="files">Files <span class="file-count">0</span></button>
+      </nav>
+      <button type="button" id="lock">Lock<span class="wide-only"> workspace</span></button>
+    </aside>
+    <main class="content">
+      <section id="dashboard" aria-labelledby="dashboard-title">
+        <header class="page-header">
+          <h1 id="dashboard-title" tabindex="-1">Craves Kitchen</h1>
+          <p class="tagline">Your Cravings Are Calling.. Say YESSS</p>
+        </header>
+        <div class="overview">
+          <section>
+            <h2>Project status</h2>
+            <p><strong>Workspace ready.</strong> Project details and updates will appear here when available.</p>
+            <button class="outline" type="button" data-open="files">View project files</button>
+          </section>
+          <dl>
+            <div><dt>Client</dt><dd>Monyatta Dunson</dd></div>
+            <div><dt>Files posted</dt><dd>0</dd></div>
+          </dl>
+        </div>
+      </section>
+      <section id="files" aria-labelledby="files-title" hidden>
+        <header class="page-header"><h1 id="files-title" tabindex="-1">Project files</h1></header>
+        <div class="empty">
+          <h2>No files posted yet.</h2>
+          <p>Project files will appear here when they are ready for review.</p>
+          <button class="outline" type="button" data-open="dashboard">Back to dashboard</button>
+        </div>
+      </section>
+      <footer>Craves Kitchen client workspace <span>Built by OwnYourWeb</span></footer>
+    </main>
+  </div>
+</body>
+</html>
