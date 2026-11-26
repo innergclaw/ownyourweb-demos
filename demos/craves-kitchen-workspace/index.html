@@ -6,8 +6,9 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#11120f">
   <title>Craves Kitchen | Client workspace</title>
-  <link rel="stylesheet" href="./styles.css">
-  <script type="module" src="./workspace.mjs"></script>
+  <link rel="stylesheet" href="./styles.css?v=2">
+  <script type="module" src="./workspace.mjs?v=2"></script>
+  <script type="module" src="./intake.mjs"></script>
 </head>
 <body>
   <main id="access" class="access">
@@ -47,13 +48,40 @@
           <section>
             <h2>Project status</h2>
             <p><strong>Workspace ready.</strong> Project details and updates will appear here when available.</p>
-            <button class="outline" type="button" data-open="files">View project files</button>
+            <div class="project-actions">
+              <a class="primary action-link" href="#start-project">Start project</a>
+              <button class="outline" type="button" data-open="files">View project files</button>
+            </div>
           </section>
           <dl>
             <div><dt>Client</dt><dd>Monyatta Dunson</dd></div>
             <div><dt>Files posted</dt><dd>0</dd></div>
           </dl>
         </div>
+        <section id="start-project" class="intake" aria-labelledby="intake-title">
+          <h2 id="intake-title">Start project</h2>
+          <p>Tell us what you want to create. Add photos, sketches, or examples that show what you have in mind.</p>
+          <form id="intake-auth">
+            <p>Sign in with your verified OwnYourWeb account to send your brief and references.</p>
+            <label for="intake-email">Email address</label>
+            <input id="intake-email" type="email" autocomplete="username" required>
+            <label for="intake-password">Account password</label>
+            <input id="intake-password" type="password" autocomplete="current-password" required>
+            <button type="submit" class="primary">Sign in to send files</button>
+            <a href="https://ownyourweb.marketing/portal/" target="_blank" rel="noopener noreferrer">Create an account or reset your password (opens in a new tab)</a>
+          </form>
+          <form id="project-intake" hidden>
+            <label for="project-brief">Project details</label>
+            <p id="project-hint">What do you need? Include the look you want, anything we should keep, and a target date if you have one.</p>
+            <textarea id="project-brief" rows="6" maxlength="5000" aria-describedby="project-hint" required></textarea>
+            <label for="project-references">Reference files <span class="optional">(optional)</span></label>
+            <p id="reference-hint">Up to 5 JPG, PNG, WebP, HEIC, or PDF files. Max 10 MB each.</p>
+            <input id="project-references" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.heic,.heif,.pdf" aria-describedby="reference-hint">
+            <ul id="selected-references" hidden></ul>
+            <button class="primary" type="submit">Send brief and references</button>
+          </form>
+          <p id="intake-status" role="status" aria-live="polite"></p>
+        </section>
       </section>
       <section id="files" aria-labelledby="files-title" hidden>
         <header class="page-header"><h1 id="files-title" tabindex="-1">Project files</h1></header>

@@ -76,3 +76,23 @@ footer { padding-top: 16px; border-top: 1px solid var(--rule); display: flex; fl
 @media (max-width: 480px) {
   .code-row { grid-template-columns: 1fr; }
 }
+.project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.project-actions .outline { margin: 0; }
+.action-link { display: inline-flex; align-items: center; min-height: 44px; padding: 9px 15px; font-weight: 650; text-decoration: none; }
+.intake { border-top: 1px solid var(--ink); padding-block: 30px 16px; scroll-margin-top: 24px; }
+.intake > p, .intake form p { color: var(--muted); max-width: 65ch; margin-top: 10px; }
+.intake form { display: grid; width: min(100%, 39rem); margin-top: 16px; }
+.intake form label { margin: 18px 0 4px; }
+.intake form p { margin: 0 0 8px; }
+.intake form a { color: var(--ink); text-underline-offset: 4px; justify-self: start; padding-block: 10px; }
+.intake form button { justify-self: start; margin-top: 16px; }
+.intake form input, .intake textarea { width: 100%; min-width: 0; color: var(--ink); background: #fbfaf6; padding: 10px 12px; border: 1px solid #75776d; border-radius: 0; font: inherit; }
+.intake textarea { resize: vertical; }
+.intake input[type="file"]::file-selector-button { font: inherit; color: var(--ink); margin-inline-end: 8px; }
+.intake .optional { font-weight: 400; color: var(--muted); }
+#selected-references { padding-left: 22px; margin: 12px 0 0; overflow-wrap: anywhere; }
+#intake-status:empty { margin: 0; }
+#intake-status[data-error="true"] { color: #922915; }
+@media (max-width: 700px) {
+  html { scroll-padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+}
