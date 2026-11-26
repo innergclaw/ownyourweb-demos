@@ -1,6 +1,5 @@
-// This check only hides the public Pages content from casual viewing.
-const codeDigest = "68bd23cc96dce9f4825c75d6df81821f7df26a005baa4421b5b18631009ca336";
-const sessionKey = "craves-kitchen-workspace:open";
+const endpoint = "https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/craves-kitchen-intake";
+let workspaceCode = "";
 const access = document.querySelector("#access");
 const workspace = document.querySelector("#workspace");
 const form = document.querySelector("#access-form");
@@ -8,6 +7,13 @@ const input = document.querySelector("#code");
 const error = document.querySelector("#code-error");
 const submit = form.querySelector("button");
 const tabs = [...document.querySelectorAll("[data-view]")];
+
+export function sendToIntake(body) {
+  return fetch(endpoint, {
+    method: "POST", headers: { "x-workspace-code": workspaceCode }, body,
+    signal: AbortSignal.timeout(90000),
+  });
+}
 
 function showView(view, focus = true) {
   for (const tab of tabs) {
@@ -46,12 +52,15 @@ form.addEventListener("submit", async (event) => {
   if (!code) return explain("Enter the workspace code.");
   submit.disabled = true;
   try {
-    const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(code));
-    const digest = Array.from(new Uint8Array(bytes), (byte) => byte.toString(16).padStart(2, "0")).join("");
-    if (digest !== codeDigest) return explain("That code did not match. Check it and try again.");
+    const response = await fetch(endpoint + "?action=check", {
+      method: "POST", headers: { "x-workspace-code": code },
+      signal: AbortSignal.timeout(12000),
+    });
+    if (response.status === 401) return explain("That code did not match. Check it and try again.");
+    if (!response.ok) throw new Error("Code check unavailable");
+    workspaceCode = code;
     form.reset();
     input.dispatchEvent(new Event("input"));
-    try { sessionStorage.setItem(sessionKey, "yes"); } catch { /* Open for this page only. */ }
     openWorkspace();
   } catch {
     explain("The code could not be checked. Open the HTTPS workspace link and try again.");
@@ -65,11 +74,8 @@ for (const button of document.querySelectorAll("[data-open]")) {
   button.addEventListener("click", () => showView(button.dataset.open));
 }
 document.querySelector("#lock").addEventListener("click", () => {
-  try { sessionStorage.removeItem(sessionKey); } catch { /* Nothing to clear. */ }
+  workspaceCode = "";
   workspace.hidden = true;
   access.hidden = false;
   input.focus();
 });
-try {
-  if (sessionStorage.getItem(sessionKey) === "yes") openWorkspace(false);
-} catch { /* The access form remains available. */ }

@@ -84,7 +84,6 @@ footer { padding-top: 16px; border-top: 1px solid var(--rule); display: flex; fl
 .intake form { display: grid; width: min(100%, 39rem); margin-top: 16px; }
 .intake form label { margin: 18px 0 4px; }
 .intake form p { margin: 0 0 8px; }
-.intake form a { color: var(--ink); text-underline-offset: 4px; justify-self: start; padding-block: 10px; }
 .intake form button { justify-self: start; margin-top: 16px; }
 .intake form input, .intake textarea { width: 100%; min-width: 0; color: var(--ink); background: #fbfaf6; padding: 10px 12px; border: 1px solid #75776d; border-radius: 0; font: inherit; }
 .intake textarea { resize: vertical; }
