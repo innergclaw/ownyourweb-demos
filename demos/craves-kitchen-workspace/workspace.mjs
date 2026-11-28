@@ -15,6 +15,13 @@ export function sendToIntake(body) {
   });
 }
 
+export function requestProjectFiles(action, params = {}) {
+  return fetch(endpoint + "?" + new URLSearchParams({ action, ...params }), {
+    method: "POST", headers: { "x-workspace-code": workspaceCode }, cache: "no-store",
+    signal: AbortSignal.timeout(45000),
+  });
+}
+
 function showView(view, focus = true) {
   for (const tab of tabs) {
     const active = tab.dataset.view === view;
@@ -23,6 +30,7 @@ function showView(view, focus = true) {
     else tab.removeAttribute("aria-current");
   }
   if (focus) document.getElementById(`${view}-title`).focus();
+  if (view === "files") document.dispatchEvent(new Event("project-files-open"));
 }
 
 function openWorkspace(focus = true) {

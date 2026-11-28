@@ -6,9 +6,10 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#11120f">
   <title>Craves Kitchen | Client workspace</title>
-  <link rel="stylesheet" href="./styles.css?v=5">
+  <link rel="stylesheet" href="./styles.css?v=6">
   <link rel="stylesheet" href="../../components/ui/animated-file-upload.css?v=1">
-  <script type="module" src="./intake.mjs?v=5"></script>
+  <script type="module" src="./intake.mjs?v=6"></script>
+  <script type="module" src="./project-files.mjs?v=1"></script>
 </head>
 <body>
   <main id="access" class="access">
@@ -20,11 +21,11 @@
     <form id="access-form" novalidate>
       <label for="code">Workspace code</label>
       <div class="code-row">
-        <input id="code" type="password" required autocomplete="off" spellcheck="false" aria-describedby="access-note">
+        <input id="code" type="password" required autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="access-note">
         <button class="primary" type="submit">Open workspace</button>
       </div>
       <p id="code-error" role="alert" hidden></p>
-      <p id="access-note">Use your project code to send a brief and reference files. No account needed.</p>
+      <p id="access-note">Use your project code to view or send briefs and references. No account needed.</p>
     </form>
     <noscript><p>Enable JavaScript to open the workspace.</p></noscript>
   </main>
@@ -34,7 +35,7 @@
       <span class="monogram" aria-hidden="true">CK</span>
       <nav aria-label="Workspace">
         <button type="button" data-view="dashboard" aria-current="page">Dashboard</button>
-        <button type="button" data-view="files">Files <span class="file-count">0</span></button>
+          <button type="button" data-view="files">Files</button>
       </nav>
       <button type="button" id="lock">Lock<span class="wide-only"> workspace</span></button>
     </aside>
@@ -55,7 +56,6 @@
           </section>
           <dl>
             <div><dt>Client</dt><dd>Monyatta Dunson</dd></div>
-            <div><dt>Files posted</dt><dd>0</dd></div>
           </dl>
         </div>
         <section id="start-project" class="intake" aria-labelledby="intake-title">
@@ -88,16 +88,22 @@
             <p id="receipt-meta" class="receipt-meta"></p>
             <p id="receipt-brief" class="receipt-brief"></p>
             <ul id="receipt-files" class="receipt-files" aria-label="Submitted references" hidden></ul>
-            <p class="receipt-note">This preview stays in this tab until you reload or lock the workspace.</p>
+            <p class="receipt-note">This submission is saved. Open Project Files to see it again, even on another device.</p>
+            <button class="outline" type="button" data-open="files">Open project files</button>
           </section>
         </section>
       </section>
       <section id="files" aria-labelledby="files-title" hidden>
         <header class="page-header"><h1 id="files-title" tabindex="-1">Project files</h1></header>
-        <div class="empty">
-          <h2>No files posted yet.</h2>
-          <p>Project files will appear here when they are ready for review.</p>
-          <button class="outline" type="button" data-open="dashboard">Back to dashboard</button>
+        <div class="project-folder">
+          <p>Saved briefs and references for Craves Kitchen.</p>
+          <div class="project-actions">
+            <button class="outline" type="button" id="refresh-project-files">Refresh files</button>
+            <button class="outline" type="button" data-open="dashboard">Back to dashboard</button>
+          </div>
+          <p id="project-files-status" role="status"></p>
+          <div id="project-submissions"></div>
+          <button class="outline" type="button" id="more-project-files" hidden>Load older submissions</button>
         </div>
       </section>
       <footer>Craves Kitchen client workspace <span>Built by OwnYourWeb</span></footer>

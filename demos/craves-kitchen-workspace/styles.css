@@ -98,6 +98,11 @@ footer { padding-top: 16px; border-top: 1px solid var(--rule); display: flex; fl
 .receipt-files { display: grid; gap: 10px; padding: 0; margin: 14px 0 0; list-style: none; }
 .receipt-files li { padding-top: 10px; border-top: 1px solid #cccdc5; }
 .receipt-files img { display: block; width: auto; max-width: 100%; height: auto; max-height: 220px; margin: 0 0 8px; object-fit: contain; }
+.project-folder { padding-block: 26px; }
+#project-files-status:not(:empty) { margin-top: 16px; color: var(--muted); }
+.project-folder .submission-receipt { max-width: 48rem; }
+.project-folder .receipt-files li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.project-folder .receipt-files button { margin: 0; }
 @media (max-width: 700px) {
   html { scroll-padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 }

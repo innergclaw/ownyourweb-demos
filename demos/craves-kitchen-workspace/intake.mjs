@@ -1,4 +1,4 @@
-import { sendToIntake } from "./workspace.mjs?v=3";
+import { sendToIntake } from "./workspace.mjs?v=4";
 import { mountAnimatedFileUpload } from "../../components/ui/animated-file-upload.mjs?v=1";
 
 const form = document.querySelector("#project-intake");
@@ -75,6 +75,7 @@ form.addEventListener("submit", async event => {
     if (response.ok && reply.ok && reply.receipt) {
       clearForm();
       showReceipt(reply.receipt, details, files);
+      document.dispatchEvent(new Event("project-files-saved"));
       notice("Your project brief and any attached references were received.");
       return;
     }
