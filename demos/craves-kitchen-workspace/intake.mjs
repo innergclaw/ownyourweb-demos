@@ -1,13 +1,14 @@
 import { sendToIntake } from "./workspace.mjs?v=3";
+import { mountAnimatedFileUpload } from "../../components/ui/animated-file-upload.mjs?v=1";
 
 const form = document.querySelector("#project-intake");
 const brief = document.querySelector("#project-brief");
-const input = document.querySelector("#project-references");
-const list = document.querySelector("#selected-references");
 const status = document.querySelector("#intake-status");
 const lock = document.querySelector("#lock");
-const supported = /\.(jpe?g|png|webp|heic|heif|pdf)$/i;
 const mib = 1024 * 1024;
+const upload = mountAnimatedFileUpload(document.querySelector("#reference-upload"), {
+  maxFiles: 5, maxSize: 10 * mib, maxTotalSize: 25 * mib, onChange: () => notice(),
+});
 
 function notice(message = "", error = false) {
   status.textContent = message;
@@ -16,37 +17,21 @@ function notice(message = "", error = false) {
 
 function clearForm() {
   form.reset();
-  list.replaceChildren();
-  list.hidden = true;
+  upload.reset();
 }
-
-input.addEventListener("change", () => {
-  list.replaceChildren(...Array.from(input.files, file => {
-    const item = document.createElement("li");
-    item.textContent = file.name;
-    return item;
-  }));
-  list.hidden = !input.files.length;
-  notice();
-});
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
   const details = brief.value.trim();
-  const files = Array.from(input.files);
+  const files = upload.getFiles();
   if (!details) { notice("Add a short description of your project.", true); brief.focus(); return; }
-  if (files.length > 5 || files.some(file => !supported.test(file.name) || !file.size || file.size > 10 * mib)
-      || files.reduce((sum, file) => sum + file.size, 0) > 25 * mib) {
-    notice("Choose up to five supported files. Limit: 10 MB each and 25 MB total.", true);
-    input.focus();
-    return;
-  }
 
   const data = new FormData();
   data.set("brief", details);
   for (const file of files) data.append("references", file, file.name);
   lock.disabled = true;
   for (const control of form.elements) control.disabled = true;
+  upload.setDisabled(true);
   form.setAttribute("aria-busy", "true");
   notice(files.length ? "Sending your brief and references…" : "Sending your project brief…");
   try {
@@ -71,6 +56,7 @@ form.addEventListener("submit", async event => {
   } finally {
     lock.disabled = false;
     for (const control of form.elements) control.disabled = false;
+    upload.setDisabled(false);
     form.setAttribute("aria-busy", "false");
   }
 });

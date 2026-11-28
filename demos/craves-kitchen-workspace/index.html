@@ -6,8 +6,9 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#11120f">
   <title>Craves Kitchen | Client workspace</title>
-  <link rel="stylesheet" href="./styles.css?v=3">
-  <script type="module" src="./intake.mjs?v=3"></script>
+  <link rel="stylesheet" href="./styles.css?v=4">
+  <link rel="stylesheet" href="../../components/ui/animated-file-upload.css?v=1">
+  <script type="module" src="./intake.mjs?v=4"></script>
 </head>
 <body>
   <main id="access" class="access">
@@ -66,8 +67,19 @@
             <textarea id="project-brief" rows="6" maxlength="5000" aria-describedby="project-hint" required></textarea>
             <label for="project-references">Reference files <span class="optional">(optional)</span></label>
             <p id="reference-hint">Up to 5 JPG, PNG, WebP, HEIC, or PDF files. Max 10 MB per file and 25 MB total.</p>
-            <input id="project-references" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.heic,.heif,.pdf" aria-describedby="reference-hint">
-            <ul id="selected-references" hidden></ul>
+            <div id="reference-upload" class="animated-upload">
+              <input id="project-references" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.heic,.heif,.pdf" aria-describedby="reference-hint">
+              <button class="upload-browse" type="button" data-upload-browse aria-label="Choose reference files" aria-describedby="reference-hint" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M7.5 7.5 12 3l4.5 4.5M12 3v13.5"/>
+                </svg>
+                <span data-upload-label>Choose files</span>
+                <span class="upload-help">Or drag and drop files here</span>
+              </button>
+              <div class="upload-error" data-upload-error role="alert"></div>
+              <div class="upload-status" data-upload-status role="status"></div>
+              <ul class="upload-list" data-upload-list aria-label="Selected reference files"></ul>
+            </div>
             <button class="primary" type="submit">Send brief and references</button>
           </form>
           <p id="intake-status" role="status" aria-live="polite"></p>

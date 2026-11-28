@@ -1,0 +1,48 @@
+.animated-upload { display: grid; gap: 10px; min-width: 0; }
+.animated-upload .upload-browse {
+  width: 100%;
+  min-height: 145px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 5px;
+  margin: 0;
+  padding: 20px;
+  border: 2px dashed var(--upload-border, #75776d);
+  border-radius: 12px;
+  color: var(--upload-ink, #11120f);
+  background: var(--upload-surface, #fbfaf6);
+  text-align: center;
+  transition: transform 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out;
+}
+.upload-browse svg { width: 30px; height: 30px; transition: transform 180ms ease-out; }
+.animated-upload .upload-browse:is(:hover, [data-dragging]):not(:disabled) {
+  border-color: var(--upload-active, #46640c);
+  background: var(--upload-highlight, #eef4df);
+}
+.upload-browse[data-dragging] { transform: scale(1.015); }
+.upload-browse[data-dragging] svg { transform: translateY(-5px) scale(1.09); }
+.upload-help, .upload-file-size { font-size: .875rem; font-weight: 400; color: var(--upload-muted, #53554e); }
+.upload-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.upload-list:empty, .upload-error:empty { display: none; }
+.upload-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--upload-rule, #cccdc5);
+  border-radius: 12px;
+  animation: upload-file-in 180ms ease-out both;
+}
+.upload-file-details { display: grid; min-width: 0; overflow-wrap: anywhere; }
+.animated-upload .upload-remove { margin: 0; padding: 8px 10px; min-height: 44px; flex: none; border: 0; color: inherit; background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.animated-upload button:disabled { opacity: .6; cursor: not-allowed; }
+.animated-upload button:focus-visible { outline: 2px solid var(--upload-active, #46640c); outline-offset: 3px; }
+.upload-error { color: var(--upload-error, #922915); font-size: .9rem; }
+.upload-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@keyframes upload-file-in { from { opacity: 0; transform: translateX(-8px); } }
+@media (prefers-reduced-motion: reduce) {
+  .animated-upload .upload-browse, .upload-browse svg { transition: none; transform: none; }
+  .upload-file { animation: none; }
+}
