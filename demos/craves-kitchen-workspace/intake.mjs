@@ -5,6 +5,11 @@ const form = document.querySelector("#project-intake");
 const brief = document.querySelector("#project-brief");
 const status = document.querySelector("#intake-status");
 const lock = document.querySelector("#lock");
+const receipt = document.querySelector("#submission-receipt");
+const receiptMeta = document.querySelector("#receipt-meta");
+const receiptBrief = document.querySelector("#receipt-brief");
+const receiptFiles = document.querySelector("#receipt-files");
+const previews = [];
 const mib = 1024 * 1024;
 const upload = mountAnimatedFileUpload(document.querySelector("#reference-upload"), {
   maxFiles: 5, maxSize: 10 * mib, maxTotalSize: 25 * mib, onChange: () => notice(),
@@ -18,6 +23,36 @@ function notice(message = "", error = false) {
 function clearForm() {
   form.reset();
   upload.reset();
+}
+
+function clearReceipt() {
+  for (const url of previews.splice(0)) URL.revokeObjectURL(url);
+  receipt.hidden = true;
+  receiptMeta.textContent = "";
+  receiptBrief.textContent = "";
+  receiptFiles.replaceChildren();
+  receiptFiles.hidden = true;
+}
+
+function showReceipt(id, details, files) {
+  clearReceipt();
+  receiptMeta.textContent = `Receipt ${id} · ${files.length} ${files.length === 1 ? "reference" : "references"}`;
+  receiptBrief.textContent = details;
+  for (const file of files) {
+    const item = document.createElement("li");
+    if (/^image\/(jpeg|png|webp)$/.test(file.type)) {
+      const preview = document.createElement("img");
+      preview.alt = "";
+      preview.src = URL.createObjectURL(file);
+      previews.push(preview.src);
+      item.append(preview);
+    }
+    item.append(document.createTextNode(file.name));
+    receiptFiles.append(item);
+  }
+  receiptFiles.hidden = !files.length;
+  receipt.hidden = false;
+  document.querySelector("#receipt-title").focus();
 }
 
 form.addEventListener("submit", async event => {
@@ -39,6 +74,7 @@ form.addEventListener("submit", async event => {
     const reply = await response.json();
     if (response.ok && reply.ok && reply.receipt) {
       clearForm();
+      showReceipt(reply.receipt, details, files);
       notice("Your project brief and any attached references were received.");
       return;
     }
@@ -63,5 +99,6 @@ form.addEventListener("submit", async event => {
 
 lock.addEventListener("click", () => {
   clearForm();
+  clearReceipt();
   notice();
 });

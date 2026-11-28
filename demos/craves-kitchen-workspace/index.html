@@ -6,9 +6,9 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#11120f">
   <title>Craves Kitchen | Client workspace</title>
-  <link rel="stylesheet" href="./styles.css?v=4">
+  <link rel="stylesheet" href="./styles.css?v=5">
   <link rel="stylesheet" href="../../components/ui/animated-file-upload.css?v=1">
-  <script type="module" src="./intake.mjs?v=4"></script>
+  <script type="module" src="./intake.mjs?v=5"></script>
 </head>
 <body>
   <main id="access" class="access">
@@ -83,6 +83,13 @@
             <button class="primary" type="submit">Send brief and references</button>
           </form>
           <p id="intake-status" role="status" aria-live="polite"></p>
+          <section id="submission-receipt" class="submission-receipt" aria-labelledby="receipt-title" hidden>
+            <h3 id="receipt-title" tabindex="-1">Latest submission</h3>
+            <p id="receipt-meta" class="receipt-meta"></p>
+            <p id="receipt-brief" class="receipt-brief"></p>
+            <ul id="receipt-files" class="receipt-files" aria-label="Submitted references" hidden></ul>
+            <p class="receipt-note">This preview stays in this tab until you reload or lock the workspace.</p>
+          </section>
         </section>
       </section>
       <section id="files" aria-labelledby="files-title" hidden>

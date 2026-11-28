@@ -91,6 +91,13 @@ footer { padding-top: 16px; border-top: 1px solid var(--rule); display: flex; fl
 .intake .optional { font-weight: 400; color: var(--muted); }
 #intake-status:empty { margin: 0; }
 #intake-status[data-error="true"] { color: #922915; }
+.submission-receipt { max-width: 39rem; margin-top: 22px; padding: 18px; border: 1px solid #75776d; background: #fbfaf6; overflow-wrap: anywhere; }
+.submission-receipt h3 { margin: 0; font-size: 1.125rem; }
+.submission-receipt .receipt-meta, .submission-receipt .receipt-note { margin-top: 8px; color: var(--muted); font-size: .875rem; }
+.receipt-brief { margin-top: 14px; white-space: pre-wrap; }
+.receipt-files { display: grid; gap: 10px; padding: 0; margin: 14px 0 0; list-style: none; }
+.receipt-files li { padding-top: 10px; border-top: 1px solid #cccdc5; }
+.receipt-files img { display: block; width: auto; max-width: 100%; height: auto; max-height: 220px; margin: 0 0 8px; object-fit: contain; }
 @media (max-width: 700px) {
   html { scroll-padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 }
